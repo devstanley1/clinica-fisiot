@@ -66,17 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             spinner.style.display = 'inline-block';
             btnText.style.display = 'none';
 
-            // Pegando a data compilada pelo Datepicker UI
-            const datetimeVal = getVal('datetimepicker'); // formato "Y-m-d H:i"
-            if (!datetimeVal) {
-                alert("Por favor, selecione uma Data e Horário no calendário clicando nele.");
-                submitBtn.disabled = false;
-                spinner.style.display = 'none';
-                btnText.style.display = 'inline-block';
-                return;
-            }
-            const [parsedDate, parsedTime] = datetimeVal.split(' ');
-
             try {
                 // Postando os agendamentos direto para nossa API em Node / SQLite (Seguro)
                 const res = await fetch('/api/appointments', {
@@ -87,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     body: JSON.stringify({
                         service: getVal('serviceType') || 'Consulta Geral',
-                        date: parsedDate,
-                        time: parsedTime
+                        date: getVal('date'),
+                        time: getVal('time')
                     })
                 });
 
@@ -110,24 +99,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // Inicialização da biblioteca UI Flatpickr no formulário de Agendamento
-    if (document.getElementById("datetimepicker")) {
-        flatpickr("#datetimepicker", {
-            enableTime: true,
-            dateFormat: "Y-m-d H:i",
-            locale: "pt", // Idioma português Brasil importando da lib
-            minDate: "today", // Impede selecionar data do passado na UI local
-            minTime: "08:00",
-            maxTime: "18:00",
-            disable: [
-                // Impede Domingos visualmente na UI nativa
-                function (date) {
-                    return (date.getDay() === 0);
-                }
-            ],
-            theme: "airbnb"
-        });
-    }
-
 });
