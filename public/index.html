@@ -197,13 +197,11 @@
                             </select>
                         </div>
                         <div class="form-row">
-                            <div class="form-group half">
-                                <label for="date">Data da Consulta</label>
-                                <input type="date" id="date" name="date" onclick="this.showPicker()" required />
-                            </div>
-                            <div class="form-group half">
-                                <label for="time">Horário (08:00 às 18:00)</label>
-                                <input type="time" id="time" name="time" onclick="this.showPicker()" required />
+                            <div class="form-group full" style="width: 100%;">
+                                <label for="datetimepicker">Escolha a Melhor Data e Hora</label>
+                                <input type="text" id="datetimepicker" name="datetimepicker"
+                                    placeholder="Toque para abrir o calendário..." readonly required
+                                    style="background-color: white; cursor: pointer;" />
                             </div>
                         </div>
                         <button type="submit" class="btn-submit" id="submitBtn">
@@ -258,6 +256,10 @@
             <p>&copy; 2026 FisioVida. Todos os direitos reservados. Promovendo a saúde e o movimento.</p>
         </div>
     </footer>
+
+    <!-- Scripts Flatpickr (Calendário Premium Interativo) -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
 
     <script src="app.js"></script>
 </body>
