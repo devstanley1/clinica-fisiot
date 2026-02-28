@@ -1,15 +1,13 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "public/*",
-            "use": "@vercel/static"
-        }
-    ],
     "rewrites": [
         {
+            "source": "/api/(.*)",
+            "destination": "/api/index.js"
+        },
+        {
             "source": "/(.*)",
-            "destination": "/public/$1"
+            "destination": "/$1"
         }
     ]
 }
