@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Cliente - Clínica FisioVida</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-msg {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .apt-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--secondary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <h1 class="logo">Fisio<span>Vida</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#" id="logoutBtn" style="color: #ef4444; font-weight: 600;">Sair da Conta</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <h2 class="welcome-msg">Olá, <span id="clientNameDisplay">Paciente</span></h2>
+                <p style="color: var(--text-muted)">Bem-vindo ao seu painel. Gerencie seus agendamentos aqui.</p>
+            </div>
+            <a href="index.html#booking" class="btn-primary-sm">+ Novo Agendamento</a>
+        </div>
+
+        <h3 style="margin-bottom: 1.5rem; color: var(--text-main);">Seu Histórico de Consultas</h3>
+
+        <div id="appointmentsList">
+            <p style="color: var(--text-muted);">Carregando agendamentos...</p>
+        </div>
+    </main>
+
+    <script src="js/dashboard-cliente.js"></script>
+</body>
+
+</html>
