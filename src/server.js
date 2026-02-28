@@ -19,8 +19,8 @@ app.use(helmet({
 app.use(cors());
 app.use(express.json());
 
-// Servindo Frontend (A pasta raiz inteira pois tudo foi migrado pra ca)
-const publicDir = path.join(__dirname, '../');
+// Servindo Frontend da pasta dedicada public
+const publicDir = path.join(__dirname, '../public');
 app.use(express.static(publicDir));
 
 // Rotas da API
