@@ -30,10 +30,16 @@ app.use('/api/appointments', appointmentsRoutes);
 
 // Inicialização do Banco de Dados e em seguida Subir o Servidor
 initDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`[+] Servidor da FisioVida operando em http://localhost:${PORT}`);
-    console.log(`[+] Banco de Dados SQLite (FISIO.DB) Conectado`);
-  });
+  // Em ambientes Serverless (Vercel), nós apenas exportamos o App.
+  if (process.env.VERCEL !== '1') {
+    app.listen(PORT, () => {
+      console.log(`[+] Servidor da FisioVida operando em http://localhost:${PORT}`);
+      console.log(`[+] Banco de Dados SQLite (FISIO.DB) Conectado`);
+    });
+  }
 }).catch(err => {
   console.error("Erro fatal ao iniciar Banco SQLite: ", err);
 });
+
+// Essencial para o Vercel identificar isso como uma Função Serverless HTTP
+module.exports = app;

@@ -3,7 +3,9 @@ const { open } = require('sqlite');
 const path = require('path');
 const bcrypt = require('bcrypt');
 
-const dbPath = path.resolve(__dirname, 'fisio.db');
+// Se estiver rodando no Vercel (serveless), gravar em /tmp, caso contrário, pasta local
+const isVercel = process.env.VERCEL === '1';
+const dbPath = isVercel ? '/tmp/fisio.db' : path.resolve(__dirname, 'fisio.db');
 
 async function getDB() {
     return open({

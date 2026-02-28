@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Postando os agendamentos direto para nossa API em Node / SQLite (Seguro)
-                const res = await fetch('http://localhost:3000/api/appointments', {
+                const res = await fetch('/api/appointments', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
