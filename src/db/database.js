@@ -1,54 +1,54 @@
-const sqlite3 = require('sqlite3').verbose();
-const { open } = require('sqlite');
-const path = require('path');
+const { Pool } = require('pg');
 const bcrypt = require('bcrypt');
+require('dotenv').config();
 
-// Se estiver rodando no Vercel (serveless), gravar em /tmp, caso contrário, pasta local
-const isVercel = process.env.VERCEL === '1';
-const dbPath = isVercel ? '/tmp/fisio.db' : path.resolve(__dirname, 'fisio.db');
+// Conexão Segura com a Instância Nuvem do Postgres
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 
 async function getDB() {
-    return open({
-        filename: dbPath,
-        driver: sqlite3.Database
-    });
+    return pool;
 }
 
-// Criação de Tabelas base (Modelagem de Dados Inicial) e Seed do Admin Supremo
+// Criação de Tabelas base (Modelagem de Dados Inicial) e Seed do Admin Supremo em PGSQL Nativo
 async function initDB() {
-    const db = await getDB();
+    try {
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS Users (
+                id SERIAL PRIMARY KEY,
+                name TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
+                password TEXT NOT NULL,
+                role TEXT NOT NULL DEFAULT 'cliente',
+                cpf TEXT UNIQUE
+            );
 
-    await db.exec(`
-        CREATE TABLE IF NOT EXISTS Users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            email TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL,
-            role TEXT NOT NULL DEFAULT 'cliente',
-            cpf TEXT UNIQUE
-        );
+             CREATE TABLE IF NOT EXISTS Appointments (
+                id SERIAL PRIMARY KEY,
+                "clientId" INTEGER REFERENCES Users(id),
+                "professionalId" INTEGER REFERENCES Users(id),
+                service TEXT NOT NULL,
+                date TEXT NOT NULL,
+                time TEXT NOT NULL,
+                status TEXT DEFAULT 'agendado'
+            );
+        `);
 
-        CREATE TABLE IF NOT EXISTS Appointments (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            clientId INTEGER,
-            professionalId INTEGER,
-            service TEXT NOT NULL,
-            date TEXT NOT NULL,
-            time TEXT NOT NULL,
-            status TEXT DEFAULT 'agendado',
-            FOREIGN KEY(clientId) REFERENCES Users(id),
-            FOREIGN KEY(professionalId) REFERENCES Users(id)
-        );
-    `);
-
-    // Inserir Administrador Supremo Padrão se não existir (Para o usuário conseguir Entrar)
-    const adminExists = await db.get("SELECT id FROM Users WHERE email = ?", ['admin@fisiovida.com']);
-    if (!adminExists) {
-        const hash = await bcrypt.hash('admin123', 10);
-        await db.run("INSERT INTO Users (name, email, password, role) VALUES (?, ?, ?, ?)",
-            ['Administrador Supremo', 'admin@fisiovida.com', hash, 'admin']);
-        console.log("Usuário Admin Padrão criado com sucesso!");
+        // Inserir Administrador Supremo Padrão se não existir (Para o usuário conseguir Entrar)
+        const { rows } = await pool.query("SELECT id FROM Users WHERE email = $1", ['admin@fisiovida.com']);
+        if (rows.length === 0) {
+            const hash = await bcrypt.hash('admin123', 10);
+            await pool.query("INSERT INTO Users (name, email, password, role) VALUES ($1, $2, $3, $4)",
+                ['Administrador Supremo', 'admin@fisiovida.com', hash, 'admin']);
+            console.log("Usuário Admin Padrão criado com sucesso!");
+        }
+    } catch (error) {
+        console.error("Falha ao inicializar o banco de dados Nuvem (Postgres): ", error);
     }
 }
 
-module.exports = { getDB, initDB };
+module.exports = { getDB, initDB, pool };

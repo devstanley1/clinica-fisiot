@@ -4,9 +4,10 @@ const { getDB } = require('../db/database');
 async function getMyAppointments(req, res) {
     try {
         const db = await getDB();
-        const appointments = await db.all("SELECT * FROM Appointments WHERE clientId = ?", [req.user.id]);
-        res.json(appointments);
+        const { rows } = await db.query('SELECT * FROM Appointments WHERE "clientId" = $1', [req.user.id]);
+        res.json(rows);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Erro ao buscar histórico." });
     }
 }
@@ -15,11 +16,12 @@ async function getMyAppointments(req, res) {
 async function getAllAppointments(req, res) {
     try {
         const db = await getDB();
-        const appointments = await db.all(
-            "SELECT A.*, U.name as clientName FROM Appointments A JOIN Users U ON A.clientId = U.id"
+        const { rows } = await db.query(
+            'SELECT A.*, U.name as "clientName" FROM Appointments A JOIN Users U ON A."clientId" = U.id'
         );
-        res.json(appointments);
+        res.json(rows);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Erro ao buscar histórico da clínica." });
     }
 }
@@ -35,13 +37,14 @@ async function createAppointment(req, res) {
 
     try {
         const db = await getDB();
-        const result = await db.run(
-            "INSERT INTO Appointments (clientId, service, date, time) VALUES (?, ?, ?, ?)",
+        const { rows } = await db.query(
+            'INSERT INTO Appointments ("clientId", service, date, time) VALUES ($1, $2, $3, $4) RETURNING id',
             [req.user.id, service, date, time]
         );
 
-        res.status(201).json({ message: "Agendado com sucesso!", id: result.lastID });
+        res.status(201).json({ message: "Agendado com sucesso!", id: rows[0].id });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Falha ao gravar agendamento." });
     }
 }
@@ -52,16 +55,18 @@ async function deleteAppointment(req, res) {
     try {
         const db = await getDB();
 
-        const apt = await db.get("SELECT * FROM Appointments WHERE id = ?", [id]);
+        const { rows } = await db.query("SELECT * FROM Appointments WHERE id = $1", [id]);
+        const apt = rows[0];
         if (!apt) return res.status(404).json({ error: "Não localizado." });
 
         if (req.user.role !== 'admin' && apt.clientId !== req.user.id) {
             return res.status(403).json({ error: "Acesso Negado." });
         }
 
-        await db.run("DELETE FROM Appointments WHERE id = ?", [id]);
+        await db.query("DELETE FROM Appointments WHERE id = $1", [id]);
         res.json({ message: "Consulta cancelada com sucesso." });
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Falha ao excluir." });
     }
 }

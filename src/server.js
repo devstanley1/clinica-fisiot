@@ -34,11 +34,11 @@ initDB().then(() => {
   if (process.env.VERCEL !== '1') {
     app.listen(PORT, () => {
       console.log(`[+] Servidor da FisioVida operando em http://localhost:${PORT}`);
-      console.log(`[+] Banco de Dados SQLite (FISIO.DB) Conectado`);
+      console.log(`[+] Banco de Dados em Nuvem (PostgreSQL) Conectado`);
     });
   }
 }).catch(err => {
-  console.error("Erro fatal ao iniciar Banco SQLite: ", err);
+  console.error("Erro fatal ao iniciar Banco Postgres: ", err);
 });
 
 // Essencial para o Vercel identificar isso como uma Função Serverless HTTP
