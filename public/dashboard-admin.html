@@ -7,95 +7,327 @@
     <title>Painel do Admin - FisioVida</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 100px auto;
-            padding: 2rem;
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
         }
 
-        .header-dash {
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar-header h2 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .sidebar-header h2 span {
+            color: #38bdf8;
+        }
+
+        .sidebar-header p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .sidebar-nav {
+            flex-grow: 1;
+            padding: 1.5rem 0;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-left-color: #38bdf8;
+        }
+
+        .nav-item span {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+        }
+
+        .logout-btn:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            margin-left: 250px;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-header {
+            display: none;
+            background: #1e293b;
+            padding: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .menu-toggle {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .dashboard-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-end;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .dashboard-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .dashboard-header p {
+            margin: 0.5rem 0 0 0;
+            color: #94a3b8;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .stat-title {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 0;
+        }
+
+        /* Tables & Cards */
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .card-title {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
         .appointments-table {
             width: 100%;
             border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            overflow: hidden;
+            min-width: 600px;
         }
 
         .appointments-table th,
         .appointments-table td {
             padding: 1rem;
             text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .appointments-table th {
-            background: rgba(0, 168, 255, 0.1);
-            color: var(--primary-color);
+            color: #94a3b8;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .action-btn {
-            background: #ff4757;
-            color: white;
-            border: none;
-            padding: 5px 15px;
-            border-radius: 5px;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid transparent;
+            padding: 6px 12px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.2s;
+            font-size: 0.85rem;
         }
 
         .action-btn:hover {
-            background: #ff6b81;
+            background: #ef4444;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .mobile-header {
+                display: flex;
+            }
         }
     </style>
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="container nav-content">
-            <h1 class="logo">Fisio<span>Vida</span> - ADMIN</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Voltar ao Site</a></li>
-                    <li><a href="#" onclick="logout()" class="btn-secondary-sm">Sair</a></li>
-                </ul>
+    <div class="app-container">
+        <!-- Sidebar Responsiva -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Fisio<span>Vida</span></h2>
+                <p>Painel Administrativo</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><span>📊</span> Visão Geral</a>
+                <a href="#" class="nav-item"><span>📅</span> Agenda Completa</a>
+                <a href="#" class="nav-item"><span>👥</span> Pacientes</a>
+                <a href="#" class="nav-item"><span>⚙️</span> Configurações</a>
             </nav>
-        </div>
-    </header>
 
-    <main class="dashboard-container">
-        <div class="header-dash">
-            <h2>Gestão Total de Agendamentos (Mesa)</h2>
-            <p>Acesso Exclusivo da Recepção / Gerência</p>
-        </div>
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="logout()">🚪 Sair do Sistema</button>
+            </div>
+        </aside>
 
-        <div class="card glass-card">
-            <table class="appointments-table" id="adminTable">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Paciente</th>
-                        <th>Serviço</th>
-                        <th>Data</th>
-                        <th>Hora</th>
-                        <th>Status</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Injetado via JS -->
-                </tbody>
-            </table>
+        <!-- Wrapper de Conteúdo Principal -->
+        <div class="main-content">
+            <div class="mobile-header">
+                <h2 style="margin:0; font-size:1.2rem;">Fisio<span style="color:#38bdf8;">Vida</span> ADMIN</h2>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+
+            <div class="dashboard-header">
+                <div>
+                    <h1>Olá, Recepção 👋</h1>
+                    <p>Gestão Total de Consultas e Relatórios do Dia.</p>
+                </div>
+            </div>
+
+            <!-- Dashboard Widgets (Novidade Funcional) -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">Consultas Hoje</div>
+                    <div class="stat-value">24</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Novos Pacientes</div>
+                    <div class="stat-value">5</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Taxa de Presença</div>
+                    <div class="stat-value">92%</div>
+                </div>
+            </div>
+
+            <!-- Tabela de Dados Restaurada -->
+            <div class="content-card">
+                <h3 class="card-title">Grade Atual de Agendamentos</h3>
+                <table class="appointments-table" id="adminTable">
+                    <thead>
+                        <tr>
+                            <th>Nº Cód.</th>
+                            <th>Paciente</th>
+                            <th>Serviço Solicitado</th>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>Status</th>
+                            <th>Ações Administrativas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Injetado via JS -->
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </main>
+    </div>
 
     <script>
         const token = localStorage.getItem('token');
@@ -105,29 +337,34 @@
             window.location.href = 'login.html';
         }
 
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
         async function loadAllAppointments() {
             // MOCK DATA: Simulando resposta do banco de dados na Vercel estática
             const data = [
                 { id: 101, clientName: 'João Silva', service: 'Fisioterapia Ortopédica', date: '2026-04-10', time: '14:00', status: 'agendado' },
                 { id: 102, clientName: 'Maria Mendonça', service: 'Pilates Clínico', date: '2026-04-11', time: '09:00', status: 'agendado' },
-                { id: 105, clientName: 'Roberto Carlos', service: 'Avaliação Geral', date: '2026-04-12', time: '16:30', status: 'concluído' }
+                { id: 105, clientName: 'Roberto Carlos', service: 'Avaliação Geral', date: '2026-04-12', time: '16:30', status: 'concluído' },
+                { id: 108, clientName: 'Ana Beatriz', service: 'Fisioterapia Esportiva', date: '2026-04-12', time: '17:00', status: 'agendado' }
             ];
 
             const tbody = document.querySelector('#adminTable tbody');
             tbody.innerHTML = '';
 
             data.forEach(apt => {
-                let statusColor = apt.status === 'agendado' ? '#2ed573' : '#a4b0be';
+                let statusColor = apt.status === 'agendado' ? '#38bdf8' : '#94a3b8';
                 tbody.innerHTML += `
                     <tr>
-                        <td>#${apt.id}</td>
+                        <td style="color:#94a3b8">#${apt.id}</td>
                         <td><strong>${apt.clientName}</strong></td>
                         <td>${apt.service}</td>
                         <td>${apt.date}</td>
-                        <td>${apt.time}</td>
-                        <td><span style="color: ${statusColor}">${apt.status}</span></td>
+                        <td><strong>${apt.time}</strong></td>
+                        <td><span style="color: ${statusColor}; border: 1px solid ${statusColor}; padding: 3px 8px; border-radius: 20px; font-size: 0.8rem;">${apt.status.toUpperCase()}</span></td>
                         <td>
-                            <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar / Remover da Grade</button>
+                            <button class="action-btn" onclick="deleteApt(${apt.id})">Deletar / Estornar</button>
                         </td>
                     </tr>
                 `;
@@ -136,7 +373,7 @@
 
         async function deleteApt(id) {
             if (confirm('Funcionalidade Estática: O Agendamento não é modificado permanentemente na Vercel.')) {
-                alert("Simulado: Agendamento Removido!");
+                alert("Simulado Administrativamente: Grade Liberada!");
             }
         }
 

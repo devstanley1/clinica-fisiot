@@ -7,19 +7,212 @@
     <title>Meu Painel - FisioVida</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .dashboard-container {
-            max-width: 1000px;
-            margin: 100px auto;
-            padding: 2rem;
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
         }
 
-        .header-dash {
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: rgba(30, 41, 59, 0.8);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar-header h2 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .sidebar-header h2 span {
+            color: #10b981;
+        }
+
+        .sidebar-header p {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .sidebar-nav {
+            flex-grow: 1;
+            padding: 1.5rem 0;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-left-color: #10b981;
+        }
+
+        .nav-item span {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+        }
+
+        .logout-btn:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            margin-left: 250px;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-header {
+            display: none;
+            background: #1e293b;
+            padding: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .menu-toggle {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .dashboard-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-end;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .dashboard-header p {
+            margin: 0.5rem 0 0 0;
+            color: #94a3b8;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-new-apt {
+            background: #10b981;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-new-apt:hover {
+            background: #059669;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .stat-title {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 0;
+        }
+
+        /* Tables & Cards */
+        .content-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .appointments-list {
@@ -28,60 +221,143 @@
         }
 
         .apt-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
             padding: 1.5rem;
             border-radius: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid #10b981;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left-width: 4px;
         }
 
         .apt-info h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+            color: #fff;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .apt-info p {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 0.95rem;
         }
 
         .action-btn {
-            background: #ff4757;
-            color: white;
-            border: none;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid transparent;
             padding: 8px 15px;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.2s;
+            font-size: 0.9rem;
         }
 
         .action-btn:hover {
-            background: #ff6b81;
+            background: #ef4444;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            .apt-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="container nav-content">
-            <h1 class="logo">Fisio<span>Vida</span> - CLIENTE</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html#booking" class="btn-primary-sm">Novo Agendamento</a></li>
-                    <li><a href="#" onclick="logout()" class="btn-secondary-sm">Sair</a></li>
-                </ul>
+    <div class="app-container">
+        <!-- Sidebar Responsiva -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Fisio<span>Vida</span></h2>
+                <p>Meu Painel (Paciente)</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><span>🏠</span> Início</a>
+                <a href="#" class="nav-item"><span>📅</span> Minhas Consultas</a>
+                <a href="#" class="nav-item"><span>💪</span> Meu Progresso</a>
+                <a href="#" class="nav-item"><span>📑</span> Documentos</a>
+                <a href="#" class="nav-item"><span>💳</span> Pagamentos</a>
             </nav>
-        </div>
-    </header>
 
-    <main class="dashboard-container">
-        <div class="header-dash">
-            <h2>Bem-vindo, <span id="userNameText">Paciente</span></h2>
-            <p>Seus agendamentos futuros aparecerão aqui.</p>
-        </div>
+            <div class="sidebar-footer">
+                <button class="logout-btn" onclick="logout()">🚪 Sair da Conta</button>
+            </div>
+        </aside>
 
-        <div class="appointments-list" id="myAppointments">
-            <!-- Injetado via JS -->
-            <p>Carregando histórico particular...</p>
+        <!-- Wrapper de Conteúdo Principal -->
+        <div class="main-content">
+            <div class="mobile-header">
+                <h2 style="margin:0; font-size:1.2rem;">Fisio<span style="color:#10b981;">Vida</span></h2>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+
+            <div class="dashboard-header">
+                <div>
+                    <h1>Olá, <span id="userNameText">Paciente</span> 👋</h1>
+                    <p>Acompanhe seu tratamento e novas marcações aqui.</p>
+                </div>
+                <div class="header-actions">
+                    <a href="index.html#booking" class="btn-new-apt">➕ Novo Agendamento</a>
+                </div>
+            </div>
+
+            <!-- Dashboard Widgets -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">Próxima Consulta</div>
+                    <div class="stat-value" style="font-size: 1.5rem; color:#10b981;">22 de Mar</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Sessões Concluídas</div>
+                    <div class="stat-value">12</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Plano Ativo</div>
+                    <div class="stat-value" style="color:#fcd34d;">Mensal VIP</div>
+                </div>
+            </div>
+
+            <!-- Histórico do Paciente Restaurado -->
+            <div class="content-card">
+                <h3 class="card-title">Agendamentos Futuros</h3>
+                <div class="appointments-list" id="myAppointments">
+                    <!-- Injetado via JS -->
+                    <p style="color: #94a3b8;">Carregando histórico particular...</p>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
 
     <script>
         const token = localStorage.getItem('token');
@@ -96,27 +372,33 @@
             document.getElementById('userNameText').innerText = userName;
         }
 
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
         async function loadMyAppointments() {
             // MOCK DATA: Simulando a consulta do Cliente logado na Vercel estática
             const data = [
-                { id: 205, service: 'Avaliação Geral (Mock)', date: '2026-03-22', time: '10:00', status: 'agendado' }
+                { id: 205, service: 'Avaliação Geral Presencial', date: '2026-03-22', time: '10:00', status: 'confirmada' },
+                { id: 209, service: 'Sessão de RPG', date: '2026-03-30', time: '14:30', status: 'pendente check-in' }
             ];
 
             const list = document.getElementById('myAppointments');
             list.innerHTML = '';
 
             if (data.length === 0) {
-                list.innerHTML = '<p>Você não possui nenhum agendamento na FisioVida.</p>';
+                list.innerHTML = '<p style="color: #94a3b8;">Você não possui nenhum agendamento na FisioVida.</p>';
             } else {
                 data.forEach(apt => {
+                    let statusTxtColor = apt.status === 'confirmada' ? '#10b981' : '#f59e0b';
                     list.innerHTML += `
-                        <div class="apt-card">
+                        <div class="apt-card" style="border-left-color: ${statusTxtColor}">
                             <div class="apt-info">
-                                <h4>${apt.service}</h4>
-                                <p>📅 ${apt.date} às ${apt.time}</p>
-                                <small style="color: #2ed573">Status: ${apt.status}</small>
+                                <h4 style="color: ${statusTxtColor}">${apt.service}</h4>
+                                <p>📅 ${apt.date} às <strong>${apt.time}</strong></p>
+                                <small style="display:inline-block; margin-top:5px; color: ${statusTxtColor}; border: 1px solid ${statusTxtColor}; padding: 3px 8px; border-radius: 20px; font-size: 0.75rem;">STATUS: ${apt.status.toUpperCase()}</small>
                             </div>
-                            <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar Consulta</button>
+                            <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar Horário</button>
                         </div>
                     `;
                 });
@@ -124,9 +406,9 @@
         }
 
         async function deleteApt(id) {
-            if (confirm('Simulação Local: Seu agendamento visual não pode ser excluído permanentemente pois não enviamos o PostgreSQL para nuvem.')) {
+            if (confirm('Simulação Local: Deseja liberar este horário no sistema?')) {
                 // mock visual
-                document.getElementById('myAppointments').innerHTML = '<p>Você Cancelou (Visualmente).</p>';
+                document.getElementById('myAppointments').innerHTML = '<p style="color: #94a3b8;">Você Cancelou suas consultas (Modo Visual).</p>';
             }
         }
 
