@@ -97,43 +97,36 @@
         }
 
         async function loadMyAppointments() {
-            try {
-                const res = await fetch('/api/appointments/my', {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                const data = await res.json();
+            // MOCK DATA: Simulando a consulta do Cliente logado na Vercel estática
+            const data = [
+                { id: 205, service: 'Avaliação Geral (Mock)', date: '2026-03-22', time: '10:00', status: 'agendado' }
+            ];
 
-                const list = document.getElementById('myAppointments');
-                list.innerHTML = '';
+            const list = document.getElementById('myAppointments');
+            list.innerHTML = '';
 
-                if (data.length === 0) {
-                    list.innerHTML = '<p>Você não possui nenhum agendamento na FisioVida.</p>';
-                } else {
-                    data.forEach(apt => {
-                        list.innerHTML += `
-                            <div class="apt-card">
-                                <div class="apt-info">
-                                    <h4>${apt.service}</h4>
-                                    <p>📅 ${apt.date} às ${apt.time}</p>
-                                    <small style="color: #2ed573">Status: ${apt.status}</small>
-                                </div>
-                                <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar Consulta</button>
+            if (data.length === 0) {
+                list.innerHTML = '<p>Você não possui nenhum agendamento na FisioVida.</p>';
+            } else {
+                data.forEach(apt => {
+                    list.innerHTML += `
+                        <div class="apt-card">
+                            <div class="apt-info">
+                                <h4>${apt.service}</h4>
+                                <p>📅 ${apt.date} às ${apt.time}</p>
+                                <small style="color: #2ed573">Status: ${apt.status}</small>
                             </div>
-                        `;
-                    });
-                }
-            } catch (err) {
-                console.error(err);
+                            <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar Consulta</button>
+                        </div>
+                    `;
+                });
             }
         }
 
         async function deleteApt(id) {
-            if (confirm('Tem certeza que deseja cancelar sua reserva nesta data?')) {
-                await fetch(`/api/appointments/${id}`, {
-                    method: 'DELETE',
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                loadMyAppointments();
+            if (confirm('Simulação Local: Seu agendamento visual não pode ser excluído permanentemente pois não enviamos o PostgreSQL para nuvem.')) {
+                // mock visual
+                document.getElementById('myAppointments').innerHTML = '<p>Você Cancelou (Visualmente).</p>';
             }
         }
 

@@ -106,42 +106,37 @@
         }
 
         async function loadAllAppointments() {
-            try {
-                const res = await fetch('/api/appointments/all', {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                const data = await res.json();
+            // MOCK DATA: Simulando resposta do banco de dados na Vercel estática
+            const data = [
+                { id: 101, clientName: 'João Silva', service: 'Fisioterapia Ortopédica', date: '2026-04-10', time: '14:00', status: 'agendado' },
+                { id: 102, clientName: 'Maria Mendonça', service: 'Pilates Clínico', date: '2026-04-11', time: '09:00', status: 'agendado' },
+                { id: 105, clientName: 'Roberto Carlos', service: 'Avaliação Geral', date: '2026-04-12', time: '16:30', status: 'concluído' }
+            ];
 
-                const tbody = document.querySelector('#adminTable tbody');
-                tbody.innerHTML = '';
+            const tbody = document.querySelector('#adminTable tbody');
+            tbody.innerHTML = '';
 
-                data.forEach(apt => {
-                    tbody.innerHTML += `
-                        <tr>
-                            <td>#${apt.id}</td>
-                            <td><strong>${apt.clientName || 'Paciente (Desconhecido)'}</strong></td>
-                            <td>${apt.service}</td>
-                            <td>${apt.date}</td>
-                            <td>${apt.time}</td>
-                            <td><span style="color: #2ed573">${apt.status}</span></td>
-                            <td>
-                                <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar / Remover da Grade</button>
-                            </td>
-                        </tr>
-                    `;
-                });
-            } catch (err) {
-                console.error("Erro", err);
-            }
+            data.forEach(apt => {
+                let statusColor = apt.status === 'agendado' ? '#2ed573' : '#a4b0be';
+                tbody.innerHTML += `
+                    <tr>
+                        <td>#${apt.id}</td>
+                        <td><strong>${apt.clientName}</strong></td>
+                        <td>${apt.service}</td>
+                        <td>${apt.date}</td>
+                        <td>${apt.time}</td>
+                        <td><span style="color: ${statusColor}">${apt.status}</span></td>
+                        <td>
+                            <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar / Remover da Grade</button>
+                        </td>
+                    </tr>
+                `;
+            });
         }
 
         async function deleteApt(id) {
-            if (confirm('Tem certeza que deseja cancelar esta consulta?')) {
-                await fetch(`/api/appointments/${id}`, {
-                    method: 'DELETE',
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                loadAllAppointments();
+            if (confirm('Funcionalidade Estática: O Agendamento não é modificado permanentemente na Vercel.')) {
+                alert("Simulado: Agendamento Removido!");
             }
         }
 

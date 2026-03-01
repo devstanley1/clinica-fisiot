@@ -106,43 +106,36 @@
         }
 
         async function loadAgenda() {
-            try {
-                // A Rota '/all' foi configurada na Sprint 2 para aceitar também 'fisioterapeuta'
-                const res = await fetch('/api/appointments/all', {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                const data = await res.json();
+            // MOCK DATA: Simulando resposta estática sem a Nuvem
+            const data = [
+                { id: 101, clientName: 'João Silva', service: 'Fisioterapia Ortopédica', date: '2026-04-10', time: '14:00', status: 'agendado' },
+                { id: 102, clientName: 'Maria Mendonça', service: 'Pilates Clínico', date: '2026-04-11', time: '09:00', status: 'agendado' }
+            ];
 
-                const tbody = document.querySelector('#fisioTable tbody');
-                tbody.innerHTML = '';
+            const tbody = document.querySelector('#fisioTable tbody');
+            tbody.innerHTML = '';
 
-                data.forEach(apt => {
-                    tbody.innerHTML += `
-                        <tr>
-                            <td>#${apt.id}</td>
-                            <td><strong>${apt.clientName || 'Paciente (Desconhecido)'}</strong></td>
-                            <td>${apt.service}</td>
-                            <td>${apt.date}</td>
-                            <td>${apt.time}</td>
-                            <td><span style="color: #2ed573">${apt.status}</span></td>
-                            <td>
-                                <button class="action-btn" onclick="deleteApt(${apt.id})">Desativar / Reagendamento Exigido</button>
-                            </td>
-                        </tr>
-                    `;
-                });
-            } catch (err) {
-                console.error("Erro na busca", err);
-            }
+            data.forEach(apt => {
+                let statusColor = apt.status === 'agendado' ? '#2ed573' : '#a4b0be';
+                tbody.innerHTML += `
+                    <tr>
+                        <td>#${apt.id}</td>
+                        <td><strong>${apt.clientName}</strong></td>
+                        <td>${apt.service}</td>
+                        <td>${apt.date}</td>
+                        <td>${apt.time}</td>
+                        <td><span style="color: ${statusColor}">${apt.status}</span></td>
+                        <td>
+                            <button class="action-btn" onclick="deleteApt(${apt.id})">Desativar / Reagendamento Exigido</button>
+                        </td>
+                    </tr>
+                `;
+            });
         }
 
         async function deleteApt(id) {
-            if (confirm('Fisioterapeuta: Tem certeza que uma exceção ocionou o cancelamento desta consulta?')) {
-                await fetch(`/api/appointments/${id}`, {
-                    method: 'DELETE',
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                loadAgenda();
+            if (confirm('Fisioterapeuta: Simulação Estática ativada. Paciente avisado!')) {
+                alert("Reagendamento enviado.");
             }
         }
 
