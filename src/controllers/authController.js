@@ -1,4 +1,4 @@
-const { getDB } = require('../db/database');
+const { pool } = require('../db/database');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { SECRET } = require('../middleware/auth');
@@ -11,21 +11,20 @@ async function register(req, res) {
     }
 
     try {
-        const db = await getDB();
-        const userExists = await db.get("SELECT id FROM Users WHERE email = ? OR cpf = ?", [email, cpf]);
-        if (userExists) {
+        const userExists = await pool.query("SELECT id FROM Users WHERE email = $1 OR cpf = $2", [email, cpf]);
+        if (userExists.rows.length > 0) {
             return res.status(400).json({ error: "E-mail ou CPF já cadastrados." });
         }
 
         const hash = await bcrypt.hash(password, 10);
-        const result = await db.run(
-            "INSERT INTO Users (name, email, password, cpf, role) VALUES (?, ?, ?, ?, ?)",
+        const result = await pool.query(
+            "INSERT INTO Users (name, email, password, cpf, role) VALUES ($1, $2, $3, $4, $5) RETURNING id",
             [name, email, hash, cpf, 'cliente']
         );
 
-        res.status(201).json({ message: "Cadastro finalizado!!", userId: result.lastID });
+        res.status(201).json({ message: "Cadastro finalizado!!", userId: result.rows[0].id });
     } catch (error) {
-        console.error(error);
+        console.error("Erro no AuthController Register:", error);
         res.status(500).json({ error: "Falha Interna ao Registrar." });
     }
 }
@@ -38,10 +37,10 @@ async function login(req, res) {
     }
 
     try {
-        const db = await getDB();
-        const user = await db.get("SELECT * FROM Users WHERE email = ?", [email]);
+        const result = await pool.query("SELECT * FROM Users WHERE email = $1", [email]);
+        const user = result.rows[0];
 
-        if (!user) return res.status(401).json({ error: "E-mail não Cadasrado." });
+        if (!user) return res.status(401).json({ error: "E-mail não Cadastrado." });
 
         const passMatch = await bcrypt.compare(password, user.password);
         if (!passMatch) return res.status(401).json({ error: "Senha Incompatível." });
@@ -54,6 +53,7 @@ async function login(req, res) {
 
         res.json({ token, role: user.role, name: user.name });
     } catch (error) {
+        console.error("Erro no AuthController Login:", error);
         res.status(500).json({ error: "Sistema temporariamente fora." });
     }
 }
