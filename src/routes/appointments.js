@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const appointmentsController = require('../controllers/appointmentsController');
 const { authMiddleware, roleMiddleware } = require('../middleware/auth');
+const { getMyAppointments, getAllAppointments, createAppointment, deleteAppointment } = require('../controllers/appointmentsController');
 
-// Todas as rotas daqui pra frente exigem Token Valido!
+// Todas as rotas abaixo requerem estar Logado (JWT Header Obrigatório)
 router.use(authMiddleware);
 
-// Rota restrita (Apenas visualização privilegiada)
-router.get('/all', roleMiddleware(['admin', 'recepcao', 'profissional']), appointmentsController.getAllAppointments);
+// Permissões Exclusivas "Cliente" e "Admin" (Apenas ver/criar os próprios agendamentos)
+router.get('/my', getMyAppointments);
+router.post('/', createAppointment);
 
-// Rotas comuns (Clientes base)
-router.get('/my', appointmentsController.getMyAppointments);
-router.post('/', appointmentsController.createAppointment);
-router.delete('/:id', appointmentsController.deleteAppointment);
+// Permissões Exclusivas Administrativas (Mesa ou Especialistas que precisam ver/gerenciar a agenda completa do dia)
+router.get('/all', roleMiddleware(['admin', 'fisioterapeuta']), getAllAppointments);
+router.delete('/:id', roleMiddleware(['admin', 'fisioterapeuta', 'cliente']), deleteAppointment);
 
 module.exports = router;

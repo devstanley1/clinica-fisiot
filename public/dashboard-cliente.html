@@ -4,86 +4,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel do Cliente - Clínica FisioVida</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap"
-        rel="stylesheet">
+    <title>Meu Painel - FisioVida</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .dashboard-container {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 2rem;
         }
 
-        .dashboard-header {
+        .header-dash {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 1rem;
             margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .welcome-msg {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            color: var(--primary-dark);
-        }
-
-        .btn-danger {
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
+        .appointments-list {
+            display: grid;
+            gap: 1rem;
         }
 
         .apt-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.05);
             padding: 1.5rem;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            border-left: 5px solid var(--secondary);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .apt-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .action-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            background: #ff6b81;
         }
     </style>
 </head>
 
 <body>
-
     <header class="navbar">
         <div class="container nav-content">
-            <h1 class="logo">Fisio<span>Vida</span></h1>
+            <h1 class="logo">Fisio<span>Vida</span> - CLIENTE</h1>
             <nav>
                 <ul>
-                    <li><a href="#" id="logoutBtn" style="color: #ef4444; font-weight: 600;">Sair da Conta</a></li>
+                    <li><a href="index.html#booking" class="btn-primary-sm">Novo Agendamento</a></li>
+                    <li><a href="#" onclick="logout()" class="btn-secondary-sm">Sair</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="dashboard-container">
-        <div class="dashboard-header">
-            <div>
-                <h2 class="welcome-msg">Olá, <span id="clientNameDisplay">Paciente</span></h2>
-                <p style="color: var(--text-muted)">Bem-vindo ao seu painel. Gerencie seus agendamentos aqui.</p>
-            </div>
-            <a href="index.html#booking" class="btn-primary-sm">+ Novo Agendamento</a>
+        <div class="header-dash">
+            <h2>Bem-vindo, <span id="userNameText">Paciente</span></h2>
+            <p>Seus agendamentos futuros aparecerão aqui.</p>
         </div>
 
-        <h3 style="margin-bottom: 1.5rem; color: var(--text-main);">Seu Histórico de Consultas</h3>
-
-        <div id="appointmentsList">
-            <p style="color: var(--text-muted);">Carregando agendamentos...</p>
+        <div class="appointments-list" id="myAppointments">
+            <!-- Injetado via JS -->
+            <p>Carregando histórico particular...</p>
         </div>
     </main>
 
-    <script src="js/dashboard-cliente.js"></script>
+    <script>
+        const token = localStorage.getItem('token');
+        const role = localStorage.getItem('role');
+        const userName = localStorage.getItem('name');
+
+        if (!token || role !== 'cliente') {
+            window.location.href = 'login.html';
+        }
+
+        if (userName) {
+            document.getElementById('userNameText').innerText = userName;
+        }
+
+        async function loadMyAppointments() {
+            try {
+                const res = await fetch('/api/appointments/my', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+
+                const list = document.getElementById('myAppointments');
+                list.innerHTML = '';
+
+                if (data.length === 0) {
+                    list.innerHTML = '<p>Você não possui nenhum agendamento na FisioVida.</p>';
+                } else {
+                    data.forEach(apt => {
+                        list.innerHTML += `
+                            <div class="apt-card">
+                                <div class="apt-info">
+                                    <h4>${apt.service}</h4>
+                                    <p>📅 ${apt.date} às ${apt.time}</p>
+                                    <small style="color: #2ed573">Status: ${apt.status}</small>
+                                </div>
+                                <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar Consulta</button>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function deleteApt(id) {
+            if (confirm('Tem certeza que deseja cancelar sua reserva nesta data?')) {
+                await fetch(`/api/appointments/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                loadMyAppointments();
+            }
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+
+        loadMyAppointments();
+    </script>
 </body>
 
 </html>

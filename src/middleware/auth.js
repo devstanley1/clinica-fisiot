@@ -1,26 +1,31 @@
 const jwt = require('jsonwebtoken');
-const SECRET = 'FISIOVIDA_SECRET_KEY_PROD';
+
+const SECRET = process.env.SECRET || 'SUPREMA_CHAVE_SECRET_123';
 
 function authMiddleware(req, res, next) {
-    const token = req.headers['authorization'];
-    if (!token) return res.status(401).json({ error: 'Acesso negado. Token não fornecido.' });
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+        return res.status(401).json({ error: "Token não fornecido." });
+    }
+
+    const [, token] = authHeader.split(' ');
 
     try {
-        const decoded = jwt.verify(token.replace('Bearer ', ''), SECRET);
-        req.user = decoded;
-        next();
+        const decoded = jwt.verify(token, SECRET);
+        req.user = decoded; // Injexão de dados do Payload (id, email, role)
+        return next();
     } catch (err) {
-        res.status(403).json({ error: 'Token inválido ou expirado.' });
+        return res.status(401).json({ error: "Token inválido ou expirado." });
     }
 }
 
-// Verifica se o usuário tem a permissão (Role) exigida
-function roleMiddleware(requiredRoles) {
+function roleMiddleware(rolesAllowList) {
     return (req, res, next) => {
-        if (!req.user || !requiredRoles.includes(req.user.role)) {
-            return res.status(403).json({ error: 'Acesso Negado: Você não tem permissão para esta ação.' });
+        if (!req.user || !rolesAllowList.includes(req.user.role)) {
+            return res.status(403).json({ error: "Acesso Restrito ao seu Perfil." });
         }
-        next();
+        return next();
     };
 }
 

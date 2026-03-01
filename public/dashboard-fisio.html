@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Fisioterapeuta - FisioVida</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 2rem;
+        }
+
+        .header-dash {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .appointments-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .appointments-table th,
+        .appointments-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .appointments-table th {
+            background: rgba(0, 168, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        .action-btn {
+            background: #ffa502;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            background: #eccc68;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container nav-content">
+            <h1 class="logo">Fisio<span>Vida</span> - FISIO</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Voltar ao Site</a></li>
+                    <li><a href="#" onclick="logout()" class="btn-secondary-sm">Sair</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="header-dash">
+            <h2>Visão Geral da Agenda Clínica</h2>
+            <p>Espaço do Especialista Fisioterapeuta</p>
+        </div>
+
+        <div class="card glass-card">
+            <table class="appointments-table" id="fisioTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente Marcado</th>
+                        <th>Qual Serviço Solicitado?</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Injetado via JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        const token = localStorage.getItem('token');
+        const role = localStorage.getItem('role');
+
+        if (!token || role !== 'fisioterapeuta') {
+            window.location.href = 'login.html';
+        }
+
+        async function loadAgenda() {
+            try {
+                // A Rota '/all' foi configurada na Sprint 2 para aceitar também 'fisioterapeuta'
+                const res = await fetch('/api/appointments/all', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+
+                const tbody = document.querySelector('#fisioTable tbody');
+                tbody.innerHTML = '';
+
+                data.forEach(apt => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>#${apt.id}</td>
+                            <td><strong>${apt.clientName || 'Paciente (Desconhecido)'}</strong></td>
+                            <td>${apt.service}</td>
+                            <td>${apt.date}</td>
+                            <td>${apt.time}</td>
+                            <td><span style="color: #2ed573">${apt.status}</span></td>
+                            <td>
+                                <button class="action-btn" onclick="deleteApt(${apt.id})">Desativar / Reagendamento Exigido</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (err) {
+                console.error("Erro na busca", err);
+            }
+        }
+
+        async function deleteApt(id) {
+            if (confirm('Fisioterapeuta: Tem certeza que uma exceção ocionou o cancelamento desta consulta?')) {
+                await fetch(`/api/appointments/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                loadAgenda();
+            }
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+
+        loadAgenda();
+    </script>
+</body>
+
+</html>

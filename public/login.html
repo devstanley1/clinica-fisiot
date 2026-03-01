@@ -4,54 +4,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrar - Clínica FisioVida</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap"
-        rel="stylesheet">
+    <title>Entrar - FisioVida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+
+        .auth-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .auth-container h2 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-container p {
+            color: #d1d8e0;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .auth-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        .auth-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
-<body
-    style="background: linear-gradient(135deg, #e0f2fe 0%, #ccfbf1 100%); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem;">
+<body>
+    <div class="auth-container">
+        <h2>Entrar na FisioVida</h2>
+        <p>Acesse seu painel com Suas Credenciais.</p>
 
-    <div class="logo text-center mb-3">Fisio<span style="color: var(--secondary)">Vida</span></div>
-
-    <div class="booking-card glass-panel"
-        style="width: 100%; max-width: 450px; padding: 3rem; flex-direction: column; gap: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);">
-
-        <div class="booking-info text-center" style="width: 100%;">
-            <h3 style="color: var(--primary-dark); font-size: 2rem; margin-bottom: 0.5rem;">Acesse sua Conta</h3>
-            <p style="color: var(--text-muted); font-size: 1rem;">Gerencie seus agendamentos rápidos.</p>
-        </div>
-
-        <form id="loginForm" class="booking-form" style="width: 100%; box-shadow: none; padding: 0;">
+        <form id="loginForm">
             <div class="form-group">
-                <label for="loginEmail">Seu E-mail</label>
-                <input type="email" id="loginEmail" placeholder="seu@email.com" required />
+                <label>E-mail</label>
+                <input type="email" id="email" required placeholder="Digite seu e-mail">
             </div>
             <div class="form-group">
-                <label for="loginPassword">Sua Senha</label>
-                <input type="password" id="loginPassword" placeholder="******" required />
+                <label>Senha</label>
+                <input type="password" id="password" required placeholder="Digite sua senha">
             </div>
 
-            <button type="submit" class="btn-submit" id="submitLogBtn" style="margin-top: 1rem;">
-                <span class="btn-text">Entrar no Sistema</span>
-                <span class="spinner" id="btnLogSpinner" style="display: none;">⏳ Autenticando...</span>
-            </button>
-            <div id="formLogMessage" class="form-message"></div>
+            <button type="submit" class="btn-primary btn-full">Autenticar Sistema</button>
         </form>
 
-        <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 1rem; font-size: 0.95rem;">
-            <a href="recover.html" style="color: var(--text-muted); text-decoration: underline;">Esqueceu a senha?</a>
-            <a href="register.html" style="color: var(--primary); font-weight: 600;">Criar uma Conta</a>
+        <div class="auth-links">
+            <a href="register.html">Não tenho conta</a>
+            <a href="index.html">Sair e voltar ao Início</a>
         </div>
     </div>
 
-    <!-- Voltar -->
-    <a href="index.html" style="margin-top: 2rem; color: var(--text-main); text-decoration: underline;">← Voltar para a
-        Página Inicial</a>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-    <script src="js/auth.js"></script>
+            try {
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.token) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('role', data.role);
+                    localStorage.setItem('name', data.name);
+
+                    // Roteamento inteligente baseado no Role recebido do Banco
+                    if (data.role === 'admin') {
+                        window.location.href = 'dashboard-admin.html';
+                    } else if (data.role === 'fisioterapeuta') {
+                        window.location.href = 'dashboard-fisio.html';
+                    } else {
+                        window.location.href = 'dashboard-cliente.html';
+                    }
+
+                } else {
+                    alert(data.error || 'Autenticação falhou.');
+                }
+            } catch (err) {
+                alert('Erro de conexão com o servidor Master.');
+            }
+        });
+    </script>
 </body>
 
 </html>

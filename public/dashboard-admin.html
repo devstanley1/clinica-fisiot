@@ -4,95 +4,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo - Clínica FisioVida</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap"
-        rel="stylesheet">
+    <title>Painel do Admin - FisioVida</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .dashboard-container {
-            max-width: 1000px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 2rem;
         }
 
-        .dashboard-header {
+        .header-dash {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 1rem;
             margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .welcome-msg {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            color: var(--primary-dark);
-        }
-
-        .apt-card {
-            background: white;
-            padding: 1.5rem;
+        .appointments-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            border-left: 5px solid var(--primary);
+            overflow: hidden;
         }
 
-        .btn-danger {
-            background: #ef4444;
+        .appointments-table th,
+        .appointments-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .appointments-table th {
+            background: rgba(0, 168, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        .action-btn {
+            background: #ff4757;
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            padding: 5px 15px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        .badge-admin {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 0.3rem 0.8rem;
-            border-radius: 99px;
-            font-size: 0.8rem;
-            font-weight: bold;
+        .action-btn:hover {
+            background: #ff6b81;
         }
     </style>
 </head>
 
 <body>
-
-    <header class="navbar" style="background: #0f172a;">
+    <header class="navbar">
         <div class="container nav-content">
-            <h1 class="logo" style="color: white;">Fisio<span style="color: #38bdf8">Admin</span></h1>
+            <h1 class="logo">Fisio<span>Vida</span> - ADMIN</h1>
             <nav>
                 <ul>
-                    <li><a href="#" id="logoutBtn" style="color: #ef4444; font-weight: 600;">Encerrar Sessão Segura</a>
-                    </li>
+                    <li><a href="index.html">Voltar ao Site</a></li>
+                    <li><a href="#" onclick="logout()" class="btn-secondary-sm">Sair</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="dashboard-container">
-        <div class="dashboard-header">
-            <div>
-                <h2 class="welcome-msg">Painel Central <span class="badge-admin">Nível Acesso: Admin</span></h2>
-                <p style="color: var(--text-muted)">Visão Geral de todos os Agendamentos da Clínica.</p>
-            </div>
+        <div class="header-dash">
+            <h2>Gestão Total de Agendamentos (Mesa)</h2>
+            <p>Acesso Exclusivo da Recepção / Gerência</p>
         </div>
 
-        <h3 style="margin-bottom: 1.5rem; color: var(--text-main);">Agenda Geral da Clínica</h3>
-
-        <div id="adminAppointmentsList">
-            <p style="color: var(--text-muted);">Carregando agendamentos gerais...</p>
+        <div class="card glass-card">
+            <table class="appointments-table" id="adminTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>Serviço</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Injetado via JS -->
+                </tbody>
+            </table>
         </div>
     </main>
 
-    <script src="js/dashboard-admin.js"></script>
+    <script>
+        const token = localStorage.getItem('token');
+        const role = localStorage.getItem('role');
+
+        if (!token || role !== 'admin') {
+            window.location.href = 'login.html';
+        }
+
+        async function loadAllAppointments() {
+            try {
+                const res = await fetch('/api/appointments/all', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+
+                const tbody = document.querySelector('#adminTable tbody');
+                tbody.innerHTML = '';
+
+                data.forEach(apt => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>#${apt.id}</td>
+                            <td><strong>${apt.clientName || 'Paciente (Desconhecido)'}</strong></td>
+                            <td>${apt.service}</td>
+                            <td>${apt.date}</td>
+                            <td>${apt.time}</td>
+                            <td><span style="color: #2ed573">${apt.status}</span></td>
+                            <td>
+                                <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar / Remover da Grade</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (err) {
+                console.error("Erro", err);
+            }
+        }
+
+        async function deleteApt(id) {
+            if (confirm('Tem certeza que deseja cancelar esta consulta?')) {
+                await fetch(`/api/appointments/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                loadAllAppointments();
+            }
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+
+        loadAllAppointments();
+    </script>
 </body>
 
 </html>

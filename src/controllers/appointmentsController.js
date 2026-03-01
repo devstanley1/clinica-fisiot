@@ -1,73 +1,60 @@
 const { getDB } = require('../db/database');
 
-// Cliente vê seu próprio histórico
 async function getMyAppointments(req, res) {
     try {
         const db = await getDB();
-        const { rows } = await db.query('SELECT * FROM Appointments WHERE "clientId" = $1', [req.user.id]);
-        res.json(rows);
+        const appointments = await db.all("SELECT * FROM Appointments WHERE clientId = ?", [req.user.id]);
+        res.json(appointments);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: "Erro ao buscar histórico." });
     }
 }
 
-// Admin / Recepção veem todos
 async function getAllAppointments(req, res) {
     try {
         const db = await getDB();
-        const { rows } = await db.query(
-            'SELECT A.*, U.name as "clientName" FROM Appointments A JOIN Users U ON A."clientId" = U.id'
+        const appointments = await db.all(
+            "SELECT A.*, U.name as clientName FROM Appointments A JOIN Users U ON A.clientId = U.id"
         );
-        res.json(rows);
+        res.json(appointments);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Erro ao buscar histórico da clínica." });
+        res.status(500).json({ error: "Erro ao varrer o Banco Agenda Master." });
     }
 }
 
-// Criar Agendamento Validado
 async function createAppointment(req, res) {
     const { service, date, time } = req.body;
 
-    // Regras de Validação Backend (Evitar lixo no banco)
-    if (!service || !date || !time) {
-        return res.status(400).json({ error: "Serviço, data e hora são obrigatórios." });
-    }
+    if (!service || !date || !time) return res.status(400).json({ error: "Preenchimento de Servico, Data e Hora obrigatorios." });
 
     try {
         const db = await getDB();
-        const { rows } = await db.query(
-            'INSERT INTO Appointments ("clientId", service, date, time) VALUES ($1, $2, $3, $4) RETURNING id',
+        const result = await db.run(
+            "INSERT INTO Appointments (clientId, service, date, time) VALUES (?, ?, ?, ?)",
             [req.user.id, service, date, time]
         );
-
-        res.status(201).json({ message: "Agendado com sucesso!", id: rows[0].id });
+        res.status(201).json({ message: "Agendado via Banco!", id: result.lastID });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Falha ao gravar agendamento." });
+        res.status(500).json({ error: "Falha na Gravação da Agenda." });
     }
 }
 
-// Desmarcar/Cancelar (Apenas o dono ou Admin)
 async function deleteAppointment(req, res) {
     const { id } = req.params;
     try {
         const db = await getDB();
 
-        const { rows } = await db.query("SELECT * FROM Appointments WHERE id = $1", [id]);
-        const apt = rows[0];
-        if (!apt) return res.status(404).json({ error: "Não localizado." });
+        const apt = await db.get("SELECT * FROM Appointments WHERE id = ?", [id]);
+        if (!apt) return res.status(404).json({ error: "Não Encontrado." });
 
-        if (req.user.role !== 'admin' && apt.clientId !== req.user.id) {
-            return res.status(403).json({ error: "Acesso Negado." });
+        if (req.user.role !== 'admin' && req.user.role !== 'fisioterapeuta' && apt.clientId !== req.user.id) {
+            return res.status(403).json({ error: "Negado. Isso não é o seu agendamento." });
         }
 
-        await db.query("DELETE FROM Appointments WHERE id = $1", [id]);
-        res.json({ message: "Consulta cancelada com sucesso." });
+        await db.run("DELETE FROM Appointments WHERE id = ?", [id]);
+        res.json({ message: "Cancelamento Confirmado." });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Falha ao excluir." });
+        res.status(500).json({ error: "Falha Severa de Exclusão." });
     }
 }
 
