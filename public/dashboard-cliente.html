@@ -260,6 +260,28 @@
             color: #fff;
         }
 
+        /* Tabs System */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -303,11 +325,11 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active"><span>🏠</span> Início</a>
-                <a href="#" class="nav-item"><span>📅</span> Minhas Consultas</a>
-                <a href="#" class="nav-item"><span>💪</span> Meu Progresso</a>
-                <a href="#" class="nav-item"><span>📑</span> Documentos</a>
-                <a href="#" class="nav-item"><span>💳</span> Pagamentos</a>
+                <a href="#" class="nav-item active" onclick="switchTab('inicio', this)"><span>🏠</span> Início</a>
+                <a href="#" class="nav-item" onclick="switchTab('consultas', this)"><span>📅</span> Minhas Consultas</a>
+                <a href="#" class="nav-item" onclick="switchTab('progresso', this)"><span>💪</span> Meu Progresso</a>
+                <a href="#" class="nav-item" onclick="switchTab('documentos', this)"><span>📑</span> Documentos</a>
+                <a href="#" class="nav-item" onclick="switchTab('pagamentos', this)"><span>💳</span> Pagamentos</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -332,30 +354,63 @@
                 </div>
             </div>
 
-            <!-- Dashboard Widgets -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-title">Próxima Consulta</div>
-                    <div class="stat-value" style="font-size: 1.5rem; color:#10b981;">22 de Mar</div>
+            <!-- Área de Tabs -->
+            <div id="inicio" class="tab-content active">
+                <!-- Dashboard Widgets -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">Próxima Consulta</div>
+                        <div class="stat-value" style="font-size: 1.5rem; color:#10b981;">22 de Mar</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Sessões Concluídas</div>
+                        <div class="stat-value">12</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Plano Ativo</div>
+                        <div class="stat-value" style="color:#fcd34d;">Mensal VIP</div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-title">Sessões Concluídas</div>
-                    <div class="stat-value">12</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-title">Plano Ativo</div>
-                    <div class="stat-value" style="color:#fcd34d;">Mensal VIP</div>
+
+                <!-- Histórico do Paciente Restaurado -->
+                <div class="content-card">
+                    <h3 class="card-title">Agendamentos Futuros</h3>
+                    <div class="appointments-list" id="myAppointments">
+                        <!-- Injetado via JS -->
+                        <p style="color: #94a3b8;">Carregando histórico particular...</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Histórico do Paciente Restaurado -->
-            <div class="content-card">
-                <h3 class="card-title">Agendamentos Futuros</h3>
-                <div class="appointments-list" id="myAppointments">
-                    <!-- Injetado via JS -->
-                    <p style="color: #94a3b8;">Carregando histórico particular...</p>
+            <div id="consultas" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Minhas Consultas</h3>
+                    <p style="color: #94a3b8;">Histórico completo de presenças e faltas.</p>
                 </div>
             </div>
+
+            <div id="progresso" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Meu Progresso Clínico</h3>
+                    <p style="color: #94a3b8;">Acompanhe a devolução de movimento e ganho de força muscular reportado
+                        pelo Fisioterapeuta.</p>
+                </div>
+            </div>
+
+            <div id="documentos" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Receitas e Laudos</h3>
+                    <p style="color: #94a3b8;">Acesso rápido aos atestados e solicitações de exame.</p>
+                </div>
+            </div>
+
+            <div id="pagamentos" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Faturas e Acertos</h3>
+                    <p style="color: #94a3b8;">Recibos de pagamentos do seu plano Mensal VIP.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -370,6 +425,23 @@
 
         if (userName) {
             document.getElementById('userNameText').innerText = userName;
+        }
+
+        function switchTab(tabId, element) {
+            // Esconde links inativos
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            // Define o link ativo
+            element.classList.add('active');
+
+            // Esconde todas as abas
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Mostra a aba alvo
+            document.getElementById(tabId).classList.add('active');
+
+            // Retrai menu celular num clique pra liberar espaço de visão
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('active');
+            }
         }
 
         function toggleMenu() {

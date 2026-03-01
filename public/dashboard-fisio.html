@@ -234,6 +234,28 @@
             color: #fff;
         }
 
+        /* Tabs System */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -265,10 +287,12 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active"><span>📊</span> Resumo do Dia</a>
-                <a href="#" class="nav-item"><span>📋</span> Prontuários</a>
-                <a href="#" class="nav-item"><span>🏋️‍♂️</span> Exercícios</a>
-                <a href="#" class="nav-item"><span>🎓</span> Certificações</a>
+                <a href="#" class="nav-item active" onclick="switchTab('resumo', this)"><span>📊</span> Resumo do
+                    Dia</a>
+                <a href="#" class="nav-item" onclick="switchTab('prontuarios', this)"><span>📋</span> Prontuários</a>
+                <a href="#" class="nav-item" onclick="switchTab('exercicios', this)"><span>🏋️‍♂️</span> Exercícios</a>
+                <a href="#" class="nav-item" onclick="switchTab('certificacoes', this)"><span>🎓</span>
+                    Certificações</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -290,42 +314,71 @@
                 </div>
             </div>
 
-            <!-- Dashboard Widgets -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-title">Pacientes Hoje</div>
-                    <div class="stat-value">6</div>
+            <!-- Área de Tabs -->
+            <div id="resumo" class="tab-content active">
+                <!-- Dashboard Widgets -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">Pacientes Hoje</div>
+                        <div class="stat-value">6</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Atendimentos na Semana</div>
+                        <div class="stat-value">32</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Avaliações Médias</div>
+                        <div class="stat-value">⭐ 4.9</div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-title">Atendimentos na Semana</div>
-                    <div class="stat-value">32</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-title">Avaliações Médias</div>
-                    <div class="stat-value">⭐ 4.9</div>
+
+                <!-- Tabela de Dados Restaurada -->
+                <div class="content-card">
+                    <h3 class="card-title">Pacientes Marcados (Visão Clínica)</h3>
+                    <table class="appointments-table" id="fisioTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Paciente</th>
+                                <th>Motivo / Tratamento</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                                <th>Status (Clínico)</th>
+                                <th>Intervenção</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Injetado via JS -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <!-- Tabela de Dados Restaurada -->
-            <div class="content-card">
-                <h3 class="card-title">Pacientes Marcados (Visão Clínica)</h3>
-                <table class="appointments-table" id="fisioTable">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Paciente</th>
-                            <th>Motivo / Tratamento</th>
-                            <th>Data</th>
-                            <th>Hora</th>
-                            <th>Status (Clínico)</th>
-                            <th>Intervenção</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Injetado via JS -->
-                    </tbody>
-                </table>
+            <div id="prontuarios" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Prontuários Eletrônicos</h3>
+                    <p style="color: #94a3b8;">Acesse o histórico clínico detalhado, laudos e evoluções de cada
+                        paciente.</p>
+                    <button class="action-btn" style="background: #10b981; color: #fff; margin-top: 15px;">Buscar
+                        Prontuário</button>
+                </div>
             </div>
+
+            <div id="exercicios" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Biblioteca de Exercícios</h3>
+                    <p style="color: #94a3b8;">Crie e prescreva rotinas de exercícios para os pacientes realizarem em
+                        casa.</p>
+                </div>
+            </div>
+
+            <div id="certificacoes" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Minhas Certificações</h3>
+                    <p style="color: #94a3b8;">Gerencie seus diplomas, cursos de especialização e licenças ativas.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -335,6 +388,17 @@
 
         if (!token || role !== 'fisioterapeuta') {
             window.location.href = 'login.html';
+        }
+
+        // Lógica de Tabs
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('active');
+            }
         }
 
         function toggleMenu() {

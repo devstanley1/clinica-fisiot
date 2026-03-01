@@ -234,6 +234,28 @@
             color: #fff;
         }
 
+        /* Tabs System */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -265,10 +287,11 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active"><span>📊</span> Visão Geral</a>
-                <a href="#" class="nav-item"><span>📅</span> Agenda Completa</a>
-                <a href="#" class="nav-item"><span>👥</span> Pacientes</a>
-                <a href="#" class="nav-item"><span>⚙️</span> Configurações</a>
+                <a href="#" class="nav-item active" onclick="switchTab('visao-geral', this)"><span>📊</span> Visão
+                    Geral</a>
+                <a href="#" class="nav-item" onclick="switchTab('agenda', this)"><span>📅</span> Agenda Completa</a>
+                <a href="#" class="nav-item" onclick="switchTab('pacientes', this)"><span>👥</span> Pacientes</a>
+                <a href="#" class="nav-item" onclick="switchTab('config', this)"><span>⚙️</span> Configurações</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -290,42 +313,75 @@
                 </div>
             </div>
 
-            <!-- Dashboard Widgets (Novidade Funcional) -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-title">Consultas Hoje</div>
-                    <div class="stat-value">24</div>
+            <!-- Área de Tabs -->
+            <div id="visao-geral" class="tab-content active">
+                <!-- Dashboard Widgets (Novidade Funcional) -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">Consultas Hoje</div>
+                        <div class="stat-value">24</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Novos Pacientes</div>
+                        <div class="stat-value">5</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Taxa de Presença</div>
+                        <div class="stat-value">92%</div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-title">Novos Pacientes</div>
-                    <div class="stat-value">5</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-title">Taxa de Presença</div>
-                    <div class="stat-value">92%</div>
+
+                <!-- Tabela de Dados Restaurada -->
+                <div class="content-card">
+                    <h3 class="card-title">Grade Atual de Agendamentos</h3>
+                    <table class="appointments-table" id="adminTable">
+                        <thead>
+                            <tr>
+                                <th>Nº Cód.</th>
+                                <th>Paciente</th>
+                                <th>Serviço Solicitado</th>
+                                <th>Data</th>
+                                <th>Horário</th>
+                                <th>Status</th>
+                                <th>Ações Administrativas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Injetado via JS -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <!-- Tabela de Dados Restaurada -->
-            <div class="content-card">
-                <h3 class="card-title">Grade Atual de Agendamentos</h3>
-                <table class="appointments-table" id="adminTable">
-                    <thead>
-                        <tr>
-                            <th>Nº Cód.</th>
-                            <th>Paciente</th>
-                            <th>Serviço Solicitado</th>
-                            <th>Data</th>
-                            <th>Horário</th>
-                            <th>Status</th>
-                            <th>Ações Administrativas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Injetado via JS -->
-                    </tbody>
-                </table>
+            <div id="agenda" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Agenda Completa</h3>
+                    <p style="color: #94a3b8;">Veja todo o calendário da clínica em um relance.</p>
+                    <div
+                        style="background: rgba(255,255,255,0.02); height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #64748b; margin-top: 20px; border: 1px dashed rgba(255,255,255,0.1);">
+                        Visualização de Calendário interativa (Em desenvolvimento)
+                    </div>
+                </div>
             </div>
+
+            <div id="pacientes" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Fichas de Pacientes</h3>
+                    <p style="color: #94a3b8;">Gerenciamento completo das fichas médicas e prontuários que integram ao
+                        banco de dados.</p>
+                    <button class="action-btn" style="background: #38bdf8; color: #fff; margin-top: 15px;">+ Novo
+                        Paciente Presencial</button>
+                </div>
+            </div>
+
+            <div id="config" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Configurações da Clínica</h3>
+                    <p style="color: #94a3b8;">Configure horários de funcionamento, regras de agendamento e gerencie
+                        contas de Fisioterapeutas e de Recepção.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -335,6 +391,24 @@
 
         if (!token || role !== 'admin') {
             window.location.href = 'login.html';
+        }
+
+        // Lógica de Tabs
+        function switchTab(tabId, element) {
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            // Add active class to clicked item
+            element.classList.add('active');
+
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Show target tab
+            document.getElementById(tabId).classList.add('active');
+
+            // Fechar sidebar no mobile após clique
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('active');
+            }
         }
 
         function toggleMenu() {
