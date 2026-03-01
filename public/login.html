@@ -110,39 +110,41 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
 
-            try {
-                const res = await fetch('/api/auth/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
+            let role = '';
+            let name = '';
 
-                const data = await res.json();
+            // Validação 100% Estática (Sem Backend / Supabase)
+            if (email === 'admin@fisiovida.com' && password === 'admin123') {
+                role = 'admin';
+                name = 'Super Administrador';
+            } else if (email === 'fisio@fisiovida.com' && password === 'fisio123') {
+                role = 'fisioterapeuta';
+                name = 'Dr. Fisioterapeuta';
+            } else if (email === 'cliente@fisiovida.com' && password === 'cliente123') {
+                role = 'cliente';
+                name = 'Cliente de Testes';
+            } else {
+                alert('Credenciais inválidas. Tente usar as fornecidas de teste.');
+                return;
+            }
 
-                if (res.ok && data.token) {
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('role', data.role);
-                    localStorage.setItem('name', data.name);
+            // Simular o Token de Autenticação "Fake"
+            localStorage.setItem('token', 'simulated_static_token_777');
+            localStorage.setItem('role', role);
+            localStorage.setItem('name', name);
 
-                    // Roteamento inteligente baseado no Role recebido do Banco
-                    if (data.role === 'admin') {
-                        window.location.href = 'dashboard-admin.html';
-                    } else if (data.role === 'fisioterapeuta') {
-                        window.location.href = 'dashboard-fisio.html';
-                    } else {
-                        window.location.href = 'dashboard-cliente.html';
-                    }
-
-                } else {
-                    alert(data.error || 'Autenticação falhou.');
-                }
-            } catch (err) {
-                alert('Erro de conexão com o servidor Master.');
+            // Roteamento inteligente simulado
+            if (role === 'admin') {
+                window.location.href = 'dashboard-admin.html';
+            } else if (role === 'fisioterapeuta') {
+                window.location.href = 'dashboard-fisio.html';
+            } else {
+                window.location.href = 'dashboard-cliente.html';
             }
         });
     </script>
