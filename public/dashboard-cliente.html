@@ -393,54 +393,78 @@
             </div>
 
             <div id="consultas" class="tab-content">
-                <div class="content-card">
+                <div class="content-card" style="overflow-x: auto;">
                     <h3 class="card-title">Minhas Consultas</h3>
                     <p style="color: #fff;">Histórico completo de presenças e faltas.</p>
-                    <table class="appointments-table" style="margin-top: 20px;">
-                        <thead style="background: rgba(255,255,255,0.02);">
-                            <tr>
-                                <th>Data</th>
-                                <th>Serviço</th>
-                                <th>Profissional</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>22/02/2026</td>
-                                <td>Avaliação Geral Presencial</td>
-                                <td>Dra. Beatriz</td>
-                                <td><span style="color:#10b981;">Compareceu</span></td>
-                            </tr>
-                            <tr>
-                                <td>15/02/2026</td>
-                                <td>Sessão de RPG</td>
-                                <td>Dr. Roberto</td>
-                                <td><span style="color:#f59e0b;">Remarcado</span></td>
-                            </tr>
-                            <tr>
-                                <td>08/02/2026</td>
-                                <td>Sessão de RPG</td>
-                                <td>Dr. Roberto</td>
-                                <td><span style="color:#10b981;">Compareceu</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    
+                    <div style="overflow-x: auto; width: 100%; margin-top: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <table class="appointments-table" style="width: 100%; border-collapse: collapse; min-width: 500px;">
+                            <thead style="background: rgba(255,255,255,0.05);">
+                                <tr>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Data</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Serviço</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Profissional</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">22/02/2026</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">Avaliação Geral Presencial</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">Dra. Beatriz</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="color:#10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i class="ph ph-check" style="vertical-align: middle; margin-right:4px;"></i>Compareceu</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">15/02/2026</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">Sessão de RPG</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">Dr. Roberto</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="color:#f59e0b; background: rgba(245, 158, 11, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i class="ph ph-arrows-clockwise" style="vertical-align: middle; margin-right:4px;"></i>Remarcado</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">08/02/2026</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">Sessão de RPG</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">Dr. Roberto</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="color:#10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i class="ph ph-check" style="vertical-align: middle; margin-right:4px;"></i>Compareceu</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <div id="progresso" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Meu Progresso Clínico</h3>
-                    <p style="color: #fff;">Acompanhe a devolução de movimento e ganho de força muscular reportado
-                        pelo Fisioterapeuta.</p>
-                    <button class="action-btn" style="background: rgba(56, 189, 248, 0.4); color: #fff; margin-top: 15px;" onclick="alert('Gerando exportação de relatório PDF Evolutivo do CREFITO..')">Salvar Relatório Físico</button>
-                    <div style="margin-top: 20px; display:flex; flex-direction:column; gap:10px;">
-                        <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px;">
-                            <h4 style="margin:0 0 10px 0; color:#38bdf8;">Força Muscular (Core)</h4>
-                            <div style="width:100%; background:rgba(0,0,0,0.3); height:10px; border-radius:5px; overflow:hidden;">
-                                <div style="width:75%; background:#38bdf8; height:100%;"></div>
+                    <p style="color: #fff;">Acompanhe a devolução de movimento e ganho de força muscular reportado pelo Fisioterapeuta.</p>
+                    <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #fff; margin-top: 15px; padding: 10px 20px;" onclick="alert('Gerando exportação de relatório PDF Evolutivo do CREFITO..')"><i class="ph ph-download-simple" style="vertical-align: middle; margin-right: 5px;"></i>Salvar Relatório Físico</button>
+                    
+                    <div style="margin-top: 25px; display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
+                        
+                        <div style="background:rgba(255,255,255,0.03); padding:20px; border-radius:12px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <h4 style="margin:0; color:#38bdf8; font-size: 1.1rem;"><i class="ph ph-activity" style="vertical-align: middle; margin-right: 5px;"></i>Força Muscular (Core)</h4>
+                                <span style="color:#fff; font-weight: 600;">75%</span>
                             </div>
+                            <div style="width:100%; background:rgba(0,0,0,0.4); height:12px; border-radius:6px; overflow:hidden;">
+                                <div style="width:75%; background:linear-gradient(90deg, #0284c7, #38bdf8); height:100%; border-radius:6px;"></div>
+                            </div>
+                            <p style="color:#cbd5e1; font-size: 0.9rem; margin-top:10px; margin-bottom: 0;">O paciente recuperou a instabilidade primária com sucesso, focando agora na hipertrofia.</p>
+                        </div>
+                        
+                        <div style="background:rgba(255,255,255,0.03); padding:20px; border-radius:12px; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <h4 style="margin:0; color:#10b981; font-size: 1.1rem;"><i class="ph ph-person-arms-spread" style="vertical-align: middle; margin-right: 5px;"></i>Mobilidade Cervical</h4>
+                                <span style="color:#fff; font-weight: 600;">100%</span>
+                            </div>
+                            <div style="width:100%; background:rgba(0,0,0,0.4); height:12px; border-radius:6px; overflow:hidden;">
+                                <div style="width:100%; background:linear-gradient(90deg, #059669, #10b981); height:100%; border-radius:6px;"></div>
+                            </div>
+                            <p style="color:#cbd5e1; font-size: 0.9rem; margin-top:10px; margin-bottom: 0;">Meta de Reabilitação Concluída (Alta concedida). Retorno funcional total.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
                             <small style="color:#cbd5e1; display:block; margin-top:5px;">Avanço de 75% da meta estabelecida.</small>
                         </div>
                         <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px;">

@@ -377,32 +377,24 @@
             <div id="prontuarios" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Prontuários Eletrônicos</h3>
-                    <p style="color: #fff;">Acesse o histórico clínico detalhado, laudos e evoluções de cada
-                        paciente.</p>
-                    <div style="margin-top:20px; display:flex; gap:10px;">
-                        <input type="text" placeholder="Buscar por Nome ou CPF..." style="padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.2); color:#fff; flex:1; font-family:'Outfit',sans-serif;">
-                        <button class="action-btn" style="background: rgba(139, 92, 246, 0.4); color: #fff; margin-top: 15px;" onclick="alert('Abrindo modal de upload de arquivos (PDF/JPG)...')">Enviar Licença ou Diploma</button>
-                    <table class="appointments-table" style="margin-top: 20px;">
-                        <thead style="background: rgba(255,255,255,0.02);">
-                            <tr>
-                                <th>Tipo de Documento</th>
-                                <th>Instituição Emissora</th>
-                                <th>Status Atual</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>CREFITO - Registro Ativo</td>
-                                <td>Conselho Regional de Fisioterapia</td>
-                                <td><span style="color:#10b981; font-weight:600;">Validado</span></td>
-                            </tr>
-                            <tr>
-                                <td>Especialização em RPG</td>
-                                <td>Instituto Paulista Terapêutico</td>
-                                <td><span style="color:#10b981; font-weight:600;">Validado</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p style="color: #fff;">Acesse o histórico clínico detalhado, laudos e evoluções de cada paciente.</p>
+                    <div style="margin-top:20px; display:flex; gap:10px; flex-wrap: wrap;">
+                        <input type="text" placeholder="Buscar por Nome ou CPF..." style="padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; flex:1 1 250px; box-sizing: border-box; font-family:'Outfit',sans-serif;">
+                        <button class="action-btn" style="background:rgba(16, 185, 129, 0.3); border: 1px solid #10b981; color:#fff; padding:12px 25px; flex:0 0 auto; box-sizing: border-box;">Buscar</button>
+                    </div>
+                    <div style="margin-top:25px; background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; border: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="margin-top:0; color:#38bdf8; font-size:1.1rem; margin-bottom: 15px;">Últimos Prontuários Acessados</h4>
+                        <ul style="list-style:none; padding:0; margin:0; color:#cbd5e1; display:flex; flex-direction:column; gap:10px;">
+                            <li style="padding:12px 15px; border-radius: 6px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                                <span><strong style="color:#fff;">João Silva</strong> - Pós-operatório Joelho</span>
+                                <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #fff; padding: 6px 12px; font-size:0.85rem;" onclick="alert('Histórico Clínico Baixado!')">Ler Prontuário</button>
+                            </li>
+                            <li style="padding:12px 15px; border-radius: 6px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                                <span><strong style="color:#fff;">Maria Mendonça</strong> - Lombalgia Crônica</span>
+                                <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #fff; padding: 6px 12px; font-size:0.85rem;" onclick="alert('Histórico Clínico Baixado!')">Ler Prontuário</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

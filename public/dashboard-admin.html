@@ -385,56 +385,57 @@
             </div>
 
             <div id="agenda" class="tab-content">
-                <div class="content-card">
+                <div class="content-card" style="overflow-x: auto;">
                     <h3 class="card-title">Agenda Completa</h3>
                     <p style="color: #fff;">Veja todo o calendário da clínica em um relance.</p>
-                    <div
-                        style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 20px; text-align: center;">
-                        <div
-                            style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; color: #fff;">
-                            <strong>Dom</strong><br><small>Livre</small></div>
-                        <div
-                            style="background: rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #38bdf8; color: #fff;">
-                            <strong>Seg</strong><br><small>14 Agend.</small></div>
-                        <div
-                            style="background: rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #38bdf8; color: #fff;">
-                            <strong>Ter</strong><br><small>20 Agend.</small></div>
-                        <div
-                            style="background: rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #38bdf8; color: #fff;">
-                            <strong>Qua</strong><br><small>18 Agend.</small></div>
-                        <div
-                            style="background: rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #38bdf8; color: #fff;">
-                            <strong>Qui</strong><br><small>22 Agend.</small></div>
-                        <div
-                            style="background: rgba(16, 185, 129, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #10b981; color: #fff;">
-                            <strong>Sex</strong><br><small>5 Agend.</small></div>
-                        <div
-                            style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; color: #fff;">
-                            <strong>Sáb</strong><br><small>Fechado</small></div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 20px; text-align: center;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px 10px; border-radius: 8px; color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Dom</strong><small style="margin-top:5px; color:#cbd5e1;">Livre</small></div>
+                        <div style="background: rgba(56, 189, 248, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Seg</strong><small style="margin-top:5px; color:#38bdf8; font-weight:600;">14 Agendamentos</small></div>
+                        <div style="background: rgba(56, 189, 248, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Ter</strong><small style="margin-top:5px; color:#38bdf8; font-weight:600;">20 Agendamentos</small></div>
+                        <div style="background: rgba(56, 189, 248, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Qua</strong><small style="margin-top:5px; color:#38bdf8; font-weight:600;">18 Agendamentos</small></div>
+                        <div style="background: rgba(56, 189, 248, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Qui</strong><small style="margin-top:5px; color:#38bdf8; font-weight:600;">22 Agendamentos</small></div>
+                        <div style="background: rgba(16, 185, 129, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Sex</strong><small style="margin-top:5px; color:#10b981; font-weight:600;">5 Agendamentos</small></div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px 10px; border-radius: 8px; color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Sáb</strong><small style="margin-top:5px; color:#cbd5e1;">Fechado</small></div>
                     </div>
+                </div>
+            </div>
                 </div>
             </div>
 
             <div id="pacientes" class="tab-content">
-                <div class="content-card">
+                <div class="content-card" style="overflow-x: auto;">
                     <h3 class="card-title">Fichas de Pacientes</h3>
-                    <p style="color: #fff;">Gerenciamento completo das fichas médicas e prontuários que integram ao
-                        banco de dados.</p>
-                    <form style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px; max-width: 400px;" onsubmit="event.preventDefault(); alert('Ação Simulada: Configurações Salvas no BD Local');">
-                        <div>
-                            <label style="color: #fff; font-size: 0.9rem;">Horário de Abertura</label>
-                            <input type="time" value="08:00" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
-                        </div>
-                        <div>
-                            <label style="color: #fff; font-size: 0.9rem;">Horário de Fechamento</label>
-                            <input type="time" value="18:00" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
-                        </div>
-                        <div>
-                            <label style="color: #fff; font-size: 0.9rem;">Tempo Padrão de Consulta (minutos)</label>
-                            <input type="number" value="45" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
-                        </div>
-                        <button class="action-btn" type="submit" style="background: rgba(16, 185, 129, 0.4); color: #fff; margin-top: 5px; padding: 12px; font-size: 1rem;">Salvar Configurações</button>
-                    </form>
+                    <p style="color: #fff;">Gerenciamento completo das fichas médicas e prontuários que integram ao banco de dados.</p>
+                    <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #fff; margin-top: 15px; padding: 10px 20px; transition: 0.3s;" onmouseover="this.style.background='#38bdf8'; this.style.color='#000';" onmouseout="this.style.background='rgba(56, 189, 248, 0.2)'; this.style.color='#fff';" onclick="alert('Ação Simulada: Inicializando Formulário de Cadastro Físico')">+ Novo Paciente Presencial</button>
+                    <div style="overflow-x: auto; width: 100%; margin-top: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <table class="appointments-table" style="width: 100%; border-collapse: collapse; min-width: 600px;">
+                            <thead style="background: rgba(255,255,255,0.05);">
+                                <tr>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Nome</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">CPF</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Telefone</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Plano</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">João Silva</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">111.222.333-44</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">(11) 99999-9999</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Unimed</span></td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><button class="action-btn" style="background: rgba(139, 92, 246, 0.4); color: #fff; padding: 6px 12px; font-size: 0.8rem;" onclick="alert('Visualização da Ficha Completa!')">Ver Ficha</button></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">Maria Mendonça</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">222.333.444-55</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">(11) 98888-8888</td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Mensal VIP</span></td>
+                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><button class="action-btn" style="background: rgba(139, 92, 246, 0.4); color: #fff; padding: 6px 12px; font-size: 0.8rem;" onclick="alert('Visualização da Ficha Completa!')">Ver Ficha</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
