@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel do Fisioterapeuta - FisioVida</title>
+    <title>Painel Fisioterapeuta - FisioVida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -287,17 +289,21 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" onclick="switchTab('resumo', this)"><span>📊</span> Resumo do
+                <a href="#" class="nav-item active" onclick="switchTab('resumo', this)"><span><i
+                            class="ph ph-chart-line-up"></i></span> Resumo do
                     Dia</a>
-                <a href="#" class="nav-item" onclick="switchTab('prontuarios', this)"><span>📋</span> Prontuários</a>
-                <a href="#" class="nav-item" onclick="switchTab('exercicios', this)"><span>🏋️‍♂️</span> Exercícios</a>
-                <a href="#" class="nav-item" onclick="switchTab('certificacoes', this)"><span>🎓</span>
+                <a href="#" class="nav-item" onclick="switchTab('prontuarios', this)"><span><i
+                            class="ph ph-clipboard-text"></i></span> Prontuários</a>
+                <a href="#" class="nav-item" onclick="switchTab('exercicios', this)"><span><i
+                            class="ph ph-barbell"></i></span> Exercícios</a>
+                <a href="#" class="nav-item" onclick="switchTab('certificacoes', this)"><span><i
+                            class="ph ph-graduation-cap"></i></span>
                     Certificações</a>
             </nav>
 
             <div class="sidebar-footer">
                 <a href="index.html" class="logout-btn" onclick="logout()">
-                    <span>🚪</span> Sair do Sistema
+                    <span><i class="ph ph-sign-out"></i></span> Sair do Sistema
                 </a>
             </div>
         </aside>

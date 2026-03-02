@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel da Recepção - FisioVida</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -325,15 +326,19 @@
         </div>
 
         <nav class="sidebar-nav">
-            <a href="#" class="nav-item active" onclick="switchTab('triagem', this)"><span>👥</span> Fila e Triagem</a>
-            <a href="#" class="nav-item" onclick="switchTab('agendamentos', this)"><span>📅</span> Criar Agendamento</a>
-            <a href="#" class="nav-item" onclick="switchTab('caixa', this)"><span>💳</span> Caixa e Recibos</a>
-            <a href="#" class="nav-item" onclick="switchTab('pacientes', this)"><span>📁</span> Cadastros</a>
+            <a href="#" class="nav-item active" onclick="switchTab('triagem', this)"><span><i
+                        class="ph ph-users-three"></i></span> Fila e Triagem</a>
+            <a href="#" class="nav-item" onclick="switchTab('agendamentos', this)"><span><i
+                        class="ph ph-calendar-plus"></i></span> Criar Agendamento</a>
+            <a href="#" class="nav-item" onclick="switchTab('caixa', this)"><span><i class="ph ph-receipt"></i></span>
+                Caixa e Recibos</a>
+            <a href="#" class="nav-item" onclick="switchTab('pacientes', this)"><span><i
+                        class="ph ph-folders"></i></span> Cadastros</a>
         </nav>
 
         <div class="sidebar-footer">
             <a href="index.html" class="logout-btn" onclick="logout()">
-                <span>🚪</span> Sair do Sistema
+                <span><i class="ph ph-sign-out"></i></span> Sair do Sistema
             </a>
         </div>
     </div>
@@ -462,7 +467,7 @@
                     <td>${item.time}</td>
                     <td><span class="status-badge" style="color: ${item.color}; background: ${item.bg};">${item.st}</span></td>
                     <td>
-                        <button class="action-btn" onclick="confirmArrival()">✅ Chegou</button>
+                        <button class="action-btn" onclick="confirmArrival()"><i class="ph ph-check-circle"></i> Chegou</button>
                     </td>
                 `;
                 tableBody.appendChild(tr);
