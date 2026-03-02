@@ -309,9 +309,20 @@
                 display: flex;
             }
         }
-    
+
         /* Override global de cor */
-        th, td, p, h1, h2, h3, h4, .stat-title, .nav-item, .sidebar-header p { color: #ffffff !important; }
+        th,
+        td,
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        .stat-title,
+        .nav-item,
+        .sidebar-header p {
+            color: #ffffff !important;
+        }
     </style>
 </head>
 
@@ -332,8 +343,10 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" onclick="switchTab('consultas', this)"><span><i class="ph ph-calendar-blank"></i></span> Minhas Consultas</a>
-                <a href="index.html#agendamento" class="nav-item"><span><i class="ph ph-plus-circle"></i></span> Nova Consulta</a>
+                <a href="#" class="nav-item active" onclick="switchTab('consultas', this)"><span><i
+                            class="ph ph-calendar-blank"></i></span> Minhas Consultas</a>
+                <a href="agendamento.html" class="nav-item"><span><i class="ph ph-plus-circle"></i></span> Nova
+                    Consulta</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -345,115 +358,158 @@
 
         <!-- Wrapper de Conteúdo Principal -->
         <div class="main-content">
-        <div class="dashboard-header">
-            <div>
-                <h2 style="color: #ffffff; margin: 0;">Bem-vindo(a), <span id="userNameText">Paciente</span> 👋</h2>
-                <p>Aqui estão suas consultas realizadas e futuras.</p>
-            </div>
-            <div class="header-actions">
-                <a href="index.html#agendamento" class="btn-new-apt">+ Nova Consulta</a>
-            </div>
-        </div>
-
-        <div class="dashboard-content">
-
-            <div id="consultas" class="tab-content active">
-                <div class="content-card" style="overflow-x: auto;">
-                    <h3 class="card-title">Minhas Consultas</h3>
-                    <p style="color: #fff;">Histórico completo de presenças e faltas.</p>
-                    
-                    <div style="overflow-x: auto; width: 100%; margin-top: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                        <table class="appointments-table" style="width: 100%; border-collapse: collapse; min-width: 500px;">
-                            <thead style="background: rgba(255,255,255,0.05);">
-                                <tr>
-                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Data</th>
-                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Serviço</th>
-                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Profissional</th>
-                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">22/02/2026</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">Avaliação Geral Presencial</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">Dra. Beatriz</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="color:#10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i class="ph ph-check" style="vertical-align: middle; margin-right:4px;"></i>Compareceu</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">15/02/2026</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">Sessão de RPG</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">Dr. Roberto</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="color:#f59e0b; background: rgba(245, 158, 11, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i class="ph ph-arrows-clockwise" style="vertical-align: middle; margin-right:4px;"></i>Remarcado</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">08/02/2026</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">Sessão de RPG</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">Dr. Roberto</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="color:#10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i class="ph ph-check" style="vertical-align: middle; margin-right:4px;"></i>Compareceu</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="dashboard-header">
+                <div>
+                    <h2 style="color: #ffffff; margin: 0;">Bem-vindo(a), <span id="userNameText">Paciente</span> 👋</h2>
+                    <p>Aqui estão suas consultas realizadas e futuras.</p>
+                </div>
+                <div class="header-actions">
+                    <a href="agendamento.html" class="btn-new-apt">+ Nova Consulta</a>
                 </div>
             </div>
 
+            <div class="dashboard-content">
+
+                <div id="consultas" class="tab-content active">
+                    <div class="content-card" style="overflow-x: auto;">
+                        <h3 class="card-title">Minhas Consultas</h3>
+                        <p style="color: #fff;">Histórico completo de presenças e faltas.</p>
+
+                        <div
+                            style="overflow-x: auto; width: 100%; margin-top: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                            <table class="appointments-table"
+                                style="width: 100%; border-collapse: collapse; min-width: 500px;">
+                                <thead style="background: rgba(255,255,255,0.05);">
+                                    <tr>
+                                        <th
+                                            style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                            Data</th>
+                                        <th
+                                            style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                            Serviço</th>
+                                        <th
+                                            style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                            Profissional</th>
+                                        <th
+                                            style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                            Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td
+                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                            22/02/2026</td>
+                                        <td
+                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">
+                                            Avaliação Geral Presencial</td>
+                                        <td
+                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                            Dra. Beatriz</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                            <span
+                                                style="color:#10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i
+                                                    class="ph ph-check"
+                                                    style="vertical-align: middle; margin-right:4px;"></i>Compareceu</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                            15/02/2026</td>
+                                        <td
+                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">
+                                            Sessão de RPG</td>
+                                        <td
+                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                            Dr. Roberto</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                            <span
+                                                style="color:#f59e0b; background: rgba(245, 158, 11, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i
+                                                    class="ph ph-arrows-clockwise"
+                                                    style="vertical-align: middle; margin-right:4px;"></i>Remarcado</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                            08/02/2026</td>
+                                        <td
+                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">
+                                            Sessão de RPG</td>
+                                        <td
+                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                            Dr. Roberto</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                            <span
+                                                style="color:#10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i
+                                                    class="ph ph-check"
+                                                    style="vertical-align: middle; margin-right:4px;"></i>Compareceu</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
-    <script>
-        const token = localStorage.getItem('jwtToken');
-        const role = localStorage.getItem('userRole');
-        const userName = localStorage.getItem('userName');
+        <script>
+            const token = localStorage.getItem('jwtToken');
+            const role = localStorage.getItem('userRole');
+            const userName = localStorage.getItem('userName');
 
-        if (!token || role !== 'paciente') {
-            window.location.href = 'index.html';
-        }
-
-        if (userName) {
-            document.getElementById('userNameText').innerText = userName;
-        }
-
-        function switchTab(tabId, element) {
-            // Esconde links inativos
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            // Define o link ativo
-            element.classList.add('active');
-
-            // Esconde todas as abas
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            // Mostra a aba alvo
-            document.getElementById(tabId).classList.add('active');
-
-            // Retrai menu celular num clique pra liberar espaço de visão
-            if (window.innerWidth <= 768) {
-                document.getElementById('sidebar').classList.remove('active');
+            if (!token || role !== 'paciente') {
+                window.location.href = 'index.html';
             }
-        }
 
-        function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('active');
-        }
+            if (userName) {
+                document.getElementById('userNameText').innerText = userName;
+            }
 
-        function logout() {
-            localStorage.clear();
-            window.location.href = 'index.html';
-        }
+            function switchTab(tabId, element) {
+                // Esconde links inativos
+                document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+                // Define o link ativo
+                element.classList.add('active');
 
-        async function loadMyAppointments() {
-            // MOCK DATA: Simulando a consulta do Cliente logado na Vercel estática
-            const data = [
-                { id: 205, service: 'Avaliação Geral Presencial', date: '2026-03-22', time: '10:00', status: 'confirmada' },
-                { id: 209, service: 'Sessão de RPG', date: '2026-03-30', time: '14:30', status: 'pendente check-in' }
-            ];
+                // Esconde todas as abas
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+                // Mostra a aba alvo
+                document.getElementById(tabId).classList.add('active');
 
-            const list = document.getElementById('myAppointments');
-            list.innerHTML = '';
+                // Retrai menu celular num clique pra liberar espaço de visão
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('active');
+                }
+            }
 
-            if (data.length === 0) {
-                list.innerHTML = '<p style="color: #fff;">Você não possui nenhum agendamento na FisioVida.</p>';
-            } else {
-                data.forEach(apt => {
-                    let statusTxtColor = apt.status === 'confirmada' ? '#10b981' : '#f59e0b';
-                    list.innerHTML += `
+            function toggleMenu() {
+                document.getElementById('sidebar').classList.toggle('active');
+            }
+
+            function logout() {
+                localStorage.clear();
+                window.location.href = 'index.html';
+            }
+
+            async function loadMyAppointments() {
+                // MOCK DATA: Simulando a consulta do Cliente logado na Vercel estática
+                const data = [
+                    { id: 205, service: 'Avaliação Geral Presencial', date: '2026-03-22', time: '10:00', status: 'confirmada' },
+                    { id: 209, service: 'Sessão de RPG', date: '2026-03-30', time: '14:30', status: 'pendente check-in' }
+                ];
+
+                const list = document.getElementById('myAppointments');
+                list.innerHTML = '';
+
+                if (data.length === 0) {
+                    list.innerHTML = '<p style="color: #fff;">Você não possui nenhum agendamento na FisioVida.</p>';
+                } else {
+                    data.forEach(apt => {
+                        let statusTxtColor = apt.status === 'confirmada' ? '#10b981' : '#f59e0b';
+                        list.innerHTML += `
                         <div class="apt-card" style="border-left-color: ${statusTxtColor}">
                             <div class="apt-info">
                                 <h4 style="color: ${statusTxtColor}">${apt.service}</h4>
@@ -463,24 +519,24 @@
                             <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar Horário</button>
                         </div>
                     `;
-                });
+                    });
+                }
             }
-        }
 
-        async function deleteApt(id) {
-            if (confirm('Simulação Local: Deseja liberar este horário no sistema?')) {
-                // mock visual
-                document.getElementById('myAppointments').innerHTML = '<p style="color: #fff;">Você Cancelou suas consultas (Modo Visual).</p>';
+            async function deleteApt(id) {
+                if (confirm('Simulação Local: Deseja liberar este horário no sistema?')) {
+                    // mock visual
+                    document.getElementById('myAppointments').innerHTML = '<p style="color: #fff;">Você Cancelou suas consultas (Modo Visual).</p>';
+                }
             }
-        }
 
-        function logout() {
-            localStorage.clear();
-            window.location.href = 'index.html';
-        }
+            function logout() {
+                localStorage.clear();
+                window.location.href = 'index.html';
+            }
 
-        loadMyAppointments();
-    </script>
+            loadMyAppointments();
+        </script>
 </body>
 
 </html>

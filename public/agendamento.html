@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Agendamento - FisioVida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --primary: #10b981;
+            --secondary: #059669;
+            --background: #0f172a;
+            --surface: rgba(30, 41, 59, 0.7);
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--background);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.15) 0%, transparent 40%);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .booking-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 2.5rem;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+
+        select.form-control option {
+            background-color: var(--background);
+            color: #fff;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px var(--primary);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="booking-container">
+        <a href="dashboard-cliente.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar ao Painel</a>
+        <div class="header">
+            <h1>Agendar Sessão</h1>
+            <p>Selecione o melhor horário para o seu tratamento.</p>
+        </div>
+
+        <form
+            onsubmit="event.preventDefault(); alert('Agendamento recebido! Você será notificado após a confirmação pela recepção.'); window.location.href='dashboard-cliente.html';">
+            <div class="form-group">
+                <label>Especialidade Desejada</label>
+                <select class="form-control" required>
+                    <option value="" disabled selected>Selecione um tratamento...</option>
+                    <option value="geral">Avaliação Geral Inicial</option>
+                    <option value="ortopedica">Fisioterapia Ortopédica</option>
+                    <option value="esportiva">Reabilitação Esportiva</option>
+                    <option value="pilates">Pilates Clínico</option>
+                    <option value="rpg">RPG (Reeducação Postural)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Profissional (Opcional)</label>
+                <select class="form-control">
+                    <option value="">Qualquer profissional disponível</option>
+                    <option value="beatriz">Dra. Beatriz</option>
+                    <option value="roberto">Dr. Roberto</option>
+                </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label>Data Preferencial</label>
+                    <input type="date" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Horário</label>
+                    <select class="form-control" required>
+                        <option value="" disabled selected>Escolha...</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 0.5rem;">
+                <label>Observações Adicionais (Opcional)</label>
+                <textarea class="form-control" rows="3"
+                    placeholder="Ex: Sinto muita dor no joelho esquerdo ao caminhar..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <i class="ph ph-calendar-plus"></i> Confirmar Agendamento
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>
