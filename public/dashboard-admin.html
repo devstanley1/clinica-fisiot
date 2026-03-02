@@ -296,6 +296,53 @@
         .sidebar-header p {
             color: #ffffff !important;
         }
+    
+        /* Responsive Tables (Cards) */
+        @media (max-width: 768px) {
+            .content-card[style*="overflow-x: auto"],
+            div[style*="overflow-x: auto"] {
+                overflow-x: visible !important;
+            }
+            .appointments-table {
+                min-width: 100% !important;
+                display: block;
+            }
+            .appointments-table thead {
+                display: none;
+            }
+            .appointments-table tbody {
+                display: grid;
+                gap: 15px;
+            }
+            .appointments-table tr {
+                display: flex;
+                flex-direction: column;
+                background: rgba(0,0,0,0.2) !important;
+                border: 1px solid rgba(255,255,255,0.05) !important;
+                border-radius: 12px;
+                padding: 5px 10px;
+            }
+            .appointments-table td {
+                display: flex;
+                flex-direction: column;
+                padding: 10px 5px !important;
+                text-align: left !important;
+                border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+                color: #fff !important;
+            }
+            .appointments-table td:last-child {
+                border-bottom: none !important;
+            }
+            .appointments-table td::before {
+                content: attr(data-label);
+                font-size: 0.75rem;
+                color: #94a3b8;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+        }
     </style>
 </head>
 
@@ -551,6 +598,24 @@
         }
 
         loadAllAppointments();
+    </script>
+    <script>
+        // Converte tabelas em cards responsivos automaticamente
+        document.addEventListener("DOMContentLoaded", function() {
+            const tables = document.querySelectorAll('.appointments-table');
+            tables.forEach(table => {
+                const headers = Array.from(table.querySelectorAll('th')).map(th => th.innerText.trim());
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    cells.forEach((cell, index) => {
+                        if(headers[index]) {
+                            cell.setAttribute('data-label', headers[index]);
+                        }
+                    });
+                });
+            });
+        });
     </script>
 </body>
 
