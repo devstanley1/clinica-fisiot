@@ -414,21 +414,75 @@
                 <h3 class="card-title">Lançar Novo Agendamento</h3>
                 <p style="color: #fff;">Use este painel para registrar pacientes que ligaram ou vieram pessoalmente
                     marcar consultas.</p>
-                <button class="action-btn"
-                    onclick="alert('MOCK AÇÃO: Calendário do Sistema Inválido (Modo Demonstração) - Redirecionando a Grade de Horários.')"
-                    style="background: #38bdf8; color: #fff; margin-top: 15px;">+ Novo
-                    Agendamento Express</button>
+                <button class="action-btn" style="background: rgba(56, 189, 248, 0.4); color: #fff; margin-top: 15px;" onclick="alert('Modo de Seleção de Grade ativado.')">+ Novo Agendamento Express</button>
+                <form style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px; max-width: 500px;" onsubmit="event.preventDefault(); alert('Paciente agendado em slot vago!');">
+                    <div style="display:flex; gap:10px;">
+                        <div style="flex:1;">
+                            <label style="color: #fff; font-size: 0.9rem;">Paciente (Nome ou CPF)</label>
+                            <input type="text" placeholder="Ex: Maria" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
+                        </div>
+                        <div style="flex:1;">
+                            <label style="color: #fff; font-size: 0.9rem;">Profissional</label>
+                            <select style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
+                                <option style="color:#000;">Dra. Mariana (Pilates)</option>
+                                <option style="color:#000;">Dr. Roberto (Ortopedia)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <div style="flex:1;">
+                            <label style="color: #fff; font-size: 0.9rem;">Data</label>
+                            <input type="date" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
+                        </div>
+                        <div style="flex:1;">
+                            <label style="color: #fff; font-size: 0.9rem;">Horário</label>
+                            <input type="time" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
+                        </div>
+                    </div>
+                    <button class="action-btn" type="submit" style="background: rgba(16, 185, 129, 0.4); color: #fff; margin-top: 5px; padding: 12px; font-size: 1rem;">Confirmar Reserva</button>
+                </form>
             </div>
         </div>
 
         <div id="caixa" class="tab-content">
             <div class="content-card">
                 <h3 class="card-title">Controle de Caixa e Coparticipação</h3>
-                <p style="color: #fff;">Registro de pagamentos de sessões avulsas, emissão de NFe e baixa de faturas.
-                </p>
-                <button class="action-btn"
-                    onclick="alert('MOCK AÇÃO: O Sistema de Faturamento emitiria a Fatura/NFe Eletrônica integrada à prefeitura agora.')"
-                    style="background: #10b981; color: #fff; margin-top: 15px;">Emitir NFe / Recibo</button>
+                <p style="color: #fff;">Registro de pagamentos de sessões avulsas, emissão de NFe e baixa de faturas.</p>
+                <button class="action-btn" style="background: rgba(16, 185, 129, 0.4); color: #fff; margin-top: 15px;" onclick="alert('Conectando ao sistema emissor governamental (Mock)')">Emitir NFe / Recibo</button>
+                <table class="appointments-table" style="margin-top: 20px;">
+                    <thead style="background: rgba(255,255,255,0.02);">
+                        <tr>
+                            <th>Recibo Nº</th>
+                            <th>Paciente</th>
+                            <th>Valor Base</th>
+                            <th>Pagamento Via</th>
+                            <th>Status Conta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#99824</td>
+                            <td>Ana Beatriz</td>
+                            <td>R$ 150,00</td>
+                            <td>PIX Instantâneo</td>
+                            <td><span style="color:#10b981; font-weight:600;">PAGO EM CAIXA</span></td>
+                        </tr>
+                        <tr>
+                            <td>#99825</td>
+                            <td>Carlos Mendes</td>
+                            <td>R$ 1.200,00</td>
+                            <td>Cartão Parc. 3x</td>
+                            <td><span style="color:#10b981; font-weight:600;">LIQUIDADO</span></td>
+                        </tr>
+                        <tr>
+                            <td>#99826</td>
+                            <td>Unimed (Glosa)</td>
+                            <td>R$ 480,00</td>
+                            <td>Faturamento Convênio</td>
+                            <td><span style="color:#f59e0b; font-weight:600;">EM PROCESSAMENTO</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 

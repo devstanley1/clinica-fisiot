@@ -396,6 +396,36 @@
                 <div class="content-card">
                     <h3 class="card-title">Minhas Consultas</h3>
                     <p style="color: #fff;">Histórico completo de presenças e faltas.</p>
+                    <table class="appointments-table" style="margin-top: 20px;">
+                        <thead style="background: rgba(255,255,255,0.02);">
+                            <tr>
+                                <th>Data</th>
+                                <th>Serviço</th>
+                                <th>Profissional</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>22/02/2026</td>
+                                <td>Avaliação Geral Presencial</td>
+                                <td>Dra. Beatriz</td>
+                                <td><span style="color:#10b981;">Compareceu</span></td>
+                            </tr>
+                            <tr>
+                                <td>15/02/2026</td>
+                                <td>Sessão de RPG</td>
+                                <td>Dr. Roberto</td>
+                                <td><span style="color:#f59e0b;">Remarcado</span></td>
+                            </tr>
+                            <tr>
+                                <td>08/02/2026</td>
+                                <td>Sessão de RPG</td>
+                                <td>Dr. Roberto</td>
+                                <td><span style="color:#10b981;">Compareceu</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -404,9 +434,23 @@
                     <h3 class="card-title">Meu Progresso Clínico</h3>
                     <p style="color: #fff;">Acompanhe a devolução de movimento e ganho de força muscular reportado
                         pelo Fisioterapeuta.</p>
-                    <button class="action-btn"
-                        onclick="alert('MOCK A�!ÒO: Gerando gráfico estático de de Reabilitação Articular (Membro Superior Esquerdo).')"
-                        style="background: #38bdf8; color: #fff; margin-top: 15px;">Ver Gráfico Evolutivo</button>
+                    <button class="action-btn" style="background: rgba(56, 189, 248, 0.4); color: #fff; margin-top: 15px;" onclick="alert('Gerando exportação de relatório PDF Evolutivo do CREFITO..')">Salvar Relatório Físico</button>
+                    <div style="margin-top: 20px; display:flex; flex-direction:column; gap:10px;">
+                        <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px;">
+                            <h4 style="margin:0 0 10px 0; color:#38bdf8;">Força Muscular (Core)</h4>
+                            <div style="width:100%; background:rgba(0,0,0,0.3); height:10px; border-radius:5px; overflow:hidden;">
+                                <div style="width:75%; background:#38bdf8; height:100%;"></div>
+                            </div>
+                            <small style="color:#cbd5e1; display:block; margin-top:5px;">Avanço de 75% da meta estabelecida.</small>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px;">
+                            <h4 style="margin:0 0 10px 0; color:#10b981;">Mobilidade Cervical</h4>
+                            <div style="width:100%; background:rgba(0,0,0,0.3); height:10px; border-radius:5px; overflow:hidden;">
+                                <div style="width:100%; background:#10b981; height:100%;"></div>
+                            </div>
+                            <small style="color:#cbd5e1; display:block; margin-top:5px;">Meta de Reabilitação Concluída (Alta)</small>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -379,31 +379,30 @@
                     <h3 class="card-title">Prontuários Eletrônicos</h3>
                     <p style="color: #fff;">Acesse o histórico clínico detalhado, laudos e evoluções de cada
                         paciente.</p>
-                    <button class="action-btn"
-                        onclick="alert('MOCK A�!ÒO: Abrindo PDF do Histórico Clínico completo atrelado ao CREFITO.')"
-                        style="background: #10b981; color: #fff; margin-top: 15px;">Buscar
-                        Prontuário</button>
-                </div>
-            </div>
-
-            <div id="exercicios" class="tab-content">
-                <div class="content-card">
-                    <h3 class="card-title">Biblioteca de Exercícios</h3>
-                    <p style="color: #fff;">Crie e prescreva rotinas de exercícios para os pacientes realizarem em
-                        casa.</p>
-                    <button class="action-btn"
-                        onclick="alert('MOCK A�!ÒO: Tela com 214 Exercícios de Pilates Estáticos carregados para prescrição.')"
-                        style="background: #38bdf8; color: #fff; margin-top: 15px;">Nova Prescrição</button>
-                </div>
-            </div>
-
-            <div id="certificacoes" class="tab-content">
-                <div class="content-card">
-                    <h3 class="card-title">Minhas Certificações</h3>
-                    <p style="color: #fff;">Gerencie seus diplomas, cursos de especialização e licenças ativas.</p>
-                    <button class="action-btn"
-                        onclick="alert('MOCK A�!ÒO: O Upload de Certificado de Licença (Modal Falso) abriria aqui.')"
-                        style="background: #8b5cf6; color: #fff; margin-top: 15px;">Enviar Licença ou Diploma</button>
+                    <div style="margin-top:20px; display:flex; gap:10px;">
+                        <input type="text" placeholder="Buscar por Nome ou CPF..." style="padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.2); color:#fff; flex:1; font-family:'Outfit',sans-serif;">
+                        <button class="action-btn" style="background: rgba(139, 92, 246, 0.4); color: #fff; margin-top: 15px;" onclick="alert('Abrindo modal de upload de arquivos (PDF/JPG)...')">Enviar Licença ou Diploma</button>
+                    <table class="appointments-table" style="margin-top: 20px;">
+                        <thead style="background: rgba(255,255,255,0.02);">
+                            <tr>
+                                <th>Tipo de Documento</th>
+                                <th>Instituição Emissora</th>
+                                <th>Status Atual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CREFITO - Registro Ativo</td>
+                                <td>Conselho Regional de Fisioterapia</td>
+                                <td><span style="color:#10b981; font-weight:600;">Validado</span></td>
+                            </tr>
+                            <tr>
+                                <td>Especialização em RPG</td>
+                                <td>Instituto Paulista Terapêutico</td>
+                                <td><span style="color:#10b981; font-weight:600;">Validado</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 

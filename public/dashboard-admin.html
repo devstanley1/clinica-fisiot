@@ -282,9 +282,20 @@
                 display: flex;
             }
         }
-    
+
         /* Override global de cor */
-        th, td, p, h1, h2, h3, h4, .stat-title, .nav-item, .sidebar-header p { color: #ffffff !important; }
+        th,
+        td,
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        .stat-title,
+        .nav-item,
+        .sidebar-header p {
+            color: #ffffff !important;
+        }
     </style>
 </head>
 
@@ -378,8 +389,28 @@
                     <h3 class="card-title">Agenda Completa</h3>
                     <p style="color: #fff;">Veja todo o calendário da clínica em um relance.</p>
                     <div
-                        style="background: rgba(255,255,255,0.02); height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #ffffff; margin-top: 20px; border: 1px dashed rgba(255,255,255,0.1);">
-                        Visualização de Calendário interativa (Em desenvolvimento)
+                        style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 20px; text-align: center;">
+                        <div
+                            style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; color: #fff;">
+                            <strong>Dom</strong><br><small>Livre</small></div>
+                        <div
+                            style="background: rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #38bdf8; color: #fff;">
+                            <strong>Seg</strong><br><small>14 Agend.</small></div>
+                        <div
+                            style="background: rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #38bdf8; color: #fff;">
+                            <strong>Ter</strong><br><small>20 Agend.</small></div>
+                        <div
+                            style="background: rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #38bdf8; color: #fff;">
+                            <strong>Qua</strong><br><small>18 Agend.</small></div>
+                        <div
+                            style="background: rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #38bdf8; color: #fff;">
+                            <strong>Qui</strong><br><small>22 Agend.</small></div>
+                        <div
+                            style="background: rgba(16, 185, 129, 0.2); padding: 10px; border-radius: 8px; border: 1px solid #10b981; color: #fff;">
+                            <strong>Sex</strong><br><small>5 Agend.</small></div>
+                        <div
+                            style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; color: #fff;">
+                            <strong>Sáb</strong><br><small>Fechado</small></div>
                     </div>
                 </div>
             </div>
@@ -389,22 +420,21 @@
                     <h3 class="card-title">Fichas de Pacientes</h3>
                     <p style="color: #fff;">Gerenciamento completo das fichas médicas e prontuários que integram ao
                         banco de dados.</p>
-                    <button class="action-btn"
-                        onclick="alert('MOCK A�!ÒO: O Modal de Novo Cadastro de Paciente físico abriria agora na tela do Administrador.')"
-                        style="background: #38bdf8; color: #fff; margin-top: 15px;">+ Novo
-                        Paciente Presencial</button>
-                </div>
-            </div>
-
-            <div id="config" class="tab-content">
-                <div class="content-card">
-                    <h3 class="card-title">Configurações da Clínica</h3>
-                    <p style="color: #fff;">Configure horários de funcionamento, regras de agendamento e gerencie
-                        contas de Fisioterapeutas e de Recepção.</p>
-                    <button class="action-btn"
-                        onclick="alert('MOCK A�!ÒO: Alterações de negócio salvas no banco de dados temporário.')"
-                        style="background: #10b981; color: #fff; margin-top: 15px;">Aplicar Configurações
-                        Padrão</button>
+                    <form style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px; max-width: 400px;" onsubmit="event.preventDefault(); alert('Ação Simulada: Configurações Salvas no BD Local');">
+                        <div>
+                            <label style="color: #fff; font-size: 0.9rem;">Horário de Abertura</label>
+                            <input type="time" value="08:00" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
+                        </div>
+                        <div>
+                            <label style="color: #fff; font-size: 0.9rem;">Horário de Fechamento</label>
+                            <input type="time" value="18:00" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
+                        </div>
+                        <div>
+                            <label style="color: #fff; font-size: 0.9rem;">Tempo Padrão de Consulta (minutos)</label>
+                            <input type="number" value="45" style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
+                        </div>
+                        <button class="action-btn" type="submit" style="background: rgba(16, 185, 129, 0.4); color: #fff; margin-top: 5px; padding: 12px; font-size: 1rem;">Salvar Configurações</button>
+                    </form>
                 </div>
             </div>
 
