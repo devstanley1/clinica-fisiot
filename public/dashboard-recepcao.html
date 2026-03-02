@@ -222,8 +222,8 @@
         }
 
         .appointments-table th {
-            color: #94a3b8;
-            font-weight: 500;
+            color: #e2e8f0;
+            font-weight: 600;
             padding: 12px 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
@@ -314,6 +314,7 @@
                 top: 0;
                 z-index: 99;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                color: #fff;
             }
         }
     </style>
@@ -321,9 +322,14 @@
 
 <body>
     <!-- Mobile Menu Toggle -->
-    <button class="menu-toggle" onclick="toggleMenu()">
-        <i class="ph ph-list"></i>
-    </button>
+    <div class="menu-toggle" style="display: flex; justify-content: space-between; align-items: center;">
+        <h1 class="logo" style="font-size: 1.5rem; margin: 0; color: #fff;">Fisio<span
+                style="color: #8b5cf6;">Vida</span></h1>
+        <button onclick="toggleMenu()"
+            style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">
+            <i class="ph ph-list"></i>
+        </button>
+    </div>
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
@@ -350,8 +356,8 @@
         </nav>
 
         <div class="sidebar-footer">
-            <a href="index.html" class="logout-btn" onclick="logout()">
-                <span><i class="ph ph-sign-out"></i></span> Sair do Sistema
+            <a href="#" class="logout-btn" onclick="logout()">
+                <i class="ph ph-sign-out"></i> Sair do Sistema
             </a>
         </div>
     </div>
