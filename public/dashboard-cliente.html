@@ -403,6 +403,9 @@
                     <h3 class="card-title">Meu Progresso Clínico</h3>
                     <p style="color: #94a3b8;">Acompanhe a devolução de movimento e ganho de força muscular reportado
                         pelo Fisioterapeuta.</p>
+                    <button class="action-btn"
+                        onclick="alert('MOCK AÇÃO: Gerando gráfico estático de de Reabilitação Articular (Membro Superior Esquerdo).')"
+                        style="background: #38bdf8; color: #fff; margin-top: 15px;">Ver Gráfico Evolutivo</button>
                 </div>
             </div>
 
@@ -410,6 +413,10 @@
                 <div class="content-card">
                     <h3 class="card-title">Receitas e Laudos</h3>
                     <p style="color: #94a3b8;">Acesso rápido aos atestados e solicitações de exame.</p>
+                    <button class="action-btn"
+                        onclick="alert('MOCK AÇÃO: Buscando na nuvem PDF Assinado Certificado Atestado (CRM-PI). Falhou — Arquivo Exemplo!')"
+                        style="background: #8b5cf6; color: #fff; margin-top: 15px;">Imprimir Solicitação de
+                        Raio-X</button>
                 </div>
             </div>
 
@@ -417,6 +424,9 @@
                 <div class="content-card">
                     <h3 class="card-title">Faturas e Acertos</h3>
                     <p style="color: #94a3b8;">Recibos de pagamentos do seu plano Mensal VIP.</p>
+                    <button class="action-btn"
+                        onclick="alert('MOCK AÇÃO: Acessando gateway de pagamento. Status: PAGO (05/03/2026)')"
+                        style="background: #10b981; color: #fff; margin-top: 15px;">Baixar Boleto Antigo</button>
                 </div>
             </div>
 
@@ -424,9 +434,9 @@
     </div>
 
     <script>
-        const token = localStorage.getItem('token');
-        const role = localStorage.getItem('role');
-        const userName = localStorage.getItem('name');
+        const token = localStorage.getItem('jwtToken');
+        const role = localStorage.getItem('userRole');
+        const userName = localStorage.getItem('userName');
 
         if (!token || role !== 'paciente') {
             window.location.href = 'index.html';

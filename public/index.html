@@ -147,30 +147,28 @@
 
         <div class="roles-grid">
             <!-- Card Paciente -->
-            <a href="dashboard-cliente.html" class="role-card paciente" onclick="mockLogin('paciente', 'Maria Silva')">
+            <a href="login.html?role=paciente&name=Maria Silva" class="role-card paciente">
                 <div class="role-icon"><i class="ph ph-wheelchair"></i></div>
                 <div class="role-title">Paciente</div>
                 <div class="role-desc">Agendamentos e Progresso</div>
             </a>
 
             <!-- Card Fisioterapeuta -->
-            <a href="dashboard-fisio.html" class="role-card fisio"
-                onclick="mockLogin('fisioterapeuta', 'Dr. Carlos Mendes')">
+            <a href="login.html?role=fisioterapeuta&name=Dr. Carlos Mendes" class="role-card fisio">
                 <div class="role-icon"><i class="ph ph-stethoscope"></i></div>
                 <div class="role-title">Especialista</div>
                 <div class="role-desc">Prontuários e Avaliações</div>
             </a>
 
             <!-- Card Recepção -->
-            <a href="dashboard-recepcao.html" class="role-card recepcao"
-                onclick="mockLogin('recepcao', 'Ana (Recepção)')">
+            <a href="login.html?role=recepcao&name=Recepção Central" class="role-card recepcao">
                 <div class="role-icon"><i class="ph ph-headset"></i></div>
                 <div class="role-title">Recepção</div>
                 <div class="role-desc">Balcão e Pagamentos</div>
             </a>
 
             <!-- Card Admin -->
-            <a href="dashboard-admin.html" class="role-card admin" onclick="mockLogin('admin', 'Sr. Administrador')">
+            <a href="login.html?role=admin&name=Diretoria Geral" class="role-card admin">
                 <div class="role-icon"><i class="ph ph-gear"></i></div>
                 <div class="role-title">Gestão</div>
                 <div class="role-desc">Faturamento e Relatórios</div>
@@ -179,13 +177,7 @@
     </div>
 
     <script>
-        // Função para injetar dados fakes de autenticação no LocalStorage antes de navegar
-        function mockLogin(role, name) {
-            localStorage.setItem('jwtToken', 'simulated_static_token_777');
-            localStorage.setItem('userRole', role);
-            localStorage.setItem('userName', name);
-            // O href da tag <a> fará a navegação imediatamente.
-        }
+        // Nenhuma lógica necessária aqui no Dashboard Index, as referências url conduzirão à página de Login Fake.
     </script>
 </body>
 

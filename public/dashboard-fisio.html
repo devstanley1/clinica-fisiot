@@ -367,7 +367,9 @@
                     <h3 class="card-title">Prontuários Eletrônicos</h3>
                     <p style="color: #94a3b8;">Acesse o histórico clínico detalhado, laudos e evoluções de cada
                         paciente.</p>
-                    <button class="action-btn" style="background: #10b981; color: #fff; margin-top: 15px;">Buscar
+                    <button class="action-btn"
+                        onclick="alert('MOCK AÇÃO: Abrindo PDF do Histórico Clínico completo atrelado ao CREFITO.')"
+                        style="background: #10b981; color: #fff; margin-top: 15px;">Buscar
                         Prontuário</button>
                 </div>
             </div>
@@ -377,6 +379,9 @@
                     <h3 class="card-title">Biblioteca de Exercícios</h3>
                     <p style="color: #94a3b8;">Crie e prescreva rotinas de exercícios para os pacientes realizarem em
                         casa.</p>
+                    <button class="action-btn"
+                        onclick="alert('MOCK AÇÃO: Tela com 214 Exercícios de Pilates Estáticos carregados para prescrição.')"
+                        style="background: #38bdf8; color: #fff; margin-top: 15px;">Nova Prescrição</button>
                 </div>
             </div>
 
@@ -384,6 +389,9 @@
                 <div class="content-card">
                     <h3 class="card-title">Minhas Certificações</h3>
                     <p style="color: #94a3b8;">Gerencie seus diplomas, cursos de especialização e licenças ativas.</p>
+                    <button class="action-btn"
+                        onclick="alert('MOCK AÇÃO: O Upload de Certificado de Licença (Modal Falso) abriria aqui.')"
+                        style="background: #8b5cf6; color: #fff; margin-top: 15px;">Enviar Licença ou Diploma</button>
                 </div>
             </div>
 
@@ -391,8 +399,9 @@
     </div>
 
     <script>
-        const token = localStorage.getItem('token');
-        const role = localStorage.getItem('role');
+        const userName = localStorage.getItem('userName');
+        const role = localStorage.getItem('userRole');
+        const token = localStorage.getItem('jwtToken');
 
         if (!token || role !== 'fisioterapeuta') {
             window.location.href = 'index.html';

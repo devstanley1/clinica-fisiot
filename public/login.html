@@ -91,16 +91,21 @@
         <p>Acesse seu painel com Suas Credenciais.</p>
 
         <form id="loginForm">
-            <div class="form-group">
-                <label>E-mail</label>
-                <input type="email" id="email" required placeholder="Digite seu e-mail">
-            </div>
-            <div class="form-group">
-                <label>Senha</label>
-                <input type="password" id="password" required placeholder="Digite sua senha">
+            <div id="dynamicWarning"
+                style="background: rgba(139, 92, 246, 0.2); color: #c4b5fd; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; border: 1px solid rgba(139, 92, 246, 0.4);">
+                Identificando cargo...
             </div>
 
-            <button type="submit" class="btn-primary btn-full">Autenticar Sistema</button>
+            <div class="form-group" style="display: none;">
+                <label>E-mail</label>
+                <input type="email" id="email" placeholder="Automático" value="fake@email.com">
+            </div>
+            <div class="form-group" style="display: none;">
+                <label>Senha</label>
+                <input type="password" id="password" placeholder="***" value="1234">
+            </div>
+
+            <button type="submit" class="btn-primary btn-full">Entrar</button>
         </form>
 
         <div class="auth-links">
@@ -110,39 +115,29 @@
     </div>
 
     <script>
+        // Captura o cargo e o nome injetados via URL na home
+        const urlParams = new URLSearchParams(window.location.search);
+        let roleAtiva = urlParams.get('role') || 'cliente';
+        let nomeAtivo = urlParams.get('name') || 'Visitante';
+
+        // Atualiza a UI para refletir o usuário interceptado
+        document.getElementById('dynamicWarning').innerText = `Acesso de Demonstração Solicitado:\nCargo: ${roleAtiva.toUpperCase()}`;
+
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value.trim();
 
-            let role = '';
-            let name = '';
+            // Grava nas Chaves MESTRES que as Dashboards usam para validar segurança
+            localStorage.setItem('jwtToken', 'simulated_static_token_777');
+            localStorage.setItem('userRole', roleAtiva);
+            localStorage.setItem('userName', nomeAtivo);
 
-            // Validação 100% Estática (Sem Backend / Supabase)
-            if (email === 'admin@fisiovida.com' && password === 'admin123') {
-                role = 'admin';
-                name = 'Super Administrador';
-            } else if (email === 'fisio@fisiovida.com' && password === 'fisio123') {
-                role = 'fisioterapeuta';
-                name = 'Dr. Fisioterapeuta';
-            } else if (email === 'cliente@fisiovida.com' && password === 'cliente123') {
-                role = 'cliente';
-                name = 'Cliente de Testes';
-            } else {
-                alert('Credenciais inválidas. Tente usar as fornecidas de teste.');
-                return;
-            }
-
-            // Simular o Token de Autenticação "Fake"
-            localStorage.setItem('token', 'simulated_static_token_777');
-            localStorage.setItem('role', role);
-            localStorage.setItem('name', name);
-
-            // Roteamento inteligente simulado
-            if (role === 'admin') {
+            // Roteamento inteligente após armazenamento 
+            if (roleAtiva === 'admin') {
                 window.location.href = 'dashboard-admin.html';
-            } else if (role === 'fisioterapeuta') {
+            } else if (roleAtiva === 'fisioterapeuta') {
                 window.location.href = 'dashboard-fisio.html';
+            } else if (roleAtiva === 'recepcao') {
+                window.location.href = 'dashboard-recepcao.html';
             } else {
                 window.location.href = 'dashboard-cliente.html';
             }

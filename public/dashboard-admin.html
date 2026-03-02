@@ -377,7 +377,9 @@
                     <h3 class="card-title">Fichas de Pacientes</h3>
                     <p style="color: #94a3b8;">Gerenciamento completo das fichas médicas e prontuários que integram ao
                         banco de dados.</p>
-                    <button class="action-btn" style="background: #38bdf8; color: #fff; margin-top: 15px;">+ Novo
+                    <button class="action-btn"
+                        onclick="alert('MOCK AÇÃO: O Modal de Novo Cadastro de Paciente físico abriria agora na tela do Administrador.')"
+                        style="background: #38bdf8; color: #fff; margin-top: 15px;">+ Novo
                         Paciente Presencial</button>
                 </div>
             </div>
@@ -387,6 +389,10 @@
                     <h3 class="card-title">Configurações da Clínica</h3>
                     <p style="color: #94a3b8;">Configure horários de funcionamento, regras de agendamento e gerencie
                         contas de Fisioterapeutas e de Recepção.</p>
+                    <button class="action-btn"
+                        onclick="alert('MOCK AÇÃO: Alterações de negócio salvas no banco de dados temporário.')"
+                        style="background: #10b981; color: #fff; margin-top: 15px;">Aplicar Configurações
+                        Padrão</button>
                 </div>
             </div>
 
@@ -394,8 +400,9 @@
     </div>
 
     <script>
-        const token = localStorage.getItem('token');
-        const role = localStorage.getItem('role');
+        const token = localStorage.getItem('jwtToken');
+        const role = localStorage.getItem('userRole');
+        const userName = localStorage.getItem('userName');
 
         if (!token || role !== 'admin') {
             window.location.href = 'index.html';
