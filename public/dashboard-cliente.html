@@ -53,7 +53,7 @@
 
         .sidebar-header p {
             font-size: 0.8rem;
-            color: #94a3b8;
+            color: #fff;
             margin: 0.5rem 0 0 0;
         }
 
@@ -67,7 +67,7 @@
             padding: 0.8rem 1.5rem;
             display: flex;
             align-items: center;
-            color: #cbd5e1;
+            color: #fff;
             text-decoration: none;
             transition: 0.2s;
             border-left: 3px solid transparent;
@@ -152,7 +152,7 @@
 
         .dashboard-header p {
             margin: 0.5rem 0 0 0;
-            color: #94a3b8;
+            color: #fff;
         }
 
         .header-actions {
@@ -191,7 +191,7 @@
 
         .stat-title {
             font-size: 0.9rem;
-            color: #94a3b8;
+            color: #fff;
             margin-bottom: 0.5rem;
         }
 
@@ -241,7 +241,7 @@
 
         .apt-info p {
             margin: 0;
-            color: #94a3b8;
+            color: #fff;
             font-size: 0.95rem;
         }
 
@@ -353,7 +353,7 @@
             <div class="dashboard-header">
                 <div>
                     <h1>Olá, <span id="userNameText">Paciente</span></h1>
-                    <p style="color: #cbd5e1;">Acompanhe seu tratamento e novas marcações aqui.</p>
+                    <p style="color: #fff;">Acompanhe seu tratamento e novas marcações aqui.</p>
                 </div>
                 <div class="header-actions">
                     <a href="index.html#booking" class="btn-new-apt"><i class="ph ph-plus-circle"></i> Novo
@@ -384,7 +384,7 @@
                     <h3 class="card-title">Agendamentos Futuros</h3>
                     <div class="appointments-list" id="myAppointments">
                         <!-- Injetado via JS -->
-                        <p style="color: #94a3b8;">Carregando histórico particular...</p>
+                        <p style="color: #fff;">Carregando histórico particular...</p>
                     </div>
                 </div>
             </div>
@@ -392,14 +392,14 @@
             <div id="consultas" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Minhas Consultas</h3>
-                    <p style="color: #94a3b8;">Histórico completo de presenças e faltas.</p>
+                    <p style="color: #fff;">Histórico completo de presenças e faltas.</p>
                 </div>
             </div>
 
             <div id="progresso" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Meu Progresso Clínico</h3>
-                    <p style="color: #94a3b8;">Acompanhe a devolução de movimento e ganho de força muscular reportado
+                    <p style="color: #fff;">Acompanhe a devolução de movimento e ganho de força muscular reportado
                         pelo Fisioterapeuta.</p>
                     <button class="action-btn"
                         onclick="alert('MOCK AÇÃO: Gerando gráfico estático de de Reabilitação Articular (Membro Superior Esquerdo).')"
@@ -410,7 +410,7 @@
             <div id="documentos" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Receitas e Laudos</h3>
-                    <p style="color: #94a3b8;">Acesso rápido aos atestados e solicitações de exame.</p>
+                    <p style="color: #fff;">Acesso rápido aos atestados e solicitações de exame.</p>
                     <button class="action-btn"
                         onclick="alert('MOCK AÇÃO: Buscando na nuvem PDF Assinado Certificado Atestado (CRM-PI). Falhou — Arquivo Exemplo!')"
                         style="background: #8b5cf6; color: #fff; margin-top: 15px;">Imprimir Solicitação de
@@ -421,7 +421,7 @@
             <div id="pagamentos" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Faturas e Acertos</h3>
-                    <p style="color: #94a3b8;">Recibos de pagamentos do seu plano Mensal VIP.</p>
+                    <p style="color: #fff;">Recibos de pagamentos do seu plano Mensal VIP.</p>
                     <button class="action-btn"
                         onclick="alert('MOCK AÇÃO: Acessando gateway de pagamento. Status: PAGO (05/03/2026)')"
                         style="background: #10b981; color: #fff; margin-top: 15px;">Baixar Boleto Antigo</button>
@@ -481,7 +481,7 @@
             list.innerHTML = '';
 
             if (data.length === 0) {
-                list.innerHTML = '<p style="color: #94a3b8;">Você não possui nenhum agendamento na FisioVida.</p>';
+                list.innerHTML = '<p style="color: #fff;">Você não possui nenhum agendamento na FisioVida.</p>';
             } else {
                 data.forEach(apt => {
                     let statusTxtColor = apt.status === 'confirmada' ? '#10b981' : '#f59e0b';
@@ -502,7 +502,7 @@
         async function deleteApt(id) {
             if (confirm('Simulação Local: Deseja liberar este horário no sistema?')) {
                 // mock visual
-                document.getElementById('myAppointments').innerHTML = '<p style="color: #94a3b8;">Você Cancelou suas consultas (Modo Visual).</p>';
+                document.getElementById('myAppointments').innerHTML = '<p style="color: #fff;">Você Cancelou suas consultas (Modo Visual).</p>';
             }
         }
 

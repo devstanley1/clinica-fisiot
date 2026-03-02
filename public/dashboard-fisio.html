@@ -53,7 +53,7 @@
 
         .sidebar-header p {
             font-size: 0.8rem;
-            color: #94a3b8;
+            color: #fff;
             margin: 0.5rem 0 0 0;
         }
 
@@ -67,7 +67,7 @@
             padding: 0.8rem 1.5rem;
             display: flex;
             align-items: center;
-            color: #cbd5e1;
+            color: #fff;
             text-decoration: none;
             transition: 0.2s;
             border-left: 3px solid transparent;
@@ -152,7 +152,7 @@
 
         .dashboard-header p {
             margin: 0.5rem 0 0 0;
-            color: #94a3b8;
+            color: #fff;
         }
 
         /* Stats Grid */
@@ -172,7 +172,7 @@
 
         .stat-title {
             font-size: 0.9rem;
-            color: #94a3b8;
+            color: #fff;
             margin-bottom: 0.5rem;
         }
 
@@ -374,7 +374,7 @@
             <div id="prontuarios" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Prontuários Eletrônicos</h3>
-                    <p style="color: #94a3b8;">Acesse o histórico clínico detalhado, laudos e evoluções de cada
+                    <p style="color: #fff;">Acesse o histórico clínico detalhado, laudos e evoluções de cada
                         paciente.</p>
                     <button class="action-btn"
                         onclick="alert('MOCK AÇÃO: Abrindo PDF do Histórico Clínico completo atrelado ao CREFITO.')"
@@ -386,7 +386,7 @@
             <div id="exercicios" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Biblioteca de Exercícios</h3>
-                    <p style="color: #94a3b8;">Crie e prescreva rotinas de exercícios para os pacientes realizarem em
+                    <p style="color: #fff;">Crie e prescreva rotinas de exercícios para os pacientes realizarem em
                         casa.</p>
                     <button class="action-btn"
                         onclick="alert('MOCK AÇÃO: Tela com 214 Exercícios de Pilates Estáticos carregados para prescrição.')"
@@ -397,7 +397,7 @@
             <div id="certificacoes" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Minhas Certificações</h3>
-                    <p style="color: #94a3b8;">Gerencie seus diplomas, cursos de especialização e licenças ativas.</p>
+                    <p style="color: #fff;">Gerencie seus diplomas, cursos de especialização e licenças ativas.</p>
                     <button class="action-btn"
                         onclick="alert('MOCK AÇÃO: O Upload de Certificado de Licença (Modal Falso) abriria aqui.')"
                         style="background: #8b5cf6; color: #fff; margin-top: 15px;">Enviar Licença ou Diploma</button>
@@ -447,10 +447,10 @@
             tbody.innerHTML = '';
 
             data.forEach(apt => {
-                let statusColor = apt.status === 'confirmado' ? '#10b981' : (apt.status === 'em progresso' ? '#f59e0b' : '#94a3b8');
+                let statusColor = apt.status === 'confirmado' ? '#10b981' : (apt.status === 'em progresso' ? '#f59e0b' : '#fff');
                 tbody.innerHTML += `
                     <tr>
-                        <td style="color:#94a3b8">#${apt.id}</td>
+                        <td style="color:#fff">#${apt.id}</td>
                         <td><strong>${apt.clientName}</strong></td>
                         <td>${apt.service}</td>
                         <td>${apt.date}</td>

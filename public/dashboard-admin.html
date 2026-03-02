@@ -53,7 +53,7 @@
 
         .sidebar-header p {
             font-size: 0.8rem;
-            color: #94a3b8;
+            color: #fff;
             margin: 0.5rem 0 0 0;
         }
 
@@ -67,7 +67,7 @@
             padding: 0.8rem 1.5rem;
             display: flex;
             align-items: center;
-            color: #cbd5e1;
+            color: #fff;
             text-decoration: none;
             transition: 0.2s;
             border-left: 3px solid transparent;
@@ -152,7 +152,7 @@
 
         .dashboard-header p {
             margin: 0.5rem 0 0 0;
-            color: #94a3b8;
+            color: #fff;
         }
 
         /* Stats Grid */
@@ -172,7 +172,7 @@
 
         .stat-title {
             font-size: 0.9rem;
-            color: #94a3b8;
+            color: #fff;
             margin-bottom: 0.5rem;
         }
 
@@ -326,7 +326,7 @@
             <div class="dashboard-header">
                 <div>
                     <h1 id="userNameText">Olá, Administrador</h1>
-                    <p style="color: #cbd5e1;">Gestão Total de Consultas e Relatórios do Dia.</p>
+                    <p style="color: #fff;">Gestão Total de Consultas e Relatórios do Dia.</p>
                 </div>
             </div>
 
@@ -373,7 +373,7 @@
             <div id="agenda" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Agenda Completa</h3>
-                    <p style="color: #94a3b8;">Veja todo o calendário da clínica em um relance.</p>
+                    <p style="color: #fff;">Veja todo o calendário da clínica em um relance.</p>
                     <div
                         style="background: rgba(255,255,255,0.02); height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #64748b; margin-top: 20px; border: 1px dashed rgba(255,255,255,0.1);">
                         Visualização de Calendário interativa (Em desenvolvimento)
@@ -384,7 +384,7 @@
             <div id="pacientes" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Fichas de Pacientes</h3>
-                    <p style="color: #94a3b8;">Gerenciamento completo das fichas médicas e prontuários que integram ao
+                    <p style="color: #fff;">Gerenciamento completo das fichas médicas e prontuários que integram ao
                         banco de dados.</p>
                     <button class="action-btn"
                         onclick="alert('MOCK AÇÃO: O Modal de Novo Cadastro de Paciente físico abriria agora na tela do Administrador.')"
@@ -396,7 +396,7 @@
             <div id="config" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Configurações da Clínica</h3>
-                    <p style="color: #94a3b8;">Configure horários de funcionamento, regras de agendamento e gerencie
+                    <p style="color: #fff;">Configure horários de funcionamento, regras de agendamento e gerencie
                         contas de Fisioterapeutas e de Recepção.</p>
                     <button class="action-btn"
                         onclick="alert('MOCK AÇÃO: Alterações de negócio salvas no banco de dados temporário.')"
@@ -461,10 +461,10 @@
             tbody.innerHTML = '';
 
             data.forEach(apt => {
-                let statusColor = apt.status === 'agendado' ? '#38bdf8' : '#94a3b8';
+                let statusColor = apt.status === 'agendado' ? '#38bdf8' : '#fff';
                 tbody.innerHTML += `
                     <tr>
-                        <td style="color:#94a3b8">#${apt.id}</td>
+                        <td style="color:#fff">#${apt.id}</td>
                         <td><strong>${apt.clientName}</strong></td>
                         <td>${apt.service}</td>
                         <td>${apt.date}</td>
