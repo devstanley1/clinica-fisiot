@@ -31,7 +31,6 @@
             -webkit-backdrop-filter: blur(16px);
             display: flex;
             flex-direction: column;
-            transition: 0.3s ease;
             position: fixed;
             height: 100vh;
             z-index: 100;
@@ -145,7 +144,7 @@
             flex: 1;
             margin-left: 260px;
             padding: 30px 40px;
-            transition: 0.3s ease;
+            width: calc(100% - 260px);
         }
 
         .topbar {
@@ -285,8 +284,14 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
             .sidebar {
                 transform: translateX(-100%);
+                width: 280px;
+                transition: transform 0.3s ease;
             }
 
             .sidebar.active {
@@ -296,21 +301,29 @@
             .main-content {
                 margin-left: 0;
                 padding: 20px;
+                width: 100%;
             }
 
             .menu-toggle {
                 display: block;
-            }
-
-            .appointments-table {
-                display: block;
-                overflow-x: auto;
+                background: #1e293b;
+                width: 100%;
+                text-align: right;
+                padding: 15px 20px;
+                position: sticky;
+                top: 0;
+                z-index: 99;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="ph ph-list"></i>
+    </button>
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">

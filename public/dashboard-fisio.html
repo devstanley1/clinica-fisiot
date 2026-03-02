@@ -19,7 +19,6 @@
         .app-container {
             display: flex;
             min-height: 100vh;
-            flex-direction: column;
         }
 
         /* Sidebar Styles */
@@ -34,7 +33,6 @@
             position: fixed;
             height: 100vh;
             z-index: 100;
-            transition: transform 0.3s ease;
         }
 
         .sidebar-header {
@@ -111,10 +109,11 @@
 
         /* Main Content */
         .main-content {
-            flex-grow: 1;
+            flex: 1;
             margin-left: 250px;
             padding: 2rem;
             overflow-y: auto;
+            width: calc(100% - 250px);
         }
 
         .mobile-header {
@@ -259,8 +258,14 @@
         }
 
         @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+
             .sidebar {
                 transform: translateX(-100%);
+                width: 280px;
+                transition: transform 0.3s ease;
             }
 
             .sidebar.active {
@@ -270,6 +275,7 @@
             .main-content {
                 margin-left: 0;
                 padding: 1rem;
+                width: 100%;
             }
 
             .mobile-header {
