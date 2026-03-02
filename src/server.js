@@ -23,6 +23,11 @@ app.use(express.json());
 const publicDir = path.join(__dirname, '../public');
 app.use(express.static(publicDir));
 
+// Forçar Arquivo de Login ser a Homepage (Raiz)
+app.get('/', (req, res) => {
+  res.redirect('/login.html');
+});
+
 // Rotas da API
 app.use('/api/auth', authRoutes);
 app.use('/api/appointments', appointmentsRoutes);
