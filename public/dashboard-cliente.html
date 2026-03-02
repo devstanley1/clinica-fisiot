@@ -332,16 +332,8 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" onclick="switchTab('inicio', this)"><span><i
-                            class="ph ph-house"></i></span> Início</a>
-                <a href="#" class="nav-item" onclick="switchTab('consultas', this)"><span><i
-                            class="ph ph-calendar-blank"></i></span> Minhas Consultas</a>
-                <a href="#" class="nav-item" onclick="switchTab('progresso', this)"><span><i
-                            class="ph ph-trend-up"></i></span> Meu Progresso</a>
-                <a href="#" class="nav-item" onclick="switchTab('documentos', this)"><span><i
-                            class="ph ph-file-text"></i></span> Documentos</a>
-                <a href="#" class="nav-item" onclick="switchTab('pagamentos', this)"><span><i
-                            class="ph ph-credit-card"></i></span> Pagamentos</a>
+                <a href="#" class="nav-item active" onclick="switchTab('consultas', this)"><span><i class="ph ph-calendar-blank"></i></span> Minhas Consultas</a>
+                <a href="index.html#agendamento" class="nav-item"><span><i class="ph ph-plus-circle"></i></span> Nova Consulta</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -353,46 +345,19 @@
 
         <!-- Wrapper de Conteúdo Principal -->
         <div class="main-content">
-            <div class="dashboard-header">
-                <div>
-                    <h1>Olá, <span id="userNameText">Paciente</span></h1>
-                    <p style="color: #fff;">Acompanhe seu tratamento e novas marcações aqui.</p>
-                </div>
-                <div class="header-actions">
-                    <a href="index.html#booking" class="btn-new-apt"><i class="ph ph-plus-circle"></i> Novo
-                        Agendamento</a>
-                </div>
+        <div class="dashboard-header">
+            <div>
+                <h2 style="color: #ffffff; margin: 0;">Bem-vindo(a), <span id="userNameText">Paciente</span> 👋</h2>
+                <p>Aqui estão suas consultas realizadas e futuras.</p>
             </div>
-
-            <!-- Área de Tabs -->
-            <div id="inicio" class="tab-content active">
-                <!-- Dashboard Widgets -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-title">Próxima Consulta</div>
-                        <div class="stat-value" style="font-size: 1.5rem; color:#10b981;">22 de Mar</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-title">Sessões Concluídas</div>
-                        <div class="stat-value">12</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-title">Plano Ativo</div>
-                        <div class="stat-value" style="color:#fcd34d;">Mensal VIP</div>
-                    </div>
-                </div>
-
-                <!-- Histórico do Paciente Restaurado -->
-                <div class="content-card">
-                    <h3 class="card-title">Agendamentos Futuros</h3>
-                    <div class="appointments-list" id="myAppointments">
-                        <!-- Injetado via JS -->
-                        <p style="color: #fff;">Carregando histórico particular...</p>
-                    </div>
-                </div>
+            <div class="header-actions">
+                <a href="index.html#agendamento" class="btn-new-apt">+ Nova Consulta</a>
             </div>
+        </div>
 
-            <div id="consultas" class="tab-content">
+        <div class="dashboard-content">
+
+            <div id="consultas" class="tab-content active">
                 <div class="content-card" style="overflow-x: auto;">
                     <h3 class="card-title">Minhas Consultas</h3>
                     <p style="color: #fff;">Histórico completo de presenças e faltas.</p>
@@ -432,76 +397,8 @@
                 </div>
             </div>
 
-            <div id="progresso" class="tab-content">
-                <div class="content-card">
-                    <h3 class="card-title">Meu Progresso Clínico</h3>
-                    <p style="color: #fff;">Acompanhe a devolução de movimento e ganho de força muscular reportado pelo Fisioterapeuta.</p>
-                    <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #fff; margin-top: 15px; padding: 10px 20px;" onclick="alert('Gerando exportação de relatório PDF Evolutivo do CREFITO..')"><i class="ph ph-download-simple" style="vertical-align: middle; margin-right: 5px;"></i>Salvar Relatório Físico</button>
-                    
-                    <div style="margin-top: 25px; display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
-                        
-                        <div style="background:rgba(255,255,255,0.03); padding:20px; border-radius:12px; border: 1px solid rgba(255,255,255,0.05);">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                                <h4 style="margin:0; color:#38bdf8; font-size: 1.1rem;"><i class="ph ph-activity" style="vertical-align: middle; margin-right: 5px;"></i>Força Muscular (Core)</h4>
-                                <span style="color:#fff; font-weight: 600;">75%</span>
-                            </div>
-                            <div style="width:100%; background:rgba(0,0,0,0.4); height:12px; border-radius:6px; overflow:hidden;">
-                                <div style="width:75%; background:linear-gradient(90deg, #0284c7, #38bdf8); height:100%; border-radius:6px;"></div>
-                            </div>
-                            <p style="color:#cbd5e1; font-size: 0.9rem; margin-top:10px; margin-bottom: 0;">O paciente recuperou a instabilidade primária com sucesso, focando agora na hipertrofia.</p>
-                        </div>
-                        
-                        <div style="background:rgba(255,255,255,0.03); padding:20px; border-radius:12px; border: 1px solid rgba(255,255,255,0.05);">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                                <h4 style="margin:0; color:#10b981; font-size: 1.1rem;"><i class="ph ph-person-arms-spread" style="vertical-align: middle; margin-right: 5px;"></i>Mobilidade Cervical</h4>
-                                <span style="color:#fff; font-weight: 600;">100%</span>
-                            </div>
-                            <div style="width:100%; background:rgba(0,0,0,0.4); height:12px; border-radius:6px; overflow:hidden;">
-                                <div style="width:100%; background:linear-gradient(90deg, #059669, #10b981); height:100%; border-radius:6px;"></div>
-                            </div>
-                            <p style="color:#cbd5e1; font-size: 0.9rem; margin-top:10px; margin-bottom: 0;">Meta de Reabilitação Concluída (Alta concedida). Retorno funcional total.</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-                            <small style="color:#cbd5e1; display:block; margin-top:5px;">Avanço de 75% da meta estabelecida.</small>
-                        </div>
-                        <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:8px;">
-                            <h4 style="margin:0 0 10px 0; color:#10b981;">Mobilidade Cervical</h4>
-                            <div style="width:100%; background:rgba(0,0,0,0.3); height:10px; border-radius:5px; overflow:hidden;">
-                                <div style="width:100%; background:#10b981; height:100%;"></div>
-                            </div>
-                            <small style="color:#cbd5e1; display:block; margin-top:5px;">Meta de Reabilitação Concluída (Alta)</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="documentos" class="tab-content">
-                <div class="content-card">
-                    <h3 class="card-title">Receitas e Laudos</h3>
-                    <p style="color: #fff;">Acesso rápido aos atestados e solicitações de exame.</p>
-                    <button class="action-btn"
-                        onclick="alert('MOCK A�!ÒO: Buscando na nuvem PDF Assinado Certificado Atestado (CRM-PI). Falhou � Arquivo Exemplo!')"
-                        style="background: #8b5cf6; color: #fff; margin-top: 15px;">Imprimir Solicitação de
-                        Raio-X</button>
-                </div>
-            </div>
-
-            <div id="pagamentos" class="tab-content">
-                <div class="content-card">
-                    <h3 class="card-title">Faturas e Acertos</h3>
-                    <p style="color: #fff;">Recibos de pagamentos do seu plano Mensal VIP.</p>
-                    <button class="action-btn"
-                        onclick="alert('MOCK A�!ÒO: Acessando gateway de pagamento. Status: PAGO (05/03/2026)')"
-                        style="background: #10b981; color: #fff; margin-top: 15px;">Baixar Boleto Antigo</button>
-                </div>
-            </div>
-
         </div>
     </div>
-
     <script>
         const token = localStorage.getItem('jwtToken');
         const role = localStorage.getItem('userRole');

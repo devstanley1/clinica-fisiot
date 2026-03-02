@@ -316,15 +316,14 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" onclick="switchTab('visao-geral', this)"><span><i
-                            class="ph ph-chart-bar"></i></span> Visão
-                    Geral</a>
-                <a href="#" class="nav-item" onclick="switchTab('agenda', this)"><span><i
-                            class="ph ph-calendar-blank"></i></span> Agenda Completa</a>
-                <a href="#" class="nav-item" onclick="switchTab('pacientes', this)"><span><i
-                            class="ph ph-users"></i></span> Pacientes</a>
-                <a href="#" class="nav-item" onclick="switchTab('config', this)"><span><i class="ph ph-gear"></i></span>
-                    Configurações</a>
+                <a href="#" class="nav-item active" onclick="switchTab('visaoGeral', this)"><span><i class="ph ph-house"></i></span> Visão Geral</a>
+                <a href="#" class="nav-item" onclick="switchTab('agendamentos', this)"><span><i class="ph ph-calendar-plus"></i></span> Agendamentos</a>
+                <a href="#" class="nav-item" onclick="switchTab('especialistas', this)"><span><i class="ph ph-stethoscope"></i></span> Especialistas</a>
+                <a href="#" class="nav-item" onclick="switchTab('pacientesAdmin', this)"><span><i class="ph ph-users"></i></span> Pacientes</a>
+                <a href="#" class="nav-item" onclick="switchTab('prontuariosAdmin', this)"><span><i class="ph ph-file-text"></i></span> Prontuários</a>
+                <a href="#" class="nav-item" onclick="switchTab('financeiro', this)"><span><i class="ph ph-currency-dollar"></i></span> Financeiro</a>
+                <a href="#" class="nav-item" onclick="switchTab('relatoriosAdmin', this)"><span><i class="ph ph-chart-bar"></i></span> Relatórios</a>
+                <a href="#" class="nav-item" onclick="switchTab('config', this)"><span><i class="ph ph-gear"></i></span> Configurações</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -337,111 +336,139 @@
         <!-- Wrapper de Conteúdo Principal -->
         <!-- Wrapper de Conteúdo Principal -->
         <div class="main-content">
-            <div class="dashboard-header">
-                <div>
-                    <h1 id="userNameText">Olá, Administrador</h1>
-                    <p style="color: #fff;">Gestão Total de Consultas e Relatórios do Dia.</p>
+        <div class="dashboard-header">
+            <div>
+                <h2 style="color: #ffffff; margin: 0;">Painel de Gestão (Admin)</h2>
+                <p>Controle absoluto sobre a clínica FisioVida.</p>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+
+            <div id="visaoGeral" class="tab-content active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 class="stat-title">Consultas Hoje</h3>
+                        <p class="stat-value text-white">42</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-title">Faturamento Diário</h3>
+                        <p class="stat-value text-white">R$ 3.450</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-title">Novos Pacientes</h3>
+                        <p class="stat-value text-white">5</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Área de Tabs -->
-            <div id="visao-geral" class="tab-content active">
-                <!-- Dashboard Widgets (Novidade Funcional) -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-title">Consultas Hoje</div>
-                        <div class="stat-value">24</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-title">Novos Pacientes</div>
-                        <div class="stat-value">5</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-title">Taxa de Presença</div>
-                        <div class="stat-value">92%</div>
-                    </div>
-                </div>
-
-                <!-- Tabela de Dados Restaurada -->
-                <div class="content-card">
-                    <h3 class="card-title">Grade Atual de Agendamentos</h3>
-                    <table class="appointments-table" id="adminTable">
-                        <thead>
+            <div id="agendamentos" class="tab-content">
+                <div class="content-card" style="overflow-x: auto;">
+                    <h3 class="card-title">Log de Agendamentos Globais</h3>
+                    <p style="color: #fff;">Monitore e force a remarcação de horários conflitantes.</p>
+                    <table class="appointments-table" style="margin-top: 20px; min-width: 600px;">
+                        <thead style="background: rgba(255,255,255,0.05);">
                             <tr>
-                                <th>Nº Cód.</th>
                                 <th>Paciente</th>
-                                <th>Serviço Solicitado</th>
-                                <th>Data</th>
-                                <th>Horário</th>
+                                <th>Profissional</th>
+                                <th>Data e Hora</th>
                                 <th>Status</th>
-                                <th>Ações Administrativas</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Injetado via JS -->
+                            <tr>
+                                <td>Marcos Silva</td>
+                                <td>Dra. Beatriz</td>
+                                <td>24/02 ás 14:00</td>
+                                <td><span style="color:#10b981;">Confirmado</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div id="agenda" class="tab-content">
-                <div class="content-card" style="overflow-x: auto;">
-                    <h3 class="card-title">Agenda Completa</h3>
-                    <p style="color: #fff;">Veja todo o calendário da clínica em um relance.</p>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 20px; text-align: center;">
-                        <div style="background: rgba(255,255,255,0.05); padding: 15px 10px; border-radius: 8px; color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Dom</strong><small style="margin-top:5px; color:#cbd5e1;">Livre</small></div>
-                        <div style="background: rgba(56, 189, 248, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Seg</strong><small style="margin-top:5px; color:#38bdf8; font-weight:600;">14 Agendamentos</small></div>
-                        <div style="background: rgba(56, 189, 248, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Ter</strong><small style="margin-top:5px; color:#38bdf8; font-weight:600;">20 Agendamentos</small></div>
-                        <div style="background: rgba(56, 189, 248, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Qua</strong><small style="margin-top:5px; color:#38bdf8; font-weight:600;">18 Agendamentos</small></div>
-                        <div style="background: rgba(56, 189, 248, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Qui</strong><small style="margin-top:5px; color:#38bdf8; font-weight:600;">22 Agendamentos</small></div>
-                        <div style="background: rgba(16, 185, 129, 0.15); padding: 15px 10px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.4); color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Sex</strong><small style="margin-top:5px; color:#10b981; font-weight:600;">5 Agendamentos</small></div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 15px 10px; border-radius: 8px; color: #fff; display: flex; flex-direction: column; justify-content: center;"><strong>Sáb</strong><small style="margin-top:5px; color:#cbd5e1;">Fechado</small></div>
-                    </div>
-                </div>
-            </div>
+            <div id="especialistas" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Quadro de Especialistas e Equipe</h3>
+                    <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); color: #fff; margin-bottom: 15px;" onclick="alert('Abrindo modal Cadastro de Médico / Fisio')">+ Novo Colaborador</button>
+                    <table class="appointments-table" style="min-width: 600px;">
+                        <thead style="background: rgba(255,255,255,0.05);"><tr><th>Nome</th><th>Cargo/Especialidade</th><th>Disponibilidade</th></tr></thead>
+                        <tbody>
+                            <tr><td>Dra. Beatriz L.</td><td>Quiropraxia / Traumato</td><td><span style="color:#10b981;">Disponível (Plantão)</span></td></tr>
+                            <tr><td>Dr. Roberto C.</td><td>Pilates e Correção</td><td><span style="color:#f59e0b;">Em Atendimento</span></td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div id="pacientes" class="tab-content">
-                <div class="content-card" style="overflow-x: auto;">
-                    <h3 class="card-title">Fichas de Pacientes</h3>
-                    <p style="color: #fff;">Gerenciamento completo das fichas médicas e prontuários que integram ao banco de dados.</p>
-                    <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #fff; margin-top: 15px; padding: 10px 20px; transition: 0.3s;" onmouseover="this.style.background='#38bdf8'; this.style.color='#000';" onmouseout="this.style.background='rgba(56, 189, 248, 0.2)'; this.style.color='#fff';" onclick="alert('Ação Simulada: Inicializando Formulário de Cadastro Físico')">+ Novo Paciente Presencial</button>
-                    <div style="overflow-x: auto; width: 100%; margin-top: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                        <table class="appointments-table" style="width: 100%; border-collapse: collapse; min-width: 600px;">
-                            <thead style="background: rgba(255,255,255,0.05);">
-                                <tr>
-                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Nome</th>
-                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">CPF</th>
-                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Telefone</th>
-                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Plano</th>
-                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">João Silva</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">111.222.333-44</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">(11) 99999-9999</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Unimed</span></td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><button class="action-btn" style="background: rgba(139, 92, 246, 0.4); color: #fff; padding: 6px 12px; font-size: 0.8rem;" onclick="alert('Visualização da Ficha Completa!')">Ver Ficha</button></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">Maria Mendonça</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">222.333.444-55</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">(11) 98888-8888</td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">Mensal VIP</span></td>
-                                    <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);"><button class="action-btn" style="background: rgba(139, 92, 246, 0.4); color: #fff; padding: 6px 12px; font-size: 0.8rem;" onclick="alert('Visualização da Ficha Completa!')">Ver Ficha</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <div id="pacientesAdmin" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Banco CRM de Pacientes</h3>
+                    <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); color: #fff; margin-bottom: 15px;" onclick="alert('Iniciando cadastro faturamento/recepção')">+ Adicionar Paciente</button>
+                    <table class="appointments-table">
+                        <thead style="background: rgba(255,255,255,0.05);"><tr><th>Nome Completo</th><th>Assinatura / Convênio</th><th>Registrado Em</th></tr></thead>
+                        <tbody>
+                            <tr><td>Luísa Moreira Santos</td><td>Unimed Nacional</td><td>12/10/2025</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="prontuariosAdmin" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Auditoria de Prontuários (Admin)</h3>
+                    <p style="color: #fff;">Gestores só possuem direito de leitura dos CID's submetidos para faturamento do convênio.</p>
+                    <ul style="list-style:none; padding:0; margin-top:20px; color:#cbd5e1; display:flex; flex-direction:column; gap:10px;">
+                        <li style="padding:15px; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center;">
+                            <span>#4819 - Sessão Quiropraxia (Convênio Faturado)</span>
+                            <button class="action-btn" style="background: rgba(255,255,255, 0.1); color: #fff;" onclick="alert('Exportando XML de Faturamento ONS')">Verificar CID Faturamento</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="financeiro" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Fluxo de Caixa (Financeiro)</h3>
+                    <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 20px;">
+                        <div style="background:rgba(16, 185, 129, 0.1); border:1px solid #10b981; padding:15px; border-radius:8px;">
+                            <h4 style="margin:0; color:#10b981;">Entradas (Mês)</h4>
+                            <p style="font-size:1.5rem; font-weight:bold; color:#fff; margin:5px 0 0 0;">R$ 48.560,00</p>
+                        </div>
+                        <div style="background:rgba(239, 68, 68, 0.1); border:1px solid #ef4444; padding:15px; border-radius:8px;">
+                            <h4 style="margin:0; color:#ef4444;">Saídas Preditivas</h4>
+                            <p style="font-size:1.5rem; font-weight:bold; color:#fff; margin:5px 0 0 0;">R$ 15.200,00</p>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <div id="relatoriosAdmin" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Modelos Analíticos e Relatórios</h3>
+                    <p style="color: #fff;">Extraia informações financeiras ou de performance por Especialista.</p>
+                    <div style="display:flex; gap: 15px; margin-top: 15px;">
+                        <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); border:1px solid #38bdf8; color: #fff;" onclick="alert('MOCK PDF BAixado: Resumo de Performance Anual da Clínica')">Performance (CSV)</button>
+                        <button class="action-btn" style="background: rgba(16, 185, 129, 0.2); border:1px solid #10b981; color: #fff;" onclick="alert('Nota Fiscais compiladas para contador.')">DRE Fiscal (PDF)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="config" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Configurações Gerais</h3>
+                    <form style="margin-top: 20px; display: grid; gap: 15px;" onsubmit="event.preventDefault(); alert('Configurações Salvas no DB Geral');">
+                        <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px;">
+                            <label style="color: #cbd5e1; display: block; margin-bottom: 8px;">Nome Fantasia Emissão</label>
+                            <input type="text" value="FisioVida Reabilitação LTDA" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff;">
+                        </div>
+                        <button class="action-btn" type="submit" style="background: #10b981; color: #fff; padding: 12px 30px; border-radius:8px;">Salvar Ajustes do Servidor</button>
+                    </form>
                 </div>
             </div>
 
         </div>
     </div>
-
     <script>
         const token = localStorage.getItem('jwtToken');
         const role = localStorage.getItem('userRole');

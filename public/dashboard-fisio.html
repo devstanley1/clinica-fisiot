@@ -298,16 +298,10 @@
             </div>
 
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" onclick="switchTab('resumo', this)"><span><i
-                            class="ph ph-chart-line-up"></i></span> Resumo do
-                    Dia</a>
-                <a href="#" class="nav-item" onclick="switchTab('prontuarios', this)"><span><i
-                            class="ph ph-clipboard-text"></i></span> Prontuários</a>
-                <a href="#" class="nav-item" onclick="switchTab('exercicios', this)"><span><i
-                            class="ph ph-barbell"></i></span> Exercícios</a>
-                <a href="#" class="nav-item" onclick="switchTab('certificacoes', this)"><span><i
-                            class="ph ph-graduation-cap"></i></span>
-                    Certificações</a>
+                <a href="#" class="nav-item active" onclick="switchTab('dashOverview', this)"><span><i class="ph ph-house"></i></span> Visão Geral</a>
+                <a href="#" class="nav-item" onclick="switchTab('pacientes', this)"><span><i class="ph ph-users"></i></span> Pacientes</a>
+                <a href="#" class="nav-item" onclick="switchTab('prontuarios', this)"><span><i class="ph ph-file-text"></i></span> Prontuários</a>
+                <a href="#" class="nav-item" onclick="switchTab('relatorios', this)"><span><i class="ph ph-chart-line-up"></i></span> Relatórios</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -327,80 +321,121 @@
         </div>
 
         <div class="main-content">
-            <div class="dashboard-header">
-                <div>
-                    <h1>Bem-vindo, Doutor(a)</h1>
-                    <p>Seus atendimentos e histórico clínico de pacientes.</p>
-                </div>
+        <div class="dashboard-header">
+            <div>
+                <h2 style="color: #ffffff; margin: 0;">Bem-vindo, <span id="userNameText">Especialista</span> 👋</h2>
+                <p>Aqui está o seu painel de atendimento e progresso.</p>
             </div>
+        </div>
 
-            <!-- Área de Tabs -->
-            <div id="resumo" class="tab-content active">
-                <!-- Dashboard Widgets -->
+        <div class="dashboard-content">
+
+            <div id="dashOverview" class="tab-content active">
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-title">Pacientes Hoje</div>
-                        <div class="stat-value">6</div>
+                        <h3 class="stat-title">Atendimentos Hoje</h3>
+                        <p class="stat-value">8</p>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-title">Atendimentos na Semana</div>
-                        <div class="stat-value">32</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-title">Avaliações Médias</div>
-                        <div class="stat-value">⭐ 4.9</div>
+                        <h3 class="stat-title">Pacientes Ativos</h3>
+                        <p class="stat-value">25</p>
                     </div>
                 </div>
-
-                <!-- Tabela de Dados Restaurada -->
                 <div class="content-card">
-                    <h3 class="card-title">Pacientes Marcados (Visão Clínica)</h3>
-                    <table class="appointments-table" id="fisioTable">
-                        <thead>
+                    <h3 class="card-title">Próximas Sessões</h3>
+                    <p style="color: #fff;">Lista de pacientes agendados para hoje.</p>
+                    <table class="appointments-table" style="margin-top: 20px;">
+                        <thead style="background: rgba(255,255,255,0.02);">
                             <tr>
-                                <th>ID</th>
                                 <th>Paciente</th>
-                                <th>Motivo / Tratamento</th>
-                                <th>Data</th>
-                                <th>Hora</th>
-                                <th>Status (Clínico)</th>
-                                <th>Intervenção</th>
+                                <th>Horário</th>
+                                <th>Serviço</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Injetado via JS -->
+                            <tr>
+                                <td>Luísa Moreira</td>
+                                <td>14:00</td>
+                                <td>Sessão Focada RPG</td>
+                                <td><span style="color:#f59e0b;">Aguardando Recepção</span></td>
+                            </tr>
+                            <tr>
+                                <td>Thiago Neves</td>
+                                <td>15:30</td>
+                                <td>Recuperação Muscular</td>
+                                <td><span style="color:#10b981;">Em Preparo</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
+            <div id="pacientes" class="tab-content">
+                <div class="content-card" style="overflow-x: auto;">
+                    <h3 class="card-title">Lista de Pacientes Fictícios</h3>
+                    <p style="color: #fff;">Sua carteira ativa de clientes em reabilitação.</p>
+                    <div style="overflow-x: auto; width: 100%; margin-top: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                        <table class="appointments-table" style="width: 100%; min-width: 600px;">
+                            <thead style="background: rgba(255,255,255,0.05);">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Contato</th>
+                                    <th>Diagnóstico Inicial</th>
+                                    <th>Última Visita</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ana Luiza Fontes</td>
+                                    <td>(11) 98765-4321</td>
+                                    <td>Lombalgia Crônica</td>
+                                    <td>10/02/2026</td>
+                                </tr>
+                                <tr>
+                                    <td>Pedro Alcântara</td>
+                                    <td>(21) 99887-6655</td>
+                                    <td>Tendinite Ombro Direito</td>
+                                    <td>15/02/2026</td>
+                                </tr>
+                                <tr>
+                                    <td>Sônia Batista</td>
+                                    <td>(86) 99988-7766</td>
+                                    <td>Pós Ope. LCA</td>
+                                    <td>Hoje</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <div id="prontuarios" class="tab-content">
                 <div class="content-card">
-                    <h3 class="card-title">Prontuários Eletrônicos</h3>
-                    <p style="color: #fff;">Acesse o histórico clínico detalhado, laudos e evoluções de cada paciente.</p>
+                    <h3 class="card-title">Acesso Rápido a Prontuários</h3>
                     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap: wrap;">
-                        <input type="text" placeholder="Buscar por Nome ou CPF..." style="padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; flex:1 1 250px; box-sizing: border-box; font-family:'Outfit',sans-serif;">
-                        <button class="action-btn" style="background:rgba(16, 185, 129, 0.3); border: 1px solid #10b981; color:#fff; padding:12px 25px; flex:0 0 auto; box-sizing: border-box;">Buscar</button>
+                        <input type="text" placeholder="Buscar prontuário do paciente..." style="padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; flex:1 1 250px; font-family:'Outfit',sans-serif;">
+                        <button class="action-btn" style="background:rgba(16, 185, 129, 0.3); border: 1px solid #10b981; color:#fff; padding:12px 25px;" onclick="alert('Buscando Prontuário...')">Buscar</button>
                     </div>
-                    <div style="margin-top:25px; background:rgba(255,255,255,0.03); padding:20px; border-radius:8px; border: 1px solid rgba(255,255,255,0.05);">
-                        <h4 style="margin-top:0; color:#38bdf8; font-size:1.1rem; margin-bottom: 15px;">Últimos Prontuários Acessados</h4>
-                        <ul style="list-style:none; padding:0; margin:0; color:#cbd5e1; display:flex; flex-direction:column; gap:10px;">
-                            <li style="padding:12px 15px; border-radius: 6px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                                <span><strong style="color:#fff;">João Silva</strong> - Pós-operatório Joelho</span>
-                                <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #fff; padding: 6px 12px; font-size:0.85rem;" onclick="alert('Histórico Clínico Baixado!')">Ler Prontuário</button>
-                            </li>
-                            <li style="padding:12px 15px; border-radius: 6px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                                <span><strong style="color:#fff;">Maria Mendonça</strong> - Lombalgia Crônica</span>
-                                <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); border: 1px solid #38bdf8; color: #fff; padding: 6px 12px; font-size:0.85rem;" onclick="alert('Histórico Clínico Baixado!')">Ler Prontuário</button>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul style="list-style:none; padding:0; margin-top:20px; color:#cbd5e1; display:flex; flex-direction:column; gap:10px;">
+                        <li style="padding:15px; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center;">
+                            <span><strong style="color:#fff;">Prontuário #4421</strong> - Ana Luiza Fontes</span>
+                            <button class="action-btn" style="background: rgba(56, 189, 248, 0.2); color: #fff; border:1px solid #38bdf8;" onclick="alert('Abrindo Histórico de Evolução.')">Abrir Ficha Clínica</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="relatorios" class="tab-content">
+                <div class="content-card">
+                    <h3 class="card-title">Relatórios de Alta Médica</h3>
+                    <p style="color: #fff;">Gere relatórios estendidos para apresentar ao CRM ou outros médicos responsáveis.</p>
+                    <button class="action-btn" style="background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; color: #fff; margin-top: 15px; padding: 10px 20px;" onclick="alert('Gerando PDF Completo Analítico...')"><i class="ph ph-file-pdf"></i> Exportar Desempenho (Mês Atual)</button>
                 </div>
             </div>
 
         </div>
     </div>
-
     <script>
         const userName = localStorage.getItem('userName');
         const role = localStorage.getItem('userRole');
