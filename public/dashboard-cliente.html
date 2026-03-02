@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+�<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -13,7 +13,7 @@
             margin: 0;
             font-family: 'Outfit', sans-serif;
             background: #0f172a;
-            color: #f8fafc;
+            color: #ffffff;
         }
 
         .app-container {
@@ -309,6 +309,9 @@
                 display: flex;
             }
         }
+    
+        /* Override global de cor */
+        th, td, p, h1, h2, h3, h4, .stat-title, .nav-item, .sidebar-header p { color: #ffffff !important; }
     </style>
 </head>
 
@@ -402,7 +405,7 @@
                     <p style="color: #fff;">Acompanhe a devolução de movimento e ganho de força muscular reportado
                         pelo Fisioterapeuta.</p>
                     <button class="action-btn"
-                        onclick="alert('MOCK AÇÃO: Gerando gráfico estático de de Reabilitação Articular (Membro Superior Esquerdo).')"
+                        onclick="alert('MOCK A�!ÒO: Gerando gráfico estático de de Reabilitação Articular (Membro Superior Esquerdo).')"
                         style="background: #38bdf8; color: #fff; margin-top: 15px;">Ver Gráfico Evolutivo</button>
                 </div>
             </div>
@@ -412,7 +415,7 @@
                     <h3 class="card-title">Receitas e Laudos</h3>
                     <p style="color: #fff;">Acesso rápido aos atestados e solicitações de exame.</p>
                     <button class="action-btn"
-                        onclick="alert('MOCK AÇÃO: Buscando na nuvem PDF Assinado Certificado Atestado (CRM-PI). Falhou — Arquivo Exemplo!')"
+                        onclick="alert('MOCK A�!ÒO: Buscando na nuvem PDF Assinado Certificado Atestado (CRM-PI). Falhou � Arquivo Exemplo!')"
                         style="background: #8b5cf6; color: #fff; margin-top: 15px;">Imprimir Solicitação de
                         Raio-X</button>
                 </div>
@@ -423,7 +426,7 @@
                     <h3 class="card-title">Faturas e Acertos</h3>
                     <p style="color: #fff;">Recibos de pagamentos do seu plano Mensal VIP.</p>
                     <button class="action-btn"
-                        onclick="alert('MOCK AÇÃO: Acessando gateway de pagamento. Status: PAGO (05/03/2026)')"
+                        onclick="alert('MOCK A�!ÒO: Acessando gateway de pagamento. Status: PAGO (05/03/2026)')"
                         style="background: #10b981; color: #fff; margin-top: 15px;">Baixar Boleto Antigo</button>
                 </div>
             </div>
@@ -489,7 +492,7 @@
                         <div class="apt-card" style="border-left-color: ${statusTxtColor}">
                             <div class="apt-info">
                                 <h4 style="color: ${statusTxtColor}">${apt.service}</h4>
-                                <p>📅 ${apt.date} às <strong>${apt.time}</strong></p>
+                                <p>�x& ${apt.date} às <strong>${apt.time}</strong></p>
                                 <small style="display:inline-block; margin-top:5px; color: ${statusTxtColor}; border: 1px solid ${statusTxtColor}; padding: 3px 8px; border-radius: 20px; font-size: 0.75rem;">STATUS: ${apt.status.toUpperCase()}</small>
                             </div>
                             <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar Horário</button>
