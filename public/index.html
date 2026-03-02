@@ -4,90 +4,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecionando - FisioVida</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+     <title>Acesso - Clínica FisioVida</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            background: #0f172a;
-            color: #f8fafc;
-            font-family: 'Outfit', sans-serif;
+            padding: 20px;
+        }
+
+        .portal-container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
             text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .redirect-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #f8fafc;
         }
 
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-left-color: #38bdf8;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1.5rem auto;
+        .logo span {
+            color: #38bdf8;
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        h1 {
-            margin: 0 0 1rem 0;
-            font-size: 1.8rem;
-        }
-
-        p {
+        .portal-subtitle {
             color: #94a3b8;
-            margin: 0;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
         }
 
-        .btn-manual {
-            margin-top: 2rem;
-            display: inline-block;
-            background: #38bdf8;
-            color: #0f172a;
-            padding: 10px 20px;
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .role-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             text-decoration: none;
-            border-radius: 8px;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .role-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .role-title {
+            font-size: 1.2rem;
             font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .role-desc {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* Cores Específicas no Hover */
+        .role-card.paciente:hover {
+            border-color: #10b981;
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.3);
+        }
+
+        .role-card.fisio:hover {
+            border-color: #f59e0b;
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.3);
+        }
+
+        .role-card.recepcao:hover {
+            border-color: #8b5cf6;
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.3);
+        }
+
+        .role-card.admin:hover {
+            border-color: #ef4444;
+            box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .portal-container {
+                padding: 30px 20px;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="redirect-box">
-        <div class="spinner"></div>
-        <h1>Fisio<span>Vida</span></h1>
-        <p>Acessando o Portal Seguro de Agendamentos...</p>
 
-        <script>
-            // Redirecionamento Estático Principal
-            setTimeout(() => {
-                window.location.replace("login.html");
-            }, 800);
-        </script>
+    <div class="portal-container">
+        <h1 class="logo">Fisio<span>Vida</span></h1>
+        <p class="portal-subtitle">Escolha o seu perfil de acesso ao Sistema Integrado para visualizar a interface de
+            demonstração.</p>
 
-        <noscript>
-            <p style="color: #ef4444; margin-top: 20px;">Seu navegador bloqueou o redirecionamento.</p>
-            <a href="login.html" class="btn-manual">Ir para o Login Manualmente</a>
-        </noscript>
+        <div class="roles-grid">
+            <!-- Card Paciente -->
+            <a href="dashboard-cliente.html" class="role-card paciente" onclick="mockLogin('paciente', 'Maria Silva')">
+                <div class="role-icon">🧑‍🦽</div>
+                <div class="role-title">Paciente</div>
+                <div class="role-desc">Agendamentos e Progresso</div>
+            </a>
+
+            <!-- Card Fisioterapeuta -->
+            <a href="dashboard-fisio.html" class="role-card fisio"
+                onclick="mockLogin('fisioterapeuta', 'Dr. Carlos Mendes')">
+                <div class="role-icon">🩺</div>
+                <div class="role-title">Especialista</div>
+                <div class="role-desc">Prontuários e Avaliações</div>
+            </a>
+
+            <!-- Card Recepção -->
+            <a href="dashboard-recepcao.html" class="role-card recepcao"
+                onclick="mockLogin('recepcao', 'Ana (Recepção)')">
+                <div class="role-icon">👩‍💻</div>
+                <div class="role-title">Recepção</div>
+                <div class="role-desc">Balcão e Pagamentos</div>
+            </a>
+
+            <!-- Card Admin -->
+            <a href="dashboard-admin.html" class="role-card admin" onclick="mockLogin('admin', 'Sr. Administrador')">
+                <div class="role-icon">⚙️</div>
+                <div class="role-title">Gestão</div>
+                <div class="role-desc">Faturamento e Relatórios</div>
+            </a>
+        </div>
     </div>
+
+    <script>
+        // Função para injetar dados fakes de autenticação no LocalStorage antes de navegar
+        function mockLogin(role, name) {
+            localStorage.setItem('jwtToken', 'simulated_static_token_777');
+            localStorage.setItem('userRole', role);
+            localStorage.setItem('userName', name);
+            // O href da tag <a> fará a navegação imediatamente.
+        }
+    </script>
 </body>
 
 </html>
