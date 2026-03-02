@@ -352,8 +352,7 @@
         <div class="main-content">
             <div class="dashboard-header">
                 <div>
-                    <h1>Olá, <span id="userNameText">Paciente</span> <i class="ph ph-hand-waving"
-                            style="color: #fbbf24;"></i></h1>
+                    <h1>Olá, <span id="userNameText">Paciente</span></h1>
                     <p style="color: #cbd5e1;">Acompanhe seu tratamento e novas marcações aqui.</p>
                 </div>
                 <div class="header-actions">
@@ -464,6 +463,11 @@
 
         function toggleMenu() {
             document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
         }
 
         async function loadMyAppointments() {

@@ -365,8 +365,10 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="topbar">
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <h2 class="page-title">Painel de Atendimento</h2>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="ph ph-list"></i>
+            </button>
         </div>
 
         <!-- Área de Tabs -->
@@ -474,6 +476,11 @@
 
         function logout() {
             localStorage.clear();
+            window.location.href = 'index.html';
+        }
+
+        function confirmArrival(nomePt) {
+            alert(`MOCK AÇÃO: Paciente ${nomePt ? nomePt : ''} marcou presença. O sistema notificaria o Fisioterapeuta agora.`);
         }
 
         // Mock Data de Exemplo
@@ -494,7 +501,7 @@
                     <td>${item.time}</td>
                     <td><span class="status-badge" style="color: ${item.color}; background: ${item.bg};">${item.st}</span></td>
                     <td>
-                        <button class="action-btn" onclick="confirmArrival()"><i class="ph ph-check-circle"></i> Chegou</button>
+                        <button class="action-btn" onclick="confirmArrival('${item.pt}')"><i class="ph ph-check-circle"></i> Chegou</button>
                     </td>
                 `;
                 tableBody.appendChild(tr);

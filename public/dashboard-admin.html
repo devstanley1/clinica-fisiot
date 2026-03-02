@@ -212,8 +212,8 @@
         }
 
         .appointments-table th {
-            color: #94a3b8;
-            font-weight: 500;
+            color: #e2e8f0;
+            font-weight: 600;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -314,11 +314,10 @@
             </nav>
 
             <div class="sidebar-footer">
-                <div class="sidebar-footer">
-                    <a href="#" class="logout-btn" onclick="logout()">
-                        <i class="ph ph-sign-out"></i> Sair do Sistema
-                    </a>
-                </div>
+                <a href="#" class="logout-btn" onclick="logout()">
+                    <i class="ph ph-sign-out"></i> Sair do Sistema
+                </a>
+            </div>
         </aside>
 
         <!-- Wrapper de Conteúdo Principal -->
@@ -326,8 +325,7 @@
         <div class="main-content">
             <div class="dashboard-header">
                 <div>
-                    <h1 id="userNameText">Olá, Administrador <i class="ph ph-hand-waving" style="color: #fbbf24;"></i>
-                    </h1>
+                    <h1 id="userNameText">Olá, Administrador</h1>
                     <p style="color: #cbd5e1;">Gestão Total de Consultas e Relatórios do Dia.</p>
                 </div>
             </div>
@@ -447,6 +445,7 @@
 
         function logout() {
             localStorage.clear();
+            window.location.href = 'index.html';
         }
 
         async function loadAllAppointments() {
