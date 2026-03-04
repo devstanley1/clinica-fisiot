@@ -36,6 +36,8 @@
             bottom: 0;
             overflow-y: auto;
             z-index: 100;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
         }
 
         .sidebar-header {
@@ -113,14 +115,14 @@
         /* Main Content */
         .main-content {
             flex: 1;
-            margin-left: 250px;
+            margin-left: 0;
             padding: 2rem;
             overflow-y: auto;
-            width: calc(100% - 250px);
+            width: 100%;
         }
 
         .mobile-header {
-            display: none;
+            display: flex;
             background: #1e293b;
             padding: 1rem;
             align-items: center;
@@ -272,6 +274,10 @@
 
         .tab-content.active {
             display: block;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
         }
 
         @keyframes fadeIn {
@@ -626,3 +632,4 @@
 </body>
 
 </html>
+
