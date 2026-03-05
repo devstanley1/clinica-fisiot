@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel da RecepÃ§Ã£o - FisioVida</title>
+    <title>Painel da Recepção - FisioVida</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -78,7 +78,7 @@
             color: #8b5cf6;
         }
 
-        /* Cor roxa para recepÃ§Ã£o */
+        /* Cor roxa para recepção */
 
         .user-info {
             display: flex;
@@ -408,11 +408,11 @@
     <div class="app-container">
         <!-- Mobile Header -->
         <div class="mobile-header">
-            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #8b5cf6;">Vida</span></h1>
             <button class="menu-toggle" onclick="toggleMenu()"
                 style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">
                 <i class="ph ph-list"></i>
             </button>
+            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #8b5cf6;">Vida</span></h1>
         </div>
 
         <!-- Sidebar -->
@@ -422,7 +422,7 @@
                 <div class="user-info">
                     <div class="avatar">R</div>
                     <div class="user-text">
-                        <h4 id="userNameText">RecepÃ§Ã£o</h4>
+                        <h4 id="userNameText">Recepção</h4>
                         <p>Atendimento</p>
                     </div>
                 </div>
@@ -454,12 +454,12 @@
 
             </div>
 
-            <!-- Ãrea de Tabs -->
+            <!-- Área de Tabs -->
             <div id="triagem" class="tab-content active">
                 <!-- Dashboard Widgets -->
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-title">Aguardando na RecepÃ§Ã£o</div>
+                        <div class="stat-title">Aguardando na Recepção</div>
                         <div class="stat-value" style="color:#ef4444;">3</div>
                     </div>
                     <div class="stat-card">
@@ -480,9 +480,9 @@
                             <tr>
                                 <th>Paciente</th>
                                 <th>Profissional</th>
-                                <th>HorÃ¡rio</th>
+                                <th>Horário</th>
                                 <th>Status de Chegada</th>
-                                <th>AÃ§Ãµes do BalcÃ£o</th>
+                                <th>Ações do Balcão</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -494,12 +494,12 @@
 
             <div id="agendamentos" class="tab-content">
                 <div class="content-card">
-                    <h3 class="card-title">LanÃ§ar Novo Agendamento</h3>
+                    <h3 class="card-title">Lançar Novo Agendamento</h3>
                     <p style="color: #fff;">Use este painel para registrar pacientes que ligaram ou vieram pessoalmente
                         marcar consultas.</p>
                     <button class="action-btn"
                         style="background: rgba(56, 189, 248, 0.4); color: #fff; margin-top: 15px;"
-                        onclick="alert('Modo de SeleÃ§Ã£o de Grade ativado.')">+ Novo Agendamento Express</button>
+                        onclick="alert('Modo de Seleção de Grade ativado.')">+ Novo Agendamento Express</button>
                     <form style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px; max-width: 500px;"
                         onsubmit="event.preventDefault(); alert('Paciente agendado em slot vago!');">
                         <div style="display:flex; gap:10px;">
@@ -524,7 +524,7 @@
                                     style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
                             </div>
                             <div style="flex:1;">
-                                <label style="color: #fff; font-size: 0.9rem;">HorÃ¡rio</label>
+                                <label style="color: #fff; font-size: 0.9rem;">Horário</label>
                                 <input type="time"
                                     style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2); color: #fff; margin-top: 5px; font-family: 'Outfit', sans-serif;">
                             </div>
@@ -538,8 +538,8 @@
 
             <div id="caixa" class="tab-content">
                 <div class="content-card">
-                    <h3 class="card-title">Controle de Caixa e CoparticipaÃ§Ã£o</h3>
-                    <p style="color: #fff;">Registro de pagamentos de sessÃµes avulsas, emissÃ£o de NFe e baixa de
+                    <h3 class="card-title">Controle de Caixa e Coparticipação</h3>
+                    <p style="color: #fff;">Registro de pagamentos de sessões avulsas, emissão de NFe e baixa de
                         faturas.</p>
                     <button class="action-btn"
                         style="background: rgba(16, 185, 129, 0.4); color: #fff; margin-top: 15px;"
@@ -548,7 +548,7 @@
                     <table class="appointments-table" style="margin-top: 20px;">
                         <thead style="background: rgba(255,255,255,0.02);">
                             <tr>
-                                <th>Recibo NÂº</th>
+                                <th>Recibo Nº</th>
                                 <th>Paciente</th>
                                 <th>Valor Base</th>
                                 <th>Pagamento Via</th>
@@ -560,21 +560,21 @@
                                 <td>#99824</td>
                                 <td>Ana Beatriz</td>
                                 <td>R$ 150,00</td>
-                                <td>PIX InstantÃ¢neo</td>
+                                <td>PIX Instantâneo</td>
                                 <td><span style="color:#10b981; font-weight:600;">PAGO EM CAIXA</span></td>
                             </tr>
                             <tr>
                                 <td>#99825</td>
                                 <td>Carlos Mendes</td>
                                 <td>R$ 1.200,00</td>
-                                <td>CartÃ£o Parc. 3x</td>
+                                <td>Cartão Parc. 3x</td>
                                 <td><span style="color:#10b981; font-weight:600;">LIQUIDADO</span></td>
                             </tr>
                             <tr>
                                 <td>#99826</td>
                                 <td>Unimed (Glosa)</td>
                                 <td>R$ 480,00</td>
-                                <td>Faturamento ConvÃªnio</td>
+                                <td>Faturamento Convênio</td>
                                 <td><span style="color:#f59e0b; font-weight:600;">EM PROCESSAMENTO</span></td>
                             </tr>
                         </tbody>
@@ -585,10 +585,10 @@
             <div id="pacientes" class="tab-content">
                 <div class="content-card">
                     <h3 class="card-title">Busca de Pacientes</h3>
-                    <p style="color: #fff;">Procure pacientes cadatrados para atualizar endereÃ§o, telefone ou plano de
-                        saÃºde.</p>
+                    <p style="color: #fff;">Procure pacientes cadatrados para atualizar endereço, telefone ou plano de
+                        saúde.</p>
                     <button class="action-btn"
-                        onclick="alert('MOCK AÃ‡ÃƒO: Exibindo banco completo de 4.120 Contatos FictÃ­cios de Pacientes.')"
+                        onclick="alert('MOCK AÇÃO: Exibindo banco completo de 4.120 Contatos Fictícios de Pacientes.')"
                         style="background: #8b5cf6; color: #fff; margin-top: 15px;">Carregar Contatos (CRM)</button>
                 </div>
             </div>
@@ -597,28 +597,26 @@
     </div>
 
     <script>
-        // VerificaÃ§Ã£o Simples de AutenticaÃ§Ã£o Visual
+        // Verificação Simples de Autenticação Visual
         const userName = localStorage.getItem('userName');
         const role = localStorage.getItem('userRole');
         const token = localStorage.getItem('jwtToken');
 
         if (!token || role !== 'recepcao') {
-            window.location.href = 'index.html'; // Redireciona para o portal se nÃ£o for RecepÃ§Ã£o
+            window.location.href = 'index.html'; // Redireciona para o portal se não for Recepção
         }
 
         if (userName) {
             document.getElementById('userNameText').innerText = userName;
         }
 
-        // LÃ³gica de Tabs
+        // Lógica de Tabs
         function switchTab(tabId, element) {
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            if (window.innerWidth <= 768) {
-                document.getElementById('sidebar').classList.remove('active');
-            }
+            const sidebarEl = document.getElementById('sidebar'); if (sidebarEl) sidebarEl.classList.remove('active');
         }
 
         function toggleMenu() {
@@ -631,7 +629,7 @@
         }
 
         function confirmArrival(nomePt) {
-            alert(`MOCK AÃ‡ÃƒO: Paciente ${nomePt ? nomePt : ''} marcou presenÃ§a. O sistema notificaria o Fisioterapeuta agora.`);
+            alert(`MOCK AÇÃO: Paciente ${nomePt ? nomePt : ''} marcou presença. O sistema notificaria o Fisioterapeuta agora.`);
         }
 
         // Mock Data de Exemplo
@@ -660,11 +658,33 @@
         }
 
         function confirmArrival() {
-            alert("Entrada do paciente registrada com sucesso no sistema da clÃ­nica!");
+            alert("Entrada do paciente registrada com sucesso no sistema da clínica!");
         }
 
         loadRecepcaoQueue();
-    </script>
+    
+
+            // Fecha menu ao clicar fora dele na versao mobile
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('sidebar');
+                const menuToggle = document.querySelector('.menu-toggle');
+                
+                if (sidebar && sidebar.classList.contains('active')) {
+                    // Se o clique NAO foi no sidebar e NAO foi no botao de abrir
+                    if (!sidebar.contains(event.target) && (!menuToggle || !menuToggle.contains(event.target))) {
+                        sidebar.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Garante fechamento ao clicar em funcionalidade na versao mobile
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const sb = document.getElementById('sidebar'); if(sb) sb.classList.remove('active');
+                });
+            });
+    
+</script>
     <script>
         // Converte tabelas em cards responsivos automaticamente
         document.addEventListener("DOMContentLoaded", function () {

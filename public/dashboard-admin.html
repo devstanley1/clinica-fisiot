@@ -19,6 +19,7 @@
         .app-container {
             display: flex;
             min-height: 100vh;
+            flex-direction: column;
         }
 
         /* Sidebar Styles */
@@ -377,10 +378,10 @@
     <div class="app-container">
         <!-- Mobile Header -->
         <div class="mobile-header">
-            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #38bdf8;">Vida</span></h1>
             <button class="menu-toggle" onclick="toggleMenu()">
                 <i class="ph ph-list"></i>
             </button>
+            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #38bdf8;">Vida</span></h1>
         </div>
         <!-- Sidebar Responsiva -->
         <aside class="sidebar" id="sidebar">
@@ -391,7 +392,7 @@
 
             <nav class="sidebar-nav">
                 <a href="#" class="nav-item active" onclick="switchTab('visaoGeral', this)"><span><i
-                            class="ph ph-house"></i></span> VisÃ£o Geral</a>
+                            class="ph ph-house"></i></span> Visão Geral</a>
                 <a href="#" class="nav-item" onclick="switchTab('agendamentos', this)"><span><i
                             class="ph ph-calendar-plus"></i></span> Agendamentos</a>
                 <a href="#" class="nav-item" onclick="switchTab('especialistas', this)"><span><i
@@ -399,13 +400,13 @@
                 <a href="#" class="nav-item" onclick="switchTab('pacientesAdmin', this)"><span><i
                             class="ph ph-users"></i></span> Pacientes</a>
                 <a href="#" class="nav-item" onclick="switchTab('prontuariosAdmin', this)"><span><i
-                            class="ph ph-file-text"></i></span> ProntuÃ¡rios</a>
+                            class="ph ph-file-text"></i></span> Prontuários</a>
                 <a href="#" class="nav-item" onclick="switchTab('financeiro', this)"><span><i
                             class="ph ph-currency-dollar"></i></span> Financeiro</a>
                 <a href="#" class="nav-item" onclick="switchTab('relatoriosAdmin', this)"><span><i
-                            class="ph ph-chart-bar"></i></span> RelatÃ³rios</a>
+                            class="ph ph-chart-bar"></i></span> Relatórios</a>
                 <a href="#" class="nav-item" onclick="switchTab('config', this)"><span><i class="ph ph-gear"></i></span>
-                    ConfiguraÃ§Ãµes</a>
+                    Configurações</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -415,13 +416,13 @@
             </div>
         </aside>
 
-        <!-- Wrapper de ConteÃºdo Principal -->
-        <!-- Wrapper de ConteÃºdo Principal -->
+        <!-- Wrapper de Conteúdo Principal -->
+        <!-- Wrapper de Conteúdo Principal -->
         <div class="main-content">
             <div class="dashboard-header">
                 <div>
-                    <h2 style="color: #ffffff; margin: 0;">Painel de GestÃ£o (Admin)</h2>
-                    <p>Controle absoluto sobre a clÃ­nica FisioVida.</p>
+                    <h2 style="color: #ffffff; margin: 0;">Painel de Gestão (Admin)</h2>
+                    <p>Controle absoluto sobre a clínica FisioVida.</p>
                 </div>
             </div>
 
@@ -434,7 +435,7 @@
                             <p class="stat-value text-white">42</p>
                         </div>
                         <div class="stat-card">
-                            <h3 class="stat-title">Faturamento DiÃ¡rio</h3>
+                            <h3 class="stat-title">Faturamento Diário</h3>
                             <p class="stat-value text-white">R$ 3.450</p>
                         </div>
                         <div class="stat-card">
@@ -447,7 +448,7 @@
                 <div id="agendamentos" class="tab-content">
                     <div class="content-card" style="overflow-x: auto;">
                         <h3 class="card-title">Log de Agendamentos Globais</h3>
-                        <p style="color: #fff;">Monitore e force a remarcaÃ§Ã£o de horÃ¡rios conflitantes.</p>
+                        <p style="color: #fff;">Monitore e force a remarcação de horários conflitantes.</p>
                         <table class="appointments-table" style="margin-top: 20px; min-width: 600px;">
                             <thead style="background: rgba(255,255,255,0.05);">
                                 <tr>
@@ -461,7 +462,7 @@
                                 <tr>
                                     <td>Marcos Silva</td>
                                     <td>Dra. Beatriz</td>
-                                    <td>24/02 Ã¡s 14:00</td>
+                                    <td>24/02 ás 14:00</td>
                                     <td><span style="color:#10b981;">Confirmado</span></td>
                                 </tr>
                             </tbody>
@@ -474,7 +475,7 @@
                         <h3 class="card-title">Quadro de Especialistas e Equipe</h3>
                         <button class="action-btn"
                             style="background: rgba(56, 189, 248, 0.2); color: #fff; margin-bottom: 15px;"
-                            onclick="alert('Abrindo modal Cadastro de MÃ©dico / Fisio')">+ Novo Colaborador</button>
+                            onclick="alert('Abrindo modal Cadastro de Médico / Fisio')">+ Novo Colaborador</button>
                         <table class="appointments-table" style="min-width: 600px;">
                             <thead style="background: rgba(255,255,255,0.05);">
                                 <tr>
@@ -487,11 +488,11 @@
                                 <tr>
                                     <td>Dra. Beatriz L.</td>
                                     <td>Quiropraxia / Traumato</td>
-                                    <td><span style="color:#10b981;">DisponÃ­vel (PlantÃ£o)</span></td>
+                                    <td><span style="color:#10b981;">Disponível (Plantão)</span></td>
                                 </tr>
                                 <tr>
                                     <td>Dr. Roberto C.</td>
-                                    <td>Pilates e CorreÃ§Ã£o</td>
+                                    <td>Pilates e Correção</td>
                                     <td><span style="color:#f59e0b;">Em Atendimento</span></td>
                                 </tr>
                             </tbody>
@@ -504,18 +505,18 @@
                         <h3 class="card-title">Banco CRM de Pacientes</h3>
                         <button class="action-btn"
                             style="background: rgba(56, 189, 248, 0.2); color: #fff; margin-bottom: 15px;"
-                            onclick="alert('Iniciando cadastro faturamento/recepÃ§Ã£o')">+ Adicionar Paciente</button>
+                            onclick="alert('Iniciando cadastro faturamento/recepção')">+ Adicionar Paciente</button>
                         <table class="appointments-table">
                             <thead style="background: rgba(255,255,255,0.05);">
                                 <tr>
                                     <th>Nome Completo</th>
-                                    <th>Assinatura / ConvÃªnio</th>
+                                    <th>Assinatura / Convênio</th>
                                     <th>Registrado Em</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>LuÃ­sa Moreira Santos</td>
+                                    <td>Luísa Moreira Santos</td>
                                     <td>Unimed Nacional</td>
                                     <td>12/10/2025</td>
                                 </tr>
@@ -526,14 +527,14 @@
 
                 <div id="prontuariosAdmin" class="tab-content">
                     <div class="content-card">
-                        <h3 class="card-title">Auditoria de ProntuÃ¡rios (Admin)</h3>
-                        <p style="color: #fff;">Gestores sÃ³ possuem direito de leitura dos CID's submetidos para
-                            faturamento do convÃªnio.</p>
+                        <h3 class="card-title">Auditoria de Prontuários (Admin)</h3>
+                        <p style="color: #fff;">Gestores só possuem direito de leitura dos CID's submetidos para
+                            faturamento do convênio.</p>
                         <ul
                             style="list-style:none; padding:0; margin-top:20px; color:#cbd5e1; display:flex; flex-direction:column; gap:10px;">
                             <li
                                 style="padding:15px; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center;">
-                                <span>#4819 - SessÃ£o Quiropraxia (ConvÃªnio Faturado)</span>
+                                <span>#4819 - Sessão Quiropraxia (Convênio Faturado)</span>
                                 <button class="action-btn" style="background: rgba(255,255,255, 0.1); color: #fff;"
                                     onclick="alert('Exportando XML de Faturamento ONS')">Verificar CID
                                     Faturamento</button>
@@ -548,13 +549,13 @@
                         <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 20px;">
                             <div
                                 style="background:rgba(16, 185, 129, 0.1); border:1px solid #10b981; padding:15px; border-radius:8px;">
-                                <h4 style="margin:0; color:#10b981;">Entradas (MÃªs)</h4>
+                                <h4 style="margin:0; color:#10b981;">Entradas (Mês)</h4>
                                 <p style="font-size:1.5rem; font-weight:bold; color:#fff; margin:5px 0 0 0;">R$
                                     48.560,00</p>
                             </div>
                             <div
                                 style="background:rgba(239, 68, 68, 0.1); border:1px solid #ef4444; padding:15px; border-radius:8px;">
-                                <h4 style="margin:0; color:#ef4444;">SaÃ­das Preditivas</h4>
+                                <h4 style="margin:0; color:#ef4444;">Saídas Preditivas</h4>
                                 <p style="font-size:1.5rem; font-weight:bold; color:#fff; margin:5px 0 0 0;">R$
                                     15.200,00</p>
                             </div>
@@ -564,12 +565,13 @@
 
                 <div id="relatoriosAdmin" class="tab-content">
                     <div class="content-card">
-                        <h3 class="card-title">Modelos AnalÃ­ticos e RelatÃ³rios</h3>
-                        <p style="color: #fff;">Extraia informaÃ§Ãµes financeiras ou de performance por Especialista.</p>
+                        <h3 class="card-title">Modelos Analíticos e Relatórios</h3>
+                        <p style="color: #fff;">Extraia informações financeiras ou de performance por Especialista.
+                        </p>
                         <div style="display:flex; gap: 15px; margin-top: 15px;">
                             <button class="action-btn"
                                 style="background: rgba(56, 189, 248, 0.2); border:1px solid #38bdf8; color: #fff;"
-                                onclick="alert('MOCK PDF BAixado: Resumo de Performance Anual da ClÃ­nica')">Performance
+                                onclick="alert('MOCK PDF BAixado: Resumo de Performance Anual da Clínica')">Performance
                                 (CSV)</button>
                             <button class="action-btn"
                                 style="background: rgba(16, 185, 129, 0.2); border:1px solid #10b981; color: #fff;"
@@ -580,13 +582,13 @@
 
                 <div id="config" class="tab-content">
                     <div class="content-card">
-                        <h3 class="card-title">ConfiguraÃ§Ãµes Gerais</h3>
+                        <h3 class="card-title">Configurações Gerais</h3>
                         <form style="margin-top: 20px; display: grid; gap: 15px;"
-                            onsubmit="event.preventDefault(); alert('ConfiguraÃ§Ãµes Salvas no DB Geral');">
+                            onsubmit="event.preventDefault(); alert('Configurações Salvas no DB Geral');">
                             <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px;">
                                 <label style="color: #cbd5e1; display: block; margin-bottom: 8px;">Nome Fantasia
-                                    EmissÃ£o</label>
-                                <input type="text" value="FisioVida ReabilitaÃ§Ã£o LTDA"
+                                    Emissão</label>
+                                <input type="text" value="FisioVida Reabilitação LTDA"
                                     style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff;">
                             </div>
                             <button class="action-btn" type="submit"
@@ -598,61 +600,60 @@
 
             </div>
         </div>
-        <script>
-            const token = localStorage.getItem('jwtToken');
-            const role = localStorage.getItem('userRole');
-            const userName = localStorage.getItem('userName');
+    </div>
+    <script>
+        const token = localStorage.getItem('jwtToken');
+        const role = localStorage.getItem('userRole');
+        const userName = localStorage.getItem('userName');
 
-            if (!token || role !== 'admin') {
-                window.location.href = 'index.html';
-            }
+        if (!token || role !== 'admin') {
+            window.location.href = 'index.html';
+        }
 
-            if (userName) {
-                document.getElementById('userNameText').innerText = userName;
-            }
+        if (userName) {
+            document.getElementById('userNameText').innerText = userName;
+        }
 
-            // LÃ³gica de Tabs
-            function switchTab(tabId, element) {
-                // Remove active class from all nav items
-                document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-                // Add active class to clicked item
-                element.classList.add('active');
+        // Lógica de Tabs
+        function switchTab(tabId, element) {
+            // Remove active class from all nav items
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            // Add active class to clicked item
+            element.classList.add('active');
 
-                // Hide all tabs
-                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-                // Show target tab
-                document.getElementById(tabId).classList.add('active');
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Show target tab
+            document.getElementById(tabId).classList.add('active');
 
-                // Fechar sidebar no mobile apÃ³s clique
-                if (window.innerWidth <= 768) {
-                    document.getElementById('sidebar').classList.remove('active');
-                }
-            }
+            // Fechar sidebar no mobile após clique
+            const sidebarEl = document.getElementById('sidebar'); if (sidebarEl) sidebarEl.classList.remove('active');
+        }
 
-            function toggleMenu() {
-                document.getElementById('sidebar').classList.toggle('active');
-            }
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
 
-            function logout() {
-                localStorage.clear();
-                window.location.href = 'index.html';
-            }
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
 
-            async function loadAllAppointments() {
-                // MOCK DATA: Simulando resposta do banco de dados na Vercel estÃ¡tica
-                const data = [
-                    { id: 101, clientName: 'JoÃ£o Silva', service: 'Fisioterapia OrtopÃ©dica', date: '2026-04-10', time: '14:00', status: 'agendado' },
-                    { id: 102, clientName: 'Maria MendonÃ§a', service: 'Pilates ClÃ­nico', date: '2026-04-11', time: '09:00', status: 'agendado' },
-                    { id: 105, clientName: 'Roberto Carlos', service: 'AvaliaÃ§Ã£o Geral', date: '2026-04-12', time: '16:30', status: 'concluÃ­do' },
-                    { id: 108, clientName: 'Ana Beatriz', service: 'Fisioterapia Esportiva', date: '2026-04-12', time: '17:00', status: 'agendado' }
-                ];
+        async function loadAllAppointments() {
+            // MOCK DATA: Simulando resposta do banco de dados na Vercel estática
+            const data = [
+                { id: 101, clientName: 'João Silva', service: 'Fisioterapia Ortopédica', date: '2026-04-10', time: '14:00', status: 'agendado' },
+                { id: 102, clientName: 'Maria Mendonça', service: 'Pilates Clínico', date: '2026-04-11', time: '09:00', status: 'agendado' },
+                { id: 105, clientName: 'Roberto Carlos', service: 'Avaliação Geral', date: '2026-04-12', time: '16:30', status: 'concluído' },
+                { id: 108, clientName: 'Ana Beatriz', service: 'Fisioterapia Esportiva', date: '2026-04-12', time: '17:00', status: 'agendado' }
+            ];
 
-                const tbody = document.querySelector('#adminTable tbody');
-                tbody.innerHTML = '';
+            const tbody = document.querySelector('#adminTable tbody');
+            tbody.innerHTML = '';
 
-                data.forEach(apt => {
-                    let statusColor = apt.status === 'agendado' ? '#38bdf8' : '#fff';
-                    tbody.innerHTML += `
+            data.forEach(apt => {
+                let statusColor = apt.status === 'agendado' ? '#38bdf8' : '#fff';
+                tbody.innerHTML += `
                     <tr>
                         <td style="color:#fff">#${apt.id}</td>
                         <td><strong>${apt.clientName}</strong></td>
@@ -665,41 +666,62 @@
                         </td>
                     </tr>
                 `;
-                });
-            }
+            });
+        }
 
-            async function deleteApt(id) {
-                if (confirm('Funcionalidade EstÃ¡tica: O Agendamento nÃ£o Ã© modificado permanentemente na Vercel.')) {
-                    alert("Simulado Administrativamente: Grade Liberada!");
+        async function deleteApt(id) {
+            if (confirm('Funcionalidade Estática: O Agendamento não é modificado permanentemente na Vercel.')) {
+                alert("Simulado Administrativamente: Grade Liberada!");
+            }
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+
+        loadAllAppointments();
+    
+
+            // Fecha menu ao clicar fora dele na versao mobile
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('sidebar');
+                const menuToggle = document.querySelector('.menu-toggle');
+                
+                if (sidebar && sidebar.classList.contains('active')) {
+                    // Se o clique NAO foi no sidebar e NAO foi no botao de abrir
+                    if (!sidebar.contains(event.target) && (!menuToggle || !menuToggle.contains(event.target))) {
+                        sidebar.classList.remove('active');
+                    }
                 }
-            }
-
-            function logout() {
-                localStorage.clear();
-                window.location.href = 'index.html';
-            }
-
-            loadAllAppointments();
-        </script>
-        <script>
-            // Converte tabelas em cards responsivos automaticamente
-            document.addEventListener("DOMContentLoaded", function () {
-                const tables = document.querySelectorAll('.appointments-table');
-                tables.forEach(table => {
-                    const headers = Array.from(table.querySelectorAll('th')).map(th => th.innerText.trim());
-                    const rows = table.querySelectorAll('tbody tr');
-                    rows.forEach(row => {
-                        const cells = row.querySelectorAll('td');
-                        cells.forEach((cell, index) => {
-                            if (headers[index]) {
-                                cell.setAttribute('data-label', headers[index]);
-                            }
-                        });
+            });
+            
+            // Garante fechamento ao clicar em funcionalidade na versao mobile
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const sb = document.getElementById('sidebar'); if(sb) sb.classList.remove('active');
+                });
+            });
+    
+</script>
+    <script>
+        // Converte tabelas em cards responsivos automaticamente
+        document.addEventListener("DOMContentLoaded", function () {
+            const tables = document.querySelectorAll('.appointments-table');
+            tables.forEach(table => {
+                const headers = Array.from(table.querySelectorAll('th')).map(th => th.innerText.trim());
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    cells.forEach((cell, index) => {
+                        if (headers[index]) {
+                            cell.setAttribute('data-label', headers[index]);
+                        }
                     });
                 });
             });
-        </script>
+        });
+    </script>
 </body>
 
 </html>
-

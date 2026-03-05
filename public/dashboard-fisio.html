@@ -19,6 +19,7 @@
         .app-container {
             display: flex;
             min-height: 100vh;
+            flex-direction: column;
         }
 
         /* Sidebar Styles */
@@ -375,6 +376,13 @@
 
 <body>
     <div class="app-container">
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="ph ph-list"></i>
+            </button>
+            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #f59e0b;">Vida</span></h1>
+        </div>
         <!-- Sidebar Responsiva -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
@@ -384,13 +392,13 @@
 
             <nav class="sidebar-nav">
                 <a href="#" class="nav-item active" onclick="switchTab('dashOverview', this)"><span><i
-                            class="ph ph-house"></i></span> VisÃ£o Geral</a>
+                            class="ph ph-house"></i></span> Visão Geral</a>
                 <a href="#" class="nav-item" onclick="switchTab('pacientes', this)"><span><i
                             class="ph ph-users"></i></span> Pacientes</a>
                 <a href="#" class="nav-item" onclick="switchTab('prontuarios', this)"><span><i
-                            class="ph ph-file-text"></i></span> ProntuÃ¡rios</a>
+                            class="ph ph-file-text"></i></span> Prontuários</a>
                 <a href="#" class="nav-item" onclick="switchTab('relatorios', this)"><span><i
-                            class="ph ph-chart-line-up"></i></span> RelatÃ³rios</a>
+                            class="ph ph-chart-line-up"></i></span> Relatórios</a>
             </nav>
 
             <div class="sidebar-footer">
@@ -400,21 +408,15 @@
             </div>
         </aside>
 
-        <!-- Wrapper de ConteÃºdo Principal -->
-        <!-- Mobile Header -->
-        <div class="mobile-header">
-            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #f59e0b;">Vida</span></h1>
-            <button class="menu-toggle" onclick="toggleMenu()">
-                <i class="ph ph-list"></i>
-            </button>
-        </div>
+        <!-- Wrapper de Conteúdo Principal -->
+
 
         <div class="main-content">
             <div class="dashboard-header">
                 <div>
-                    <h2 style="color: #ffffff; margin: 0;">Bem-vindo, <span id="userNameText">Especialista</span> ðŸ‘‹
+                    <h2 style="color: #ffffff; margin: 0;">Bem-vindo, <span id="userNameText">Especialista</span> 👋
                     </h2>
-                    <p>Aqui estÃ¡ o seu painel de atendimento e progresso.</p>
+                    <p>Aqui está o seu painel de atendimento e progresso.</p>
                 </div>
             </div>
 
@@ -432,28 +434,28 @@
                         </div>
                     </div>
                     <div class="content-card">
-                        <h3 class="card-title">PrÃ³ximas SessÃµes</h3>
+                        <h3 class="card-title">Próximas Sessões</h3>
                         <p style="color: #fff;">Lista de pacientes agendados para hoje.</p>
                         <table class="appointments-table" style="margin-top: 20px;">
                             <thead style="background: rgba(255,255,255,0.02);">
                                 <tr>
                                     <th>Paciente</th>
-                                    <th>HorÃ¡rio</th>
-                                    <th>ServiÃ§o</th>
+                                    <th>Horário</th>
+                                    <th>Serviço</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>LuÃ­sa Moreira</td>
+                                    <td>Luísa Moreira</td>
                                     <td>14:00</td>
-                                    <td>SessÃ£o Focada RPG</td>
-                                    <td><span style="color:#f59e0b;">Aguardando RecepÃ§Ã£o</span></td>
+                                    <td>Sessão Focada RPG</td>
+                                    <td><span style="color:#f59e0b;">Aguardando Recepção</span></td>
                                 </tr>
                                 <tr>
                                     <td>Thiago Neves</td>
                                     <td>15:30</td>
-                                    <td>RecuperaÃ§Ã£o Muscular</td>
+                                    <td>Recuperação Muscular</td>
                                     <td><span style="color:#10b981;">Em Preparo</span></td>
                                 </tr>
                             </tbody>
@@ -463,8 +465,8 @@
 
                 <div id="pacientes" class="tab-content">
                     <div class="content-card" style="overflow-x: auto;">
-                        <h3 class="card-title">Lista de Pacientes FictÃ­cios</h3>
-                        <p style="color: #fff;">Sua carteira ativa de clientes em reabilitaÃ§Ã£o.</p>
+                        <h3 class="card-title">Lista de Pacientes Fictícios</h3>
+                        <p style="color: #fff;">Sua carteira ativa de clientes em reabilitação.</p>
                         <div
                             style="overflow-x: auto; width: 100%; margin-top: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
                             <table class="appointments-table" style="width: 100%; min-width: 600px;">
@@ -472,27 +474,27 @@
                                     <tr>
                                         <th>Nome</th>
                                         <th>Contato</th>
-                                        <th>DiagnÃ³stico Inicial</th>
-                                        <th>Ãšltima Visita</th>
+                                        <th>Diagnóstico Inicial</th>
+                                        <th>Última Visita</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Ana Luiza Fontes</td>
                                         <td>(11) 98765-4321</td>
-                                        <td>Lombalgia CrÃ´nica</td>
+                                        <td>Lombalgia Crônica</td>
                                         <td>10/02/2026</td>
                                     </tr>
                                     <tr>
-                                        <td>Pedro AlcÃ¢ntara</td>
+                                        <td>Pedro Alcântara</td>
                                         <td>(21) 99887-6655</td>
                                         <td>Tendinite Ombro Direito</td>
                                         <td>15/02/2026</td>
                                     </tr>
                                     <tr>
-                                        <td>SÃ´nia Batista</td>
+                                        <td>Sônia Batista</td>
                                         <td>(86) 99988-7766</td>
-                                        <td>PÃ³s Ope. LCA</td>
+                                        <td>Pós Ope. LCA</td>
                                         <td>Hoje</td>
                                     </tr>
                                 </tbody>
@@ -503,22 +505,22 @@
 
                 <div id="prontuarios" class="tab-content">
                     <div class="content-card">
-                        <h3 class="card-title">Acesso RÃ¡pido a ProntuÃ¡rios</h3>
+                        <h3 class="card-title">Acesso Rápido a Prontuários</h3>
                         <div style="margin-top:20px; display:flex; gap:10px; flex-wrap: wrap;">
-                            <input type="text" placeholder="Buscar prontuÃ¡rio do paciente..."
+                            <input type="text" placeholder="Buscar prontuário do paciente..."
                                 style="padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; flex:1 1 250px; font-family:'Outfit',sans-serif;">
                             <button class="action-btn"
                                 style="background:rgba(16, 185, 129, 0.3); border: 1px solid #10b981; color:#fff; padding:12px 25px;"
-                                onclick="alert('Buscando ProntuÃ¡rio...')">Buscar</button>
+                                onclick="alert('Buscando Prontuário...')">Buscar</button>
                         </div>
                         <ul
                             style="list-style:none; padding:0; margin-top:20px; color:#cbd5e1; display:flex; flex-direction:column; gap:10px;">
                             <li
                                 style="padding:15px; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center;">
-                                <span><strong style="color:#fff;">ProntuÃ¡rio #4421</strong> - Ana Luiza Fontes</span>
+                                <span><strong style="color:#fff;">Prontuário #4421</strong> - Ana Luiza Fontes</span>
                                 <button class="action-btn"
                                     style="background: rgba(56, 189, 248, 0.2); color: #fff; border:1px solid #38bdf8;"
-                                    onclick="alert('Abrindo HistÃ³rico de EvoluÃ§Ã£o.')">Abrir Ficha ClÃ­nica</button>
+                                    onclick="alert('Abrindo Histórico de Evolução.')">Abrir Ficha Clínica</button>
                             </li>
                         </ul>
                     </div>
@@ -526,60 +528,59 @@
 
                 <div id="relatorios" class="tab-content">
                     <div class="content-card">
-                        <h3 class="card-title">RelatÃ³rios de Alta MÃ©dica</h3>
-                        <p style="color: #fff;">Gere relatÃ³rios estendidos para apresentar ao CRM ou outros mÃ©dicos
-                            responsÃ¡veis.</p>
+                        <h3 class="card-title">Relatórios de Alta Médica</h3>
+                        <p style="color: #fff;">Gere relatórios estendidos para apresentar ao CRM ou outros médicos
+                            responsáveis.</p>
                         <button class="action-btn"
                             style="background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; color: #fff; margin-top: 15px; padding: 10px 20px;"
-                            onclick="alert('Gerando PDF Completo AnalÃ­tico...')"><i class="ph ph-file-pdf"></i> Exportar
-                            Desempenho (MÃªs Atual)</button>
+                            onclick="alert('Gerando PDF Completo Analítico...')"><i class="ph ph-file-pdf"></i> Exportar
+                            Desempenho (Mês Atual)</button>
                     </div>
                 </div>
 
             </div>
         </div>
-        <script>
-            const userName = localStorage.getItem('userName');
-            const role = localStorage.getItem('userRole');
-            const token = localStorage.getItem('jwtToken');
+    </div>
+    <script>
+        const userName = localStorage.getItem('userName');
+        const role = localStorage.getItem('userRole');
+        const token = localStorage.getItem('jwtToken');
 
-            if (!token || role !== 'fisioterapeuta') {
-                window.location.href = 'index.html';
-            }
+        if (!token || role !== 'fisioterapeuta') {
+            window.location.href = 'index.html';
+        }
 
-            if (userName) {
-                document.getElementById('userNameText').innerText = userName;
-            }
+        if (userName) {
+            document.getElementById('userNameText').innerText = userName;
+        }
 
-            // LÃ³gica de Tabs
-            function switchTab(tabId, element) {
-                document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-                element.classList.add('active');
-                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-                document.getElementById(tabId).classList.add('active');
-                if (window.innerWidth <= 768) {
-                    document.getElementById('sidebar').classList.remove('active');
-                }
-            }
+        // Lógica de Tabs
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            const sidebarEl = document.getElementById('sidebar'); if (sidebarEl) sidebarEl.classList.remove('active');
+        }
 
-            function toggleMenu() {
-                document.getElementById('sidebar').classList.toggle('active');
-            }
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
 
-            async function loadAgenda() {
-                // Load Mock Data
-                const data = [
-                    { id: 101, clientName: 'JoÃ£o Silva', service: 'Fisioterapia OrtopÃ©dica (Joelho)', date: '2026-04-10', time: '14:00', status: 'em progresso' },
-                    { id: 102, clientName: 'Maria MendonÃ§a', service: 'Pilates ClÃ­nico', date: '2026-04-11', time: '09:00', status: 'confirmado' },
-                    { id: 106, clientName: 'Carlos Mendes', service: 'RPG', date: '2026-04-12', time: '10:30', status: 'pendente triagem' }
-                ];
+        async function loadAgenda() {
+            // Load Mock Data
+            const data = [
+                { id: 101, clientName: 'João Silva', service: 'Fisioterapia Ortopédica (Joelho)', date: '2026-04-10', time: '14:00', status: 'em progresso' },
+                { id: 102, clientName: 'Maria Mendonça', service: 'Pilates Clínico', date: '2026-04-11', time: '09:00', status: 'confirmado' },
+                { id: 106, clientName: 'Carlos Mendes', service: 'RPG', date: '2026-04-12', time: '10:30', status: 'pendente triagem' }
+            ];
 
-                const tbody = document.querySelector('#fisioTable tbody');
-                tbody.innerHTML = '';
+            const tbody = document.querySelector('#fisioTable tbody');
+            tbody.innerHTML = '';
 
-                data.forEach(apt => {
-                    let statusColor = apt.status === 'confirmado' ? '#10b981' : (apt.status === 'em progresso' ? '#f59e0b' : '#fff');
-                    tbody.innerHTML += `
+            data.forEach(apt => {
+                let statusColor = apt.status === 'confirmado' ? '#10b981' : (apt.status === 'em progresso' ? '#f59e0b' : '#fff');
+                tbody.innerHTML += `
                     <tr>
                         <td style="color:#fff">#${apt.id}</td>
                         <td><strong>${apt.clientName}</strong></td>
@@ -588,45 +589,66 @@
                         <td><strong>${apt.time}</strong></td>
                         <td><span style="color: ${statusColor}; border: 1px solid ${statusColor}; padding: 3px 8px; border-radius: 20px; font-size: 0.8rem;">${apt.status.toUpperCase()}</span></td>
                         <td>
-                            <button class="action-btn" onclick="deleteApt(${apt.id})">Suspender / ExceÃ§Ã£o</button>
+                            <button class="action-btn" onclick="deleteApt(${apt.id})">Suspender / Exceção</button>
                         </td>
                     </tr>
                 `;
-                });
-            }
+            });
+        }
 
-            async function deleteApt(id) {
-                if (confirm('AtenÃ§Ã£o: A recusa de pacientes gera alerta Ã  RecepÃ§Ã£o. Deseja aplicar suspensÃ£o clÃ­nica?')) {
-                    alert("Simulado: Tratamento Ausente/Suspenso Registrado.");
+        async function deleteApt(id) {
+            if (confirm('Atenção: A recusa de pacientes gera alerta à Recepção. Deseja aplicar suspensão clínica?')) {
+                alert("Simulado: Tratamento Ausente/Suspenso Registrado.");
+            }
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+
+        loadAgenda();
+    
+
+            // Fecha menu ao clicar fora dele na versao mobile
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('sidebar');
+                const menuToggle = document.querySelector('.menu-toggle');
+                
+                if (sidebar && sidebar.classList.contains('active')) {
+                    // Se o clique NAO foi no sidebar e NAO foi no botao de abrir
+                    if (!sidebar.contains(event.target) && (!menuToggle || !menuToggle.contains(event.target))) {
+                        sidebar.classList.remove('active');
+                    }
                 }
-            }
-
-            function logout() {
-                localStorage.clear();
-                window.location.href = 'index.html';
-            }
-
-            loadAgenda();
-        </script>
-        <script>
-            // Converte tabelas em cards responsivos automaticamente
-            document.addEventListener("DOMContentLoaded", function () {
-                const tables = document.querySelectorAll('.appointments-table');
-                tables.forEach(table => {
-                    const headers = Array.from(table.querySelectorAll('th')).map(th => th.innerText.trim());
-                    const rows = table.querySelectorAll('tbody tr');
-                    rows.forEach(row => {
-                        const cells = row.querySelectorAll('td');
-                        cells.forEach((cell, index) => {
-                            if (headers[index]) {
-                                cell.setAttribute('data-label', headers[index]);
-                            }
-                        });
+            });
+            
+            // Garante fechamento ao clicar em funcionalidade na versao mobile
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const sb = document.getElementById('sidebar'); if(sb) sb.classList.remove('active');
+                });
+            });
+    
+</script>
+    <script>
+        // Converte tabelas em cards responsivos automaticamente
+        document.addEventListener("DOMContentLoaded", function () {
+            const tables = document.querySelectorAll('.appointments-table');
+            tables.forEach(table => {
+                const headers = Array.from(table.querySelectorAll('th')).map(th => th.innerText.trim());
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    cells.forEach((cell, index) => {
+                        if (headers[index]) {
+                            cell.setAttribute('data-label', headers[index]);
+                        }
                     });
                 });
             });
-        </script>
+        });
+    </script>
 </body>
 
 </html>
-

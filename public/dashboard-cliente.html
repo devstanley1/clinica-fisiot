@@ -404,10 +404,10 @@
     <div class="app-container">
         <!-- Mobile Header -->
         <div class="mobile-header">
-            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #10b981;">Vida</span></h1>
             <button class="menu-toggle" onclick="toggleMenu()">
                 <i class="ph ph-list"></i>
             </button>
+            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #10b981;">Vida</span></h1>
         </div>
         <!-- Sidebar Responsiva -->
         <aside class="sidebar" id="sidebar">
@@ -529,7 +529,8 @@
 
             </div>
         </div>
-        <script>
+        </div>
+    <script>
             const token = localStorage.getItem('jwtToken');
             const role = localStorage.getItem('userRole');
             const userName = localStorage.getItem('userName');
@@ -554,9 +555,7 @@
                 document.getElementById(tabId).classList.add('active');
 
                 // Retrai menu celular num clique pra liberar espaço de visão
-                if (window.innerWidth <= 768) {
-                    document.getElementById('sidebar').classList.remove('active');
-                }
+                const sidebarEl = document.getElementById('sidebar'); if (sidebarEl) sidebarEl.classList.remove('active');
             }
 
             function toggleMenu() {
@@ -610,7 +609,29 @@
             }
 
             loadMyAppointments();
-        </script>
+        
+
+            // Fecha menu ao clicar fora dele na versao mobile
+            document.addEventListener('click', function(event) {
+                const sidebar = document.getElementById('sidebar');
+                const menuToggle = document.querySelector('.menu-toggle');
+                
+                if (sidebar && sidebar.classList.contains('active')) {
+                    // Se o clique NAO foi no sidebar e NAO foi no botao de abrir
+                    if (!sidebar.contains(event.target) && (!menuToggle || !menuToggle.contains(event.target))) {
+                        sidebar.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Garante fechamento ao clicar em funcionalidade na versao mobile
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const sb = document.getElementById('sidebar'); if(sb) sb.classList.remove('active');
+                });
+            });
+    
+</script>
         <script>
             // Converte tabelas em cards responsivos automaticamente
             document.addEventListener("DOMContentLoaded", function () {

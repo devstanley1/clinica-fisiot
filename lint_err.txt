@@ -1,0 +1,14 @@
+
+   C:\Users\stanl\OneDrive\Documentos\clones\clinica fisio\public\dashboard-fisio.html
+[37m      L377 |[90m    <div class="app-container">[39m
+[37m                ^ [31mTag must be paired, missing: [ </div> ], start tag match failed [ <div class="app-container"> ] on line 377. (tag-pair)[39m
+
+   C:\Users\stanl\OneDrive\Documentos\clones\clinica fisio\public\dashboard-cliente.html
+[37m      L404 |[90m    <div class="app-container">[39m
+[37m                ^ [31mTag must be paired, missing: [ </div> ], start tag match failed [ <div class="app-container"> ] on line 404. (tag-pair)[39m
+
+   C:\Users\stanl\OneDrive\Documentos\clones\clinica fisio\public\dashboard-admin.html
+[37m      L377 |[90m    <div class="app-container">[39m
+[37m                ^ [31mTag must be paired, missing: [ </div> ], start tag match failed [ <div class="app-container"> ] on line 377. (tag-pair)[39m
+
+Scanned 10 files, found 3 errors in 3 files (31 ms)
