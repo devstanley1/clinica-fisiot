@@ -26,8 +26,8 @@
         .sidebar {
             width: 250px;
             background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             flex-direction: column;
@@ -378,10 +378,10 @@
     <div class="app-container">
         <!-- Mobile Header -->
         <div class="mobile-header">
-            <button class="menu-toggle" onclick="toggleMenu()">
+            <button class="menu-toggle" onclick="toggleMenu()" title="Ação" aria-label="Botão de interface">
                 <i class="ph ph-list"></i>
             </button>
-            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #38bdf8;">Vida</span></h1>
+            <h1 class="logo inline-fix-dashboard-admin-3">Fisio<span  class="inline-fix-dashboard-admin-4">Vida</span></h1>
         </div>
         <!-- Sidebar Responsiva -->
         <aside class="sidebar" id="sidebar">
@@ -421,7 +421,7 @@
         <div class="main-content">
             <div class="dashboard-header">
                 <div>
-                    <h2 style="color: #ffffff; margin: 0;">Painel de Gestão (Admin)</h2>
+                    <h2  class="inline-fix-dashboard-admin-5">Painel de Gestão (Admin)</h2>
                     <p>Controle absoluto sobre a clínica FisioVida.</p>
                 </div>
             </div>
@@ -446,11 +446,11 @@
                 </div>
 
                 <div id="agendamentos" class="tab-content">
-                    <div class="content-card" style="overflow-x: auto;">
+                    <div class="content-card inline-fix-dashboard-admin-6">
                         <h3 class="card-title">Log de Agendamentos Globais</h3>
-                        <p style="color: #fff;">Monitore e force a remarcação de horários conflitantes.</p>
-                        <table class="appointments-table" style="margin-top: 20px; min-width: 600px;">
-                            <thead style="background: rgba(255,255,255,0.05);">
+                        <p  class="inline-fix-dashboard-admin-7">Monitore e force a remarcação de horários conflitantes.</p>
+                        <table class="appointments-table inline-fix-dashboard-admin-8">
+                            <thead  class="inline-fix-dashboard-admin-9">
                                 <tr>
                                     <th>Paciente</th>
                                     <th>Profissional</th>
@@ -463,7 +463,7 @@
                                     <td>Marcos Silva</td>
                                     <td>Dra. Beatriz</td>
                                     <td>24/02 ás 14:00</td>
-                                    <td><span style="color:#10b981;">Confirmado</span></td>
+                                    <td><span  class="inline-fix-dashboard-admin-10">Confirmado</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -473,11 +473,9 @@
                 <div id="especialistas" class="tab-content">
                     <div class="content-card">
                         <h3 class="card-title">Quadro de Especialistas e Equipe</h3>
-                        <button class="action-btn"
-                            style="background: rgba(56, 189, 248, 0.2); color: #fff; margin-bottom: 15px;"
-                            onclick="alert('Abrindo modal Cadastro de Médico / Fisio')">+ Novo Colaborador</button>
-                        <table class="appointments-table" style="min-width: 600px;">
-                            <thead style="background: rgba(255,255,255,0.05);">
+                        <button class="action-btn inline-fix-dashboard-admin-11" onclick="alert('Abrindo modal Cadastro de Médico / Fisio')" title="Ação" aria-label="Botão de interface">+ Novo Colaborador</button>
+                        <table class="appointments-table inline-fix-dashboard-admin-12">
+                            <thead  class="inline-fix-dashboard-admin-13">
                                 <tr>
                                     <th>Nome</th>
                                     <th>Cargo/Especialidade</th>
@@ -488,12 +486,12 @@
                                 <tr>
                                     <td>Dra. Beatriz L.</td>
                                     <td>Quiropraxia / Traumato</td>
-                                    <td><span style="color:#10b981;">Disponível (Plantão)</span></td>
+                                    <td><span  class="inline-fix-dashboard-admin-14">Disponível (Plantão)</span></td>
                                 </tr>
                                 <tr>
                                     <td>Dr. Roberto C.</td>
                                     <td>Pilates e Correção</td>
-                                    <td><span style="color:#f59e0b;">Em Atendimento</span></td>
+                                    <td><span  class="inline-fix-dashboard-admin-15">Em Atendimento</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -503,11 +501,9 @@
                 <div id="pacientesAdmin" class="tab-content">
                     <div class="content-card">
                         <h3 class="card-title">Banco CRM de Pacientes</h3>
-                        <button class="action-btn"
-                            style="background: rgba(56, 189, 248, 0.2); color: #fff; margin-bottom: 15px;"
-                            onclick="alert('Iniciando cadastro faturamento/recepção')">+ Adicionar Paciente</button>
+                        <button class="action-btn inline-fix-dashboard-admin-16" onclick="alert('Iniciando cadastro faturamento/recepção')" title="Ação" aria-label="Botão de interface">+ Adicionar Paciente</button>
                         <table class="appointments-table">
-                            <thead style="background: rgba(255,255,255,0.05);">
+                            <thead  class="inline-fix-dashboard-admin-17">
                                 <tr>
                                     <th>Nome Completo</th>
                                     <th>Assinatura / Convênio</th>
@@ -528,15 +524,12 @@
                 <div id="prontuariosAdmin" class="tab-content">
                     <div class="content-card">
                         <h3 class="card-title">Auditoria de Prontuários (Admin)</h3>
-                        <p style="color: #fff;">Gestores só possuem direito de leitura dos CID's submetidos para
+                        <p  class="inline-fix-dashboard-admin-18">Gestores só possuem direito de leitura dos CID's submetidos para
                             faturamento do convênio.</p>
-                        <ul
-                            style="list-style:none; padding:0; margin-top:20px; color:#cbd5e1; display:flex; flex-direction:column; gap:10px;">
-                            <li
-                                style="padding:15px; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center;">
+                        <ul  class="inline-fix-dashboard-admin-19">
+                            <li  class="inline-fix-dashboard-admin-20">
                                 <span>#4819 - Sessão Quiropraxia (Convênio Faturado)</span>
-                                <button class="action-btn" style="background: rgba(255,255,255, 0.1); color: #fff;"
-                                    onclick="alert('Exportando XML de Faturamento ONS')">Verificar CID
+                                <button class="action-btn inline-fix-dashboard-admin-21" onclick="alert('Exportando XML de Faturamento ONS')" title="Ação" aria-label="Botão de interface">Verificar CID
                                     Faturamento</button>
                             </li>
                         </ul>
@@ -546,17 +539,15 @@
                 <div id="financeiro" class="tab-content">
                     <div class="content-card">
                         <h3 class="card-title">Fluxo de Caixa (Financeiro)</h3>
-                        <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 20px;">
-                            <div
-                                style="background:rgba(16, 185, 129, 0.1); border:1px solid #10b981; padding:15px; border-radius:8px;">
-                                <h4 style="margin:0; color:#10b981;">Entradas (Mês)</h4>
-                                <p style="font-size:1.5rem; font-weight:bold; color:#fff; margin:5px 0 0 0;">R$
+                        <div class="stats-grid inline-fix-dashboard-admin-22">
+                            <div  class="inline-fix-dashboard-admin-23">
+                                <h4  class="inline-fix-dashboard-admin-24">Entradas (Mês)</h4>
+                                <p  class="inline-fix-dashboard-admin-25">R$
                                     48.560,00</p>
                             </div>
-                            <div
-                                style="background:rgba(239, 68, 68, 0.1); border:1px solid #ef4444; padding:15px; border-radius:8px;">
-                                <h4 style="margin:0; color:#ef4444;">Saídas Preditivas</h4>
-                                <p style="font-size:1.5rem; font-weight:bold; color:#fff; margin:5px 0 0 0;">R$
+                            <div  class="inline-fix-dashboard-admin-26">
+                                <h4  class="inline-fix-dashboard-admin-27">Saídas Preditivas</h4>
+                                <p  class="inline-fix-dashboard-admin-28">R$
                                     15.200,00</p>
                             </div>
                         </div>
@@ -566,16 +557,12 @@
                 <div id="relatoriosAdmin" class="tab-content">
                     <div class="content-card">
                         <h3 class="card-title">Modelos Analíticos e Relatórios</h3>
-                        <p style="color: #fff;">Extraia informações financeiras ou de performance por Especialista.
+                        <p  class="inline-fix-dashboard-admin-29">Extraia informações financeiras ou de performance por Especialista.
                         </p>
-                        <div style="display:flex; gap: 15px; margin-top: 15px;">
-                            <button class="action-btn"
-                                style="background: rgba(56, 189, 248, 0.2); border:1px solid #38bdf8; color: #fff;"
-                                onclick="alert('MOCK PDF BAixado: Resumo de Performance Anual da Clínica')">Performance
+                        <div  class="inline-fix-dashboard-admin-30">
+                            <button class="action-btn inline-fix-dashboard-admin-31" onclick="alert('MOCK PDF BAixado: Resumo de Performance Anual da Clínica')" title="Ação" aria-label="Botão de interface">Performance
                                 (CSV)</button>
-                            <button class="action-btn"
-                                style="background: rgba(16, 185, 129, 0.2); border:1px solid #10b981; color: #fff;"
-                                onclick="alert('Nota Fiscais compiladas para contador.')">DRE Fiscal (PDF)</button>
+                            <button class="action-btn inline-fix-dashboard-admin-32" onclick="alert('Nota Fiscais compiladas para contador.')" title="Ação" aria-label="Botão de interface">DRE Fiscal (PDF)</button>
                         </div>
                     </div>
                 </div>
@@ -583,16 +570,13 @@
                 <div id="config" class="tab-content">
                     <div class="content-card">
                         <h3 class="card-title">Configurações Gerais</h3>
-                        <form style="margin-top: 20px; display: grid; gap: 15px;"
-                            onsubmit="event.preventDefault(); alert('Configurações Salvas no DB Geral');">
-                            <div style="background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px;">
-                                <label style="color: #cbd5e1; display: block; margin-bottom: 8px;">Nome Fantasia
+                        <form onsubmit="event.preventDefault(); alert('Configurações Salvas no DB Geral');" class="inline-fix-dashboard-admin-33">
+                            <div  class="inline-fix-dashboard-admin-34">
+                                <label  class="inline-fix-dashboard-admin-35">Nome Fantasia
                                     Emissão</label>
-                                <input type="text" value="FisioVida Reabilitação LTDA"
-                                    style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: #fff;">
+                                <input type="text" value="FisioVida Reabilitação LTDA" title="Campo de entrada" class="inline-fix-dashboard-admin-36">
                             </div>
-                            <button class="action-btn" type="submit"
-                                style="background: #10b981; color: #fff; padding: 12px 30px; border-radius:8px;">Salvar
+                            <button class="action-btn inline-fix-dashboard-admin-37" type="submit" title="Ação" aria-label="Botão de interface">Salvar
                                 Ajustes do Servidor</button>
                         </form>
                     </div>
@@ -655,14 +639,14 @@
                 let statusColor = apt.status === 'agendado' ? '#38bdf8' : '#fff';
                 tbody.innerHTML += `
                     <tr>
-                        <td style="color:#fff">#${apt.id}</td>
+                        <td  class="inline-fix-dashboard-admin-38">#${apt.id}</td>
                         <td><strong>${apt.clientName}</strong></td>
                         <td>${apt.service}</td>
                         <td>${apt.date}</td>
                         <td><strong>${apt.time}</strong></td>
-                        <td><span style="color: ${statusColor}; border: 1px solid ${statusColor}; padding: 3px 8px; border-radius: 20px; font-size: 0.8rem;">${apt.status.toUpperCase()}</span></td>
+                        <td><span  class="inline-fix-dashboard-admin-39">${apt.status.toUpperCase()}</span></td>
                         <td>
-                            <button class="action-btn" onclick="deleteApt(${apt.id})">Deletar / Estornar</button>
+                            <button class="action-btn" onclick="deleteApt(${apt.id})" title="Ação" aria-label="Botão de interface">Deletar / Estornar</button>
                         </td>
                     </tr>
                 `;

@@ -23,8 +23,8 @@
 
         .auth-container {
             background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
             padding: 3rem;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -98,21 +98,20 @@
         <p>Acesse seu painel com Suas Credenciais.</p>
 
         <form id="loginForm">
-            <div id="dynamicWarning"
-                style="background: rgba(139, 92, 246, 0.2); color: #c4b5fd; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; border: 1px solid rgba(139, 92, 246, 0.4);">
+            <div id="dynamicWarning" class="inline-fix-login-135">
                 Identificando cargo...
             </div>
 
-            <div class="form-group" style="display: none;">
+            <div class="form-group inline-fix-login-136">
                 <label>E-mail</label>
-                <input type="email" id="email" placeholder="Automático" value="fake@email.com">
+                <input type="email" id="email" placeholder="Automático" value="fake@email.com" title="Campo de entrada">
             </div>
-            <div class="form-group" style="display: none;">
+            <div class="form-group inline-fix-login-137">
                 <label>Senha</label>
-                <input type="password" id="password" placeholder="***" value="1234">
+                <input type="password" id="password" placeholder="***" value="1234" title="Campo de entrada">
             </div>
 
-            <button type="submit" class="btn-primary btn-full">Entrar</button>
+            <button type="submit" class="btn-primary btn-full" title="Ação" aria-label="Botão de interface">Entrar</button>
         </form>
 
         <div class="auth-links">

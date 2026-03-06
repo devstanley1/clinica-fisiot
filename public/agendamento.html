@@ -36,8 +36,8 @@
             max-width: 600px;
             padding: 2.5rem;
             background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -149,7 +149,7 @@
             onsubmit="event.preventDefault(); alert('Agendamento recebido! Você será notificado após a confirmação pela recepção.'); window.location.href='dashboard-cliente.html';">
             <div class="form-group">
                 <label>Especialidade Desejada</label>
-                <select class="form-control" required>
+                <select class="form-control" required title="Selecione uma opção">
                     <option value="" disabled selected>Selecione um tratamento...</option>
                     <option value="geral">Avaliação Geral Inicial</option>
                     <option value="ortopedica">Fisioterapia Ortopédica</option>
@@ -161,22 +161,22 @@
 
             <div class="form-group">
                 <label>Profissional (Opcional)</label>
-                <select class="form-control">
+                <select class="form-control" title="Selecione uma opção">
                     <option value="">Qualquer profissional disponível</option>
                     <option value="beatriz">Dra. Beatriz</option>
                     <option value="roberto">Dr. Roberto</option>
                 </select>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div  class="inline-fix-agendamento-1">
                 <div class="form-group">
                     <label>Data Preferencial</label>
-                    <input type="date" class="form-control" required>
+                    <input type="date" class="form-control" required title="Campo de entrada">
                 </div>
 
                 <div class="form-group">
                     <label>Horário</label>
-                    <select class="form-control" required>
+                    <select class="form-control" required title="Selecione uma opção">
                         <option value="" disabled selected>Escolha...</option>
                         <option value="08:00">08:00</option>
                         <option value="09:00">09:00</option>
@@ -190,13 +190,13 @@
                 </div>
             </div>
 
-            <div class="form-group" style="margin-top: 0.5rem;">
+            <div class="form-group inline-fix-agendamento-2">
                 <label>Observações Adicionais (Opcional)</label>
                 <textarea class="form-control" rows="3"
                     placeholder="Ex: Sinto muita dor no joelho esquerdo ao caminhar..."></textarea>
             </div>
 
-            <button type="submit" class="btn-submit">
+            <button type="submit" class="btn-submit" title="Ação" aria-label="Botão de interface">
                 <i class="ph ph-calendar-plus"></i> Confirmar Agendamento
             </button>
         </form>

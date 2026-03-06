@@ -27,8 +27,8 @@
 
         .auth-container {
             background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
             padding: 3rem;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -140,10 +140,10 @@
         <form id="recoverForm">
             <div class="form-group">
                 <label>E-mail Cadastrado</label>
-                <input type="email" id="email" required placeholder="exemplo@email.com">
+                <input type="email" id="email" required placeholder="exemplo@email.com" title="Campo de entrada">
             </div>
 
-            <button type="submit" class="btn-primary">
+            <button type="submit" class="btn-primary" title="Ação" aria-label="Botão de interface">
                 <i class="ph ph-paper-plane-right"></i> Enviar Link de Recuperação
             </button>
         </form>

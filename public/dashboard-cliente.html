@@ -404,10 +404,10 @@
     <div class="app-container">
         <!-- Mobile Header -->
         <div class="mobile-header">
-            <button class="menu-toggle" onclick="toggleMenu()">
+            <button class="menu-toggle" onclick="toggleMenu()" title="Ação" aria-label="Botão de interface">
                 <i class="ph ph-list"></i>
             </button>
-            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #10b981;">Vida</span></h1>
+            <h1 class="logo inline-fix-dashboard-cliente-40">Fisio<span  class="inline-fix-dashboard-cliente-41">Vida</span></h1>
         </div>
         <!-- Sidebar Responsiva -->
         <aside class="sidebar" id="sidebar">
@@ -434,7 +434,7 @@
         <div class="main-content">
             <div class="dashboard-header">
                 <div>
-                    <h2 style="color: #ffffff; margin: 0;">Bem-vindo(a), <span id="userNameText">Paciente</span> 👋</h2>
+                    <h2  class="inline-fix-dashboard-cliente-42">Bem-vindo(a), <span id="userNameText">Paciente</span> 👋</h2>
                     <p>Aqui estão suas consultas realizadas e futuras.</p>
                 </div>
                 <div class="header-actions">
@@ -445,80 +445,56 @@
             <div class="dashboard-content">
 
                 <div id="consultas" class="tab-content active">
-                    <div class="content-card" style="overflow-x: auto;">
+                    <div class="content-card inline-fix-dashboard-cliente-43">
                         <h3 class="card-title">Minhas Consultas</h3>
-                        <p style="color: #fff;">Histórico completo de presenças e faltas.</p>
+                        <p  class="inline-fix-dashboard-cliente-44">Histórico completo de presenças e faltas.</p>
 
-                        <div
-                            style="overflow-x: auto; width: 100%; margin-top: 25px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                            <table class="appointments-table"
-                                style="width: 100%; border-collapse: collapse; min-width: 500px;">
-                                <thead style="background: rgba(255,255,255,0.05);">
+                        <div  class="inline-fix-dashboard-cliente-45">
+                            <table class="appointments-table inline-fix-dashboard-cliente-46">
+                                <thead  class="inline-fix-dashboard-cliente-47">
                                     <tr>
-                                        <th
-                                            style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                        <th  class="inline-fix-dashboard-cliente-48">
                                             Data</th>
-                                        <th
-                                            style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                        <th  class="inline-fix-dashboard-cliente-49">
                                             Serviço</th>
-                                        <th
-                                            style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                        <th  class="inline-fix-dashboard-cliente-50">
                                             Profissional</th>
-                                        <th
-                                            style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                        <th  class="inline-fix-dashboard-cliente-51">
                                             Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td
-                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                        <td  class="inline-fix-dashboard-cliente-52">
                                             22/02/2026</td>
-                                        <td
-                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">
+                                        <td  class="inline-fix-dashboard-cliente-53">
                                             Avaliação Geral Presencial</td>
-                                        <td
-                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                        <td  class="inline-fix-dashboard-cliente-54">
                                             Dra. Beatriz</td>
-                                        <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                            <span
-                                                style="color:#10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i
-                                                    class="ph ph-check"
-                                                    style="vertical-align: middle; margin-right:4px;"></i>Compareceu</span>
+                                        <td  class="inline-fix-dashboard-cliente-55">
+                                            <span  class="inline-fix-dashboard-cliente-56"><i class="ph ph-check inline-fix-dashboard-cliente-57"></i>Compareceu</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                        <td  class="inline-fix-dashboard-cliente-58">
                                             15/02/2026</td>
-                                        <td
-                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">
+                                        <td  class="inline-fix-dashboard-cliente-59">
                                             Sessão de RPG</td>
-                                        <td
-                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                        <td  class="inline-fix-dashboard-cliente-60">
                                             Dr. Roberto</td>
-                                        <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                            <span
-                                                style="color:#f59e0b; background: rgba(245, 158, 11, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i
-                                                    class="ph ph-arrows-clockwise"
-                                                    style="vertical-align: middle; margin-right:4px;"></i>Remarcado</span>
+                                        <td  class="inline-fix-dashboard-cliente-61">
+                                            <span  class="inline-fix-dashboard-cliente-62"><i class="ph ph-arrows-clockwise inline-fix-dashboard-cliente-63"></i>Remarcado</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                        <td  class="inline-fix-dashboard-cliente-64">
                                             08/02/2026</td>
-                                        <td
-                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#fff; font-weight:500;">
+                                        <td  class="inline-fix-dashboard-cliente-65">
                                             Sessão de RPG</td>
-                                        <td
-                                            style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color:#cbd5e1;">
+                                        <td  class="inline-fix-dashboard-cliente-66">
                                             Dr. Roberto</td>
-                                        <td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                            <span
-                                                style="color:#10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;"><i
-                                                    class="ph ph-check"
-                                                    style="vertical-align: middle; margin-right:4px;"></i>Compareceu</span>
+                                        <td  class="inline-fix-dashboard-cliente-67">
+                                            <span  class="inline-fix-dashboard-cliente-68"><i class="ph ph-check inline-fix-dashboard-cliente-69"></i>Compareceu</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -578,18 +554,18 @@
                 list.innerHTML = '';
 
                 if (data.length === 0) {
-                    list.innerHTML = '<p style="color: #fff;">Você não possui nenhum agendamento na FisioVida.</p>';
+                    list.innerHTML = '<p  class="inline-fix-dashboard-cliente-70">Você não possui nenhum agendamento na FisioVida.</p>';
                 } else {
                     data.forEach(apt => {
                         let statusTxtColor = apt.status === 'confirmada' ? '#10b981' : '#f59e0b';
                         list.innerHTML += `
-                        <div class="apt-card" style="border-left-color: ${statusTxtColor}">
+                        <div class="apt-card inline-fix-dashboard-cliente-71">
                             <div class="apt-info">
-                                <h4 style="color: ${statusTxtColor}">${apt.service}</h4>
+                                <h4  class="inline-fix-dashboard-cliente-72">${apt.service}</h4>
                                 <p> ${apt.date} às <strong>${apt.time}</strong></p>
-                                <small style="display:inline-block; margin-top:5px; color: ${statusTxtColor}; border: 1px solid ${statusTxtColor}; padding: 3px 8px; border-radius: 20px; font-size: 0.75rem;">STATUS: ${apt.status.toUpperCase()}</small>
+                                <small  class="inline-fix-dashboard-cliente-73">STATUS: ${apt.status.toUpperCase()}</small>
                             </div>
-                            <button class="action-btn" onclick="deleteApt(${apt.id})">Cancelar Horário</button>
+                            <button class="action-btn" onclick="deleteApt(${apt.id})" title="Ação" aria-label="Botão de interface">Cancelar Horário</button>
                         </div>
                     `;
                     });
@@ -599,7 +575,7 @@
             async function deleteApt(id) {
                 if (confirm('Simulação Local: Deseja liberar este horário no sistema?')) {
                     // mock visual
-                    document.getElementById('myAppointments').innerHTML = '<p style="color: #fff;">Você Cancelou suas consultas (Modo Visual).</p>';
+                    document.getElementById('myAppointments').innerHTML = '<p  class="inline-fix-dashboard-cliente-74">Você Cancelou suas consultas (Modo Visual).</p>';
                 }
             }
 
@@ -654,3 +630,5 @@
 
 </html>
 
+
+<!-- trigger ide update --><!-- trigger ide update -->

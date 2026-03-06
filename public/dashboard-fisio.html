@@ -378,10 +378,10 @@
     <div class="app-container">
         <!-- Mobile Header -->
         <div class="mobile-header">
-            <button class="menu-toggle" onclick="toggleMenu()">
+            <button class="menu-toggle" onclick="toggleMenu()" title="Ação" aria-label="Botão de interface">
                 <i class="ph ph-list"></i>
             </button>
-            <h1 class="logo" style="font-size: 1.5rem; margin: 0;">Fisio<span style="color: #f59e0b;">Vida</span></h1>
+            <h1 class="logo inline-fix-dashboard-fisio-75">Fisio<span  class="inline-fix-dashboard-fisio-76">Vida</span></h1>
         </div>
         <!-- Sidebar Responsiva -->
         <aside class="sidebar" id="sidebar">
@@ -414,7 +414,7 @@
         <div class="main-content">
             <div class="dashboard-header">
                 <div>
-                    <h2 style="color: #ffffff; margin: 0;">Bem-vindo, <span id="userNameText">Especialista</span> 👋
+                    <h2  class="inline-fix-dashboard-fisio-77">Bem-vindo, <span id="userNameText">Especialista</span> 👋
                     </h2>
                     <p>Aqui está o seu painel de atendimento e progresso.</p>
                 </div>
@@ -435,9 +435,9 @@
                     </div>
                     <div class="content-card">
                         <h3 class="card-title">Próximas Sessões</h3>
-                        <p style="color: #fff;">Lista de pacientes agendados para hoje.</p>
-                        <table class="appointments-table" style="margin-top: 20px;">
-                            <thead style="background: rgba(255,255,255,0.02);">
+                        <p  class="inline-fix-dashboard-fisio-78">Lista de pacientes agendados para hoje.</p>
+                        <table class="appointments-table inline-fix-dashboard-fisio-79">
+                            <thead  class="inline-fix-dashboard-fisio-80">
                                 <tr>
                                     <th>Paciente</th>
                                     <th>Horário</th>
@@ -450,13 +450,13 @@
                                     <td>Luísa Moreira</td>
                                     <td>14:00</td>
                                     <td>Sessão Focada RPG</td>
-                                    <td><span style="color:#f59e0b;">Aguardando Recepção</span></td>
+                                    <td><span  class="inline-fix-dashboard-fisio-81">Aguardando Recepção</span></td>
                                 </tr>
                                 <tr>
                                     <td>Thiago Neves</td>
                                     <td>15:30</td>
                                     <td>Recuperação Muscular</td>
-                                    <td><span style="color:#10b981;">Em Preparo</span></td>
+                                    <td><span  class="inline-fix-dashboard-fisio-82">Em Preparo</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -464,13 +464,12 @@
                 </div>
 
                 <div id="pacientes" class="tab-content">
-                    <div class="content-card" style="overflow-x: auto;">
+                    <div class="content-card inline-fix-dashboard-fisio-83">
                         <h3 class="card-title">Lista de Pacientes Fictícios</h3>
-                        <p style="color: #fff;">Sua carteira ativa de clientes em reabilitação.</p>
-                        <div
-                            style="overflow-x: auto; width: 100%; margin-top: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                            <table class="appointments-table" style="width: 100%; min-width: 600px;">
-                                <thead style="background: rgba(255,255,255,0.05);">
+                        <p  class="inline-fix-dashboard-fisio-84">Sua carteira ativa de clientes em reabilitação.</p>
+                        <div  class="inline-fix-dashboard-fisio-85">
+                            <table class="appointments-table inline-fix-dashboard-fisio-86">
+                                <thead  class="inline-fix-dashboard-fisio-87">
                                     <tr>
                                         <th>Nome</th>
                                         <th>Contato</th>
@@ -506,21 +505,14 @@
                 <div id="prontuarios" class="tab-content">
                     <div class="content-card">
                         <h3 class="card-title">Acesso Rápido a Prontuários</h3>
-                        <div style="margin-top:20px; display:flex; gap:10px; flex-wrap: wrap;">
-                            <input type="text" placeholder="Buscar prontuário do paciente..."
-                                style="padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(0,0,0,0.3); color:#fff; flex:1 1 250px; font-family:'Outfit',sans-serif;">
-                            <button class="action-btn"
-                                style="background:rgba(16, 185, 129, 0.3); border: 1px solid #10b981; color:#fff; padding:12px 25px;"
-                                onclick="alert('Buscando Prontuário...')">Buscar</button>
+                        <div  class="inline-fix-dashboard-fisio-88">
+                            <input type="text" placeholder="Buscar prontuário do paciente..." title="Campo de entrada" class="inline-fix-dashboard-fisio-89">
+                            <button class="action-btn inline-fix-dashboard-fisio-90" onclick="alert('Buscando Prontuário...')" title="Ação" aria-label="Botão de interface">Buscar</button>
                         </div>
-                        <ul
-                            style="list-style:none; padding:0; margin-top:20px; color:#cbd5e1; display:flex; flex-direction:column; gap:10px;">
-                            <li
-                                style="padding:15px; border-radius: 8px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items: center;">
-                                <span><strong style="color:#fff;">Prontuário #4421</strong> - Ana Luiza Fontes</span>
-                                <button class="action-btn"
-                                    style="background: rgba(56, 189, 248, 0.2); color: #fff; border:1px solid #38bdf8;"
-                                    onclick="alert('Abrindo Histórico de Evolução.')">Abrir Ficha Clínica</button>
+                        <ul  class="inline-fix-dashboard-fisio-91">
+                            <li  class="inline-fix-dashboard-fisio-92">
+                                <span><strong  class="inline-fix-dashboard-fisio-93">Prontuário #4421</strong> - Ana Luiza Fontes</span>
+                                <button class="action-btn inline-fix-dashboard-fisio-94" onclick="alert('Abrindo Histórico de Evolução.')" title="Ação" aria-label="Botão de interface">Abrir Ficha Clínica</button>
                             </li>
                         </ul>
                     </div>
@@ -529,11 +521,9 @@
                 <div id="relatorios" class="tab-content">
                     <div class="content-card">
                         <h3 class="card-title">Relatórios de Alta Médica</h3>
-                        <p style="color: #fff;">Gere relatórios estendidos para apresentar ao CRM ou outros médicos
+                        <p  class="inline-fix-dashboard-fisio-95">Gere relatórios estendidos para apresentar ao CRM ou outros médicos
                             responsáveis.</p>
-                        <button class="action-btn"
-                            style="background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; color: #fff; margin-top: 15px; padding: 10px 20px;"
-                            onclick="alert('Gerando PDF Completo Analítico...')"><i class="ph ph-file-pdf"></i> Exportar
+                        <button class="action-btn inline-fix-dashboard-fisio-96" onclick="alert('Gerando PDF Completo Analítico...')" title="Ação" aria-label="Botão de interface"><i class="ph ph-file-pdf"></i> Exportar
                             Desempenho (Mês Atual)</button>
                     </div>
                 </div>
@@ -582,14 +572,14 @@
                 let statusColor = apt.status === 'confirmado' ? '#10b981' : (apt.status === 'em progresso' ? '#f59e0b' : '#fff');
                 tbody.innerHTML += `
                     <tr>
-                        <td style="color:#fff">#${apt.id}</td>
+                        <td  class="inline-fix-dashboard-fisio-97">#${apt.id}</td>
                         <td><strong>${apt.clientName}</strong></td>
                         <td>${apt.service}</td>
                         <td>${apt.date}</td>
                         <td><strong>${apt.time}</strong></td>
-                        <td><span style="color: ${statusColor}; border: 1px solid ${statusColor}; padding: 3px 8px; border-radius: 20px; font-size: 0.8rem;">${apt.status.toUpperCase()}</span></td>
+                        <td><span  class="inline-fix-dashboard-fisio-98">${apt.status.toUpperCase()}</span></td>
                         <td>
-                            <button class="action-btn" onclick="deleteApt(${apt.id})">Suspender / Exceção</button>
+                            <button class="action-btn" onclick="deleteApt(${apt.id})" title="Ação" aria-label="Botão de interface">Suspender / Exceção</button>
                         </td>
                     </tr>
                 `;
